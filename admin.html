@@ -3,276 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FCell Celulares - Painel de Gerenciamento Administrativo</title>
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Custom Design System CSS -->
+  <title>Painel de Gerenciamento — FCell Celulares Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  
-  <link rel="icon" type="image/png" href="./instagram/logo_transparent.png">
+  <style>
+    .admin-body { padding-top: 6rem; padding-bottom: 4rem; }
+    .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .admin-title h1 { font-family: var(--font-display); font-size: 2rem; color: var(--ink); }
+    .admin-title p { color: var(--muted); font-size: 0.95rem; }
+    
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .stat-card { background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid oklch(26% 0.03 32); }
+    .stat-card h4 { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .stat-card .val { font-family: var(--font-mono); font-size: 2rem; color: var(--accent); font-weight: 700; }
+    
+    .table-container { background: var(--surface); border-radius: 16px; border: 1px solid oklch(26% 0.03 32); overflow-x: auto; margin-bottom: 2rem; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
+    th { background: oklch(18% 0.03 32); padding: 1rem; color: var(--muted); font-weight: 600; border-bottom: 1px solid oklch(26% 0.03 32); }
+    td { padding: 1rem; border-bottom: 1px solid oklch(24% 0.03 32); color: var(--ink); vertical-align: middle; }
+    tr:hover { background: var(--surface-hover); }
+    
+    .img-thumb { height: 45px; width: 45px; object-fit: contain; border-radius: 6px; background: oklch(12% 0.02 32); padding: 2px; }
+    .badge-tag { background: oklch(65% 0.24 32 / 0.2); color: var(--accent); padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+    
+    .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.8rem; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; }
+    .btn-edit { background: oklch(45% 0.15 240); color: #fff; }
+    .btn-delete { background: oklch(45% 0.20 25); color: #fff; margin-left: 4px; }
+    
+    /* MODAL FORM */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center; padding: 1rem; }
+    .modal.active { display: flex; }
+    .modal-content { background: var(--surface); width: 100%; max-width: 550px; border-radius: 16px; padding: 2rem; border: 1px solid oklch(30% 0.03 32); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .modal-header h3 { font-family: var(--font-display); font-size: 1.4rem; }
+    .close-btn { background: none; border: none; color: var(--muted); font-size: 1.5rem; cursor: pointer; }
+    
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.35rem; }
+    .form-control { width: 100%; background: oklch(12% 0.02 32); border: 1px solid oklch(28% 0.03 32); color: var(--ink); padding: 0.7rem; border-radius: 8px; font-family: var(--font-body); }
+  </style>
 </head>
 <body class="admin-body">
 
-  <!-- ==========================================================================
-       PIN / AUTHENTICATION OVERLAY
-       ========================================================================== -->
-  <div class="admin-auth-overlay" id="auth-overlay">
-    <div class="auth-card">
-      <img src="./instagram/logo_transparent.png" alt="FCell Celulares Logo" class="logo-img" style="height: 55px;">
-      <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Painel Administrativo</h2>
-      <p style="color: var(--color-text-muted); font-size: 0.85rem;">Digite a senha/PIN de acesso para continuar (Padrão: <code>fcell2026</code>)</p>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="./instagram/logo_transparent.png" alt="FCell Celulares Logo">
+      </a>
+      <div>
+        <a href="index.html" class="btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1rem;">← Voltar para a Loja</a>
+      </div>
+    </div>
+  </header>
 
-      <form id="pin-form" onsubmit="handlePinLogin(event)">
-        <input type="password" id="pin-input" class="pin-input" placeholder="••••••••" maxlength="20" required autofocus>
-        <button type="submit" class="btn-primary-gradient" style="width: 100%;">
-          <i class="fa-solid fa-lock-open"></i>
-          <span>Acessar Painel</span>
-        </button>
+  <div class="container">
+    
+    <!-- LOGIN OVERLAY CARD IF NOT LOGGED IN -->
+    <div id="login-card" class="card" style="max-width: 400px; margin: 3rem auto; padding: 2rem; text-align: center;">
+      <h2 style="font-family: var(--font-display); margin-bottom: 1rem;">Acesso Administrativo</h2>
+      <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Insira a senha de gerenciamento da FCell Celulares:</p>
+      <input type="password" id="admin-pin" class="form-control" placeholder="Digite a senha (padrão: fcell2026)" style="margin-bottom: 1rem; text-align: center;">
+      <button onclick="checkAdminPin()" class="btn-primary" style="width: 100%;">Entrar no Painel</button>
+    </div>
+
+    <!-- MAIN ADMIN DASHBOARD CONTENT (HIDDEN BY DEFAULT UNTIL PIN) -->
+    <div id="dashboard-content" style="display: none;">
+      
+      <div class="admin-header">
+        <div class="admin-title">
+          <h1>Painel de Gerenciamento da Loja</h1>
+          <p>Gerencie o catálogo de produtos, preços, badges de brindes e métricas de leads.</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <button onclick="openProductModal()" class="btn-primary">+ Novo Produto</button>
+          <button onclick="restoreDefaults()" class="btn-outline" style="border-color: var(--accent); color: var(--accent);">Restaurar Padrões</button>
+        </div>
+      </div>
+
+      <!-- METRICS STATS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h4>Total de Produtos</h4>
+          <div class="val" id="stat-total-products">0</div>
+        </div>
+        <div class="stat-card">
+          <h4>Leads Gerados (WhatsApp)</h4>
+          <div class="val" id="stat-total-leads">0</div>
+        </div>
+        <div class="stat-card">
+          <h4>Status do Servidor / Vercel</h4>
+          <div class="val" style="color: var(--whatsapp); font-size: 1.2rem; margin-top: 0.5rem;">🟢 Operacional (Static)</div>
+        </div>
+      </div>
+
+      <!-- PRODUCTS MANAGEMENT TABLE -->
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Imagem</th>
+              <th>Nome do Produto</th>
+              <th>Categoria</th>
+              <th>Preço</th>
+              <th>Badge / Oferta</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="admin-products-table">
+            <!-- Renderizado dinamicamente via admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL ADICIONAR / EDITAR PRODUTO -->
+  <div id="product-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Cadastrar Novo Produto</h3>
+        <button class="close-btn" onclick="closeProductModal()">&times;</button>
+      </div>
+      <form id="product-form" onsubmit="handleSaveProduct(event)">
+        <input type="hidden" id="edit-product-id">
+        <div class="form-group">
+          <label>Nome do Produto</label>
+          <input type="text" id="prod-name" class="form-control" required placeholder="Ex: iPhone 17 Pro Max 256GB">
+        </div>
+        <div class="form-group">
+          <label>Categoria</label>
+          <select id="prod-category" class="form-control">
+            <option value="Smartphones">Smartphones</option>
+            <option value="Starlink">Starlink</option>
+            <option value="JBL & Áudio">JBL & Áudio</option>
+            <option value="Acessórios">Acessórios</option>
+            <option value="Smartwatches">Smartwatches</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preço à Vista</label>
+          <input type="text" id="prod-price" class="form-control" required placeholder="Ex: R$ 9.890,00">
+        </div>
+        <div class="form-group">
+          <label>Parcelamento</label>
+          <input type="text" id="prod-installments" class="form-control" placeholder="Ex: 12x de R$ 915,00">
+        </div>
+        <div class="form-group">
+          <label>Badge / Brinde Destaque</label>
+          <input type="text" id="prod-badge" class="form-control" placeholder="Ex: 🎁 Brinde Copo Stanley">
+        </div>
+        <div class="form-group">
+          <label>Caminho ou URL da Imagem</label>
+          <input type="text" id="prod-image" class="form-control" required placeholder="./products/iphone_17_promax.png">
+        </div>
+        <div class="form-group">
+          <label>Descrição Curta</label>
+          <textarea id="prod-desc" class="form-control" rows="2" placeholder="Breve descrição do produto..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Salvar Produto</button>
       </form>
     </div>
   </div>
 
-  <!-- ==========================================================================
-       ADMIN DASHBOARD CONTENT
-       ========================================================================== -->
-  <div id="admin-dashboard" style="display: none;">
-
-    <!-- Admin Header Bar -->
-    <header class="admin-header">
-      <div class="container admin-header-flex">
-        <div class="logo-wrapper">
-          <img src="./instagram/logo_transparent.png" alt="FCell Celulares" class="logo-img" style="height: 40px;">
-          <span class="admin-title-badge"><i class="fa-solid fa-user-shield"></i> PAINEL ADMIN</span>
-        </div>
-
-        <div style="display: flex; align-items: center; gap: 1rem;">
-          <a href="index.html" target="_blank" class="btn-outline-glass" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
-            <i class="fa-solid fa-store"></i>
-            <span>Ver Loja Pública</span>
-          </a>
-          <button onclick="handleAdminLogout()" class="btn-admin-link" style="color: var(--color-primary-light);">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            <span>Sair</span>
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <main class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
-
-      <!-- Metric Cards (Dashboard Overview) -->
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <div class="metric-info">
-            <h4>Total Produtos</h4>
-            <div class="metric-number" id="metric-total-products">0</div>
-          </div>
-          <div class="metric-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-info">
-            <h4>Leads WhatsApp</h4>
-            <div class="metric-number" id="metric-total-leads">0</div>
-          </div>
-          <div class="metric-icon" style="background: rgba(37, 211, 102, 0.15); color: var(--color-whatsapp);"><i class="fa-brands fa-whatsapp"></i></div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-info">
-            <h4>Destaques Home</h4>
-            <div class="metric-number" id="metric-featured-products">0</div>
-          </div>
-          <div class="metric-icon" style="background: rgba(255, 230, 0, 0.15); color: #ffea00;"><i class="fa-solid fa-star"></i></div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-info">
-            <h4>Fora de Estoque</h4>
-            <div class="metric-number" id="metric-out-stock">0</div>
-          </div>
-          <div class="metric-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-triangle-exclamation"></i></div>
-        </div>
-      </div>
-
-      <!-- Section: Products Management -->
-      <div class="admin-table-container">
-        <div class="table-header-bar">
-          <div>
-            <h3 style="font-size: 1.25rem;">Gestão de Catálogo & Produtos</h3>
-            <p style="color: var(--color-text-muted); font-size: 0.85rem;">Adicione, edite preços ou altere o status dos produtos em tempo real.</p>
-          </div>
-
-          <div style="display: flex; gap: 0.75rem;">
-            <button onclick="openProductFormModal()" class="btn-primary-gradient" style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">
-              <i class="fa-solid fa-plus"></i>
-              <span>Novo Produto</span>
-            </button>
-            <button onclick="resetToDefaultData()" class="btn-outline-glass" style="padding: 0.6rem 1rem; font-size: 0.85rem; border-color: #ef4444; color: #ef4444;">
-              <i class="fa-solid fa-rotate-left"></i>
-              <span>Restaurar Padrões</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="table-responsive">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Foto</th>
-                <th>Produto / Categoria</th>
-                <th>Preço / Parcelas</th>
-                <th>Badge / Oferta</th>
-                <th>Estoque</th>
-                <th>Destaque</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="admin-products-table-body">
-              <!-- Rendered by admin.js -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Section: Store Copywriting & Settings Form -->
-      <div class="admin-table-container" style="padding: 2rem;">
-        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Configurações de Copywriting & WhatsApp</h3>
-        <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Altere os títulos principais da loja pública e o número oficial de vendas.</p>
-
-        <form id="store-settings-form" onsubmit="saveStoreSettings(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Hero Badge Superior</label>
-              <input type="text" id="setting-hero-badge" class="form-control" placeholder="ex: LOJA OFICIAL EM CUIABÁ">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Número do WhatsApp de Vendas (apenas números)</label>
-              <input type="text" id="setting-whatsapp-num" class="form-control" placeholder="ex: 5565993049734" required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Título Principal da Home (Suporta tags HTML como &lt;span class="text-gradient"&gt;)</label>
-            <input type="text" id="setting-hero-title" class="form-control" placeholder="Título Hero">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Subtítulo Hero da Home</label>
-            <textarea id="setting-hero-subtitle" class="form-control" rows="2"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Texto da Oferta de Brinde Global</label>
-            <input type="text" id="setting-global-gift" class="form-control" placeholder="ex: Ganhe Copo Stanley em compras no PIX">
-          </div>
-
-          <button type="submit" class="btn-primary-gradient" style="padding: 0.75rem 2rem;">
-            <i class="fa-solid fa-floppy-disk"></i>
-            <span>Salvar Alterações de Copy</span>
-          </button>
-        </form>
-      </div>
-
-    </main>
-  </div>
-
-  <!-- ==========================================================================
-       PRODUCT FORM MODAL (ADD / EDIT)
-       ========================================================================== -->
-  <div class="modal-backdrop" id="admin-product-modal">
-    <div class="modal-content" style="max-width: 650px; padding: 2rem;">
-      <button class="modal-close-btn" onclick="closeProductFormModal()"><i class="fa-solid fa-xmark"></i></button>
-
-      <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem;" id="modal-form-title">Adicionar Novo Produto</h3>
-
-      <form id="product-form" onsubmit="handleProductFormSubmit(event)">
-        <input type="hidden" id="form-product-id">
-
-        <div class="form-group">
-          <label class="form-label">Nome do Produto *</label>
-          <input type="text" id="form-name" class="form-control" placeholder="ex: iPhone 17 Pro Max 256GB" required>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Categoria *</label>
-            <select id="form-category" class="form-control" required>
-              <option value="Smartphones">Smartphones</option>
-              <option value="Starlink">Starlink</option>
-              <option value="JBL & Áudio">JBL & Áudio</option>
-              <option value="Acessórios">Acessórios</option>
-              <option value="Smartwatches">Smartwatches</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Badge de Brinde / Destaque</label>
-            <input type="text" id="form-badge" class="form-control" placeholder="ex: 🎁 Brinde Copo Stanley">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Preço à Vista / Tabela *</label>
-            <input type="text" id="form-price" class="form-control" placeholder="ex: R$ 9.890,00" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Condições de Parcelamento</label>
-            <input type="text" id="form-installments" class="form-control" placeholder="ex: 12x de R$ 915,00">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Caminho da Imagem ou URL *</label>
-          <input type="text" id="form-image" class="form-control" placeholder="ex: ./products/iphone_17_promax.png" required>
-          <small style="color: var(--color-text-muted); font-size: 0.75rem;">Você pode usar miniaturas em <code>./products/nome.png</code> ou qualquer URL de imagem externa.</small>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Headline Persuasiva de Vendas (Hook)</label>
-          <input type="text" id="form-headline" class="form-control" placeholder="ex: Chegou o Monstro da Apple! Desempenho Implacável.">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Descrição Resumida do Produto *</label>
-          <textarea id="form-description" class="form-control" rows="3" required></textarea>
-        </div>
-
-        <div class="form-row" style="margin-bottom: 1.5rem;">
-          <div class="form-group" style="display: flex; align-items: center; gap: 0.75rem;">
-            <label class="switch">
-              <input type="checkbox" id="form-instock" checked>
-              <span class="slider"></span>
-            </label>
-            <span style="font-size: 0.9rem; font-weight: 600;">Em Estoque</span>
-          </div>
-
-          <div class="form-group" style="display: flex; align-items: center; gap: 0.75rem;">
-            <label class="switch">
-              <input type="checkbox" id="form-featured">
-              <span class="slider"></span>
-            </label>
-            <span style="font-size: 0.9rem; font-weight: 600;">Destaque na Home</span>
-          </div>
-        </div>
-
-        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
-          <button type="button" onclick="closeProductFormModal()" class="btn-outline-glass">Cancelar</button>
-          <button type="submit" class="btn-primary-gradient">Salvar Produto</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Toast Container -->
-  <div class="toast-container" id="admin-toast-container"></div>
-
-  <!-- Admin Application Script -->
   <script src="admin.js"></script>
 </body>
 </html>
