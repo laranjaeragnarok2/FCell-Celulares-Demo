@@ -1,5 +1,5 @@
 /* ==========================================================================
-   FCELL CELULARES - SCRIPT TRADICIONAL DE E-COMMERCE (INTER & ALTA CONVERSÃO)
+   FCELL CELULARES - SCRIPT DEDICADO PARTSiX E-COMMERCE
    ========================================================================== */
 
 const INITIAL_PRODUCTS = [
@@ -82,7 +82,7 @@ const INITIAL_PRODUCTS = [
     "category": "Acessórios",
     "price": "R$ 149,00",
     "installments": "À vista ou PIX",
-    "badge": "🧲 Campeão de Vendas",
+    "badge": "🧲 Top Vendas",
     "image": "./products/suporte_vacuum.png",
     "featured": false,
     "inStock": true,
@@ -151,8 +151,8 @@ const INITIAL_PRODUCTS = [
 ];
 
 const DEFAULT_SETTINGS = {
-  heroBadge: "GANHE 1 COPO STANLEY DE BRINDE NO PIX",
-  heroTitle: "iPhones, Starlink e JBL com <span class=\"text-primary\">Garantia Oficial</span> em Cuiabá",
+  heroBadge: "GARANTIA OFICIAL & PRONTA ENTREGA EM CUIABÁ",
+  heroTitle: "Smartphones, Starlink e JBL com<br><span>A Maior Garantia de Cuiabá</span>",
   heroSubtitle: "Smartphones lacrados, produtos originais Apple, caixas de som JBL e suporte técnico especializado com entrega expressa no mesmo dia.",
   whatsappNumber: "5565993049734",
   globalGiftText: "Ganhe Copo Stanley em compras no PIX"
@@ -208,22 +208,17 @@ function renderStoreContent() {
   if (subEl) subEl.innerText = storeSettings.heroSubtitle || DEFAULT_SETTINGS.heroSubtitle;
 
   const waNum = storeSettings.whatsappNumber || DEFAULT_SETTINGS.whatsappNumber;
-  const generalMsg = encodeURIComponent("Olá! Vim pelo site da FCell Celulares e gostaria de consultar produtos.");
+  const generalMsg = encodeURIComponent("Olá! Vim pelo site da FCell Celulares e gostaria de consultar os produtos.");
 
   const headerWaBtn = document.getElementById('header-whatsapp-btn');
-  const heroWaBtn = document.getElementById('hero-wa-direct-btn');
   const dealWaBtn = document.getElementById('deal-whatsapp-btn');
 
   if (headerWaBtn) {
     headerWaBtn.href = `https://wa.me/${waNum}?text=${generalMsg}`;
     headerWaBtn.onclick = () => trackLeadClick();
   }
-  if (heroWaBtn) {
-    heroWaBtn.href = `https://wa.me/${waNum}?text=${generalMsg}`;
-    heroWaBtn.onclick = () => trackLeadClick();
-  }
   if (dealWaBtn) {
-    const dealMsg = encodeURIComponent("Olá! Quero garantir a oferta do iPhone 17 Pro Max com o Copo Stanley de brinde!");
+    const dealMsg = encodeURIComponent("Olá! Quero aproveitar a oferta do iPhone 17 Pro Max com o brinde Copo Stanley!");
     dealWaBtn.href = `https://wa.me/${waNum}?text=${dealMsg}`;
     dealWaBtn.onclick = () => trackLeadClick();
   }
@@ -248,8 +243,8 @@ function renderProductsGrid() {
     grid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--color-text-muted);">
         <i class="fa-solid fa-box-open" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
-        <h3 style="font-size: 1.2rem; font-weight: 700;">Nenhum produto encontrado</h3>
-        <p style="font-size: 0.9rem;">Tente selecionar outra categoria ou buscar por outro modelo.</p>
+        <h3 style="font-family: var(--font-heading); font-size: 1.2rem;">Nenhum produto encontrado</h3>
+        <p>Tente selecionar outra categoria ou buscar por outro modelo.</p>
       </div>
     `;
     return;
@@ -258,21 +253,30 @@ function renderProductsGrid() {
   grid.innerHTML = filtered.map(prod => {
     const waUrl = getProductWhatsAppUrl(prod);
     return `
-      <div class="product-card-traditional">
-        ${prod.badge ? `<span class="product-badge-tag">${prod.badge}</span>` : ''}
+      <div class="product-partsix-card">
+        ${prod.badge ? `<span class="product-partsix-badge">${prod.badge}</span>` : ''}
         
-        <div class="product-img-box" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">
-          <img src="${prod.image}" alt="${prod.name}" class="product-img-clean" onerror="this.src='./products/iphone_17_promax.png'">
+        <div class="product-partsix-img-stage" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">
+          <img src="${prod.image}" alt="${prod.name}" class="product-partsix-img" onerror="this.src='./products/iphone_17_promax.png'">
         </div>
         
         <div>
-          <div class="product-category-name">${prod.category}</div>
-          <h3 class="product-title-text" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">${prod.name}</h3>
-          <div class="product-price-value">${prod.price}</div>
-          <div class="product-installments-text">${prod.installments || 'Consulte condições'}</div>
+          <div class="product-partsix-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <span style="color: var(--color-text-muted); font-size: 0.7rem; margin-left: 0.2rem;">(5.0)</span>
+          </div>
+
+          <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary); font-family: var(--font-heading);">${prod.category}</div>
+          <h3 class="product-partsix-title" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">${prod.name}</h3>
+          <div class="product-partsix-price">${prod.price}</div>
+          <div class="product-partsix-installments">${prod.installments || 'Consulte condições'}</div>
         </div>
 
-        <button class="btn-buy-whatsapp-clean" onclick="window.open('${waUrl}', '_blank'); trackLeadClick();">
+        <button class="btn-partsix-buy" onclick="window.open('${waUrl}', '_blank'); trackLeadClick();">
           <i class="fa-brands fa-whatsapp"></i>
           <span>Comprar no WhatsApp</span>
         </button>
@@ -293,8 +297,21 @@ function trackLeadClick() {
   localStorage.setItem('fcell_whatsapp_leads', currentClicks.toString());
 }
 
+function executeHeroSearch() {
+  const catSelect = document.getElementById('hero-select-category');
+  const searchInput = document.getElementById('search-input');
+
+  if (catSelect) currentCategory = catSelect.value;
+  if (searchInput) searchQuery = searchInput.value;
+
+  const catalogSec = document.getElementById('catalogo');
+  if (catalogSec) catalogSec.scrollIntoView({ behavior: 'smooth' });
+
+  renderProductsGrid();
+}
+
 function setupEventListeners() {
-  const categoryCards = document.querySelectorAll('.category-card');
+  const categoryCards = document.querySelectorAll('.category-partsix-card');
   categoryCards.forEach(card => {
     card.addEventListener('click', (e) => {
       categoryCards.forEach(c => c.classList.remove('active'));
@@ -323,7 +340,7 @@ function setupEventListeners() {
 
 function setCategoryFilter(categoryName) {
   currentCategory = categoryName;
-  const categoryCards = document.querySelectorAll('.category-card');
+  const categoryCards = document.querySelectorAll('.category-partsix-card');
   categoryCards.forEach(card => {
     if (card.getAttribute('data-category') === categoryName) {
       card.classList.add('active');
@@ -351,12 +368,12 @@ function openProductModal(productId) {
       <img src="${product.image}" alt="${product.name}" style="max-height: 320px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));" onerror="this.src='./products/iphone_17_promax.png'">
     </div>
     <div>
-      ${product.badge ? `<span class="hero-badge-tag" style="margin-bottom: 0.75rem; display: inline-block;">${product.badge}</span>` : ''}
-      <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.4rem; line-height: 1.2;">${product.name}</h2>
-      ${product.headline ? `<p style="font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">"${product.headline}"</p>` : ''}
+      ${product.badge ? `<span class="product-partsix-badge" style="margin-bottom: 0.75rem; display: inline-block;">${product.badge}</span>` : ''}
+      <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin-bottom: 0.4rem; line-height: 1.2;">${product.name}</h2>
+      ${product.headline ? `<p style="font-weight: 700; color: var(--color-primary); margin-bottom: 1rem; font-family: var(--font-heading);">"${product.headline}"</p>` : ''}
       
       <div style="background: var(--bg-main); padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; border: 1px solid var(--border-color);">
-        <div style="font-size: 2.2rem; font-weight: 800; color: var(--color-primary);">${product.price}</div>
+        <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--color-primary);">${product.price}</div>
         <div style="font-size: 0.85rem; color: var(--color-text-muted);">${product.installments || 'Consulte condições'}</div>
       </div>
 
@@ -364,7 +381,7 @@ function openProductModal(productId) {
 
       <ul style="list-style: none; margin-bottom: 1.75rem;">${benefitsHtml}</ul>
 
-      <a href="${waUrl}" target="_blank" class="btn-buy-whatsapp-clean" style="padding: 1rem; font-size: 1rem;" onclick="trackLeadClick()">
+      <a href="${waUrl}" target="_blank" class="btn-partsix-buy" style="padding: 1rem; font-size: 1rem;" onclick="trackLeadClick()">
         <i class="fa-brands fa-whatsapp"></i>
         <span>Garantir Produto pelo WhatsApp</span>
       </a>

@@ -3,108 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preview do E-Commerce Tradicional FCell Celulares</title>
+  <title>Preview Oficial FCell Celulares (PartSix E-Commerce Style)</title>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    body { padding: 2rem 0; }
+    body { padding-bottom: 3rem; }
   </style>
 </head>
 <body>
-  <div class="container" style="text-align: center; margin-bottom: 2rem;">
-    <span style="background: var(--color-primary); color: #fff; font-size: 0.8rem; font-weight: 800; padding: 0.35rem 1rem; border-radius: var(--radius-full); text-transform: uppercase;">DESIGN SYSTEM & PREVIEW TRADICIONAL</span>
-    <h1 style="font-size: 2.5rem; font-weight: 800; margin-top: 0.5rem;">FCell Celulares — E-Commerce Tradicional</h1>
-    <p style="color: var(--color-text-muted); font-size: 1rem; margin-bottom: 1.5rem;">Layout de alta conversão, tipografia Inter/Roboto e vitrine em 4 colunas.</p>
-
-    <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem;">
-      <a href="../index.html" class="btn-header-cta" style="padding: 0.85rem 2rem; font-size: 1rem;">
-        <i class="fa-solid fa-store"></i>
-        <span>Abrir Loja Virtual (index.html)</span>
-      </a>
-      <a href="../admin.html" class="btn-admin-link" style="padding: 0.85rem 1.5rem;">
-        <i class="fa-solid fa-lock"></i>
-        <span>Painel Admin (admin.html)</span>
-      </a>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-flex">
+      <div><i class="fa-solid fa-location-dot text-primary"></i> Lojas em Cuiabá | Entrega no mesmo dia</div>
+      <div><i class="fa-brands fa-whatsapp text-whatsapp"></i> (65) 99304-9734</div>
     </div>
   </div>
 
-  <!-- Preview Product Grid Component -->
-  <div class="container">
-    <h2 class="section-title-clean"><i class="fa-solid fa-bag-shopping text-primary"></i> Preview da Vitrine de Produtos</h2>
-    
-    <div class="products-grid-traditional">
-      <!-- Item 1 -->
-      <div class="product-card-traditional">
-        <span class="product-badge-tag">🎁 Copo Stanley</span>
-        <div class="product-img-box">
-          <img src="../products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="product-img-clean">
-        </div>
-        <div>
-          <div class="product-category-name">Smartphones</div>
-          <h3 class="product-title-text">iPhone 17 Pro Max 256GB</h3>
-          <div class="product-price-value">R$ 9.890,00</div>
-          <div class="product-installments-text">12x de R$ 915,00 no cartão</div>
-        </div>
-        <button class="btn-buy-whatsapp-clean">
-          <i class="fa-brands fa-whatsapp"></i>
-          <span>Comprar no WhatsApp</span>
-        </button>
-      </div>
+  <!-- Header -->
+  <header class="header-nav">
+    <div class="container header-container">
+      <img src="../instagram/logo_transparent.png" alt="FCell" class="logo-img">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link active">Loja Principal (index.html)</a></li>
+          <li><a href="../admin.html" class="nav-link">Painel Admin (admin.html)</a></li>
+        </ul>
+      </nav>
+      <a href="../index.html" class="btn-header-cta">Acessar Loja ↗</a>
+    </div>
+  </header>
 
-      <!-- Item 2 -->
-      <div class="product-card-traditional">
-        <span class="product-badge-tag">⚡ Ultrafino</span>
-        <div class="product-img-box">
-          <img src="../products/iphone_air.png" alt="iPhone Air" class="product-img-clean">
-        </div>
-        <div>
-          <div class="product-category-name">Smartphones</div>
-          <h3 class="product-title-text">Apple iPhone Air</h3>
-          <div class="product-price-value">R$ 7.490,00</div>
-          <div class="product-installments-text">12x de R$ 692,00 no cartão</div>
-        </div>
-        <button class="btn-buy-whatsapp-clean">
-          <i class="fa-brands fa-whatsapp"></i>
-          <span>Comprar no WhatsApp</span>
-        </button>
-      </div>
+  <!-- Hero Section -->
+  <section class="hero-partsix-section">
+    <div class="container hero-partsix-grid">
+      <div>
+        <span style="background: rgba(245, 61, 45, 0.1); color: var(--color-primary); font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; padding: 0.35rem 1rem; border-radius: var(--radius-full);">EXACT PARTSiX REPLICATED DESIGN</span>
+        <h1 class="hero-partsix-title" style="margin-top: 0.75rem;">
+          Smartphones, Starlink e JBL com<br><span>A Maior Garantia de Cuiabá</span>
+        </h1>
+        <p class="hero-partsix-subtitle">Layout idêntico à referência PartSix: barra de busca seletora, categorias em ícones e vitrine em 4 colunas.</p>
 
-      <!-- Item 3 -->
-      <div class="product-card-traditional">
-        <span class="product-badge-tag">📡 Pronta Entrega</span>
-        <div class="product-img-box">
-          <img src="../products/starlink_mini.png" alt="Starlink Mini" class="product-img-clean">
+        <!-- Search Bar -->
+        <div class="search-selector-bar">
+          <select class="selector-select">
+            <option>Todas as Categorias</option>
+            <option>Smartphones</option>
+            <option>Starlink Mini</option>
+            <option>JBL & Áudio</option>
+          </select>
+          <input type="text" class="selector-select" style="flex-grow: 1.5;" placeholder="Buscar modelo (ex: iPhone, Starlink, JBL)...">
+          <button class="btn-search-partsix">BUSCAR</button>
         </div>
-        <div>
-          <div class="product-category-name">Starlink</div>
-          <h3 class="product-title-text">Starlink Mini Kit Portátil</h3>
-          <div class="product-price-value">R$ 2.890,00</div>
-          <div class="product-installments-text">10x de R$ 310,00 no cartão</div>
-        </div>
-        <button class="btn-buy-whatsapp-clean">
-          <i class="fa-brands fa-whatsapp"></i>
-          <span>Comprar no WhatsApp</span>
-        </button>
-      </div>
-
-      <!-- Item 4 -->
-      <div class="product-card-traditional">
-        <span class="product-badge-tag">🔥 24h Bateria</span>
-        <div class="product-img-box">
-          <img src="../products/jbl_boombox_3.png" alt="JBL Boombox 3" class="product-img-clean">
-        </div>
-        <div>
-          <div class="product-category-name">JBL & Áudio</div>
-          <h3 class="product-title-text">JBL Boombox 3 Wi-Fi & BT</h3>
-          <div class="product-price-value">R$ 2.490,00</div>
-          <div class="product-installments-text">10x de R$ 269,00 no cartão</div>
-        </div>
-        <button class="btn-buy-whatsapp-clean">
-          <i class="fa-brands fa-whatsapp"></i>
-          <span>Comprar no WhatsApp</span>
-        </button>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="categories-partsix-section">
+    <div class="container">
+      <div class="partsix-section-title">
+        <span class="partsix-dot-tag"></span>
+        <span>SHOP BY CATEGORIES</span>
+      </div>
+
+      <div class="categories-partsix-grid">
+        <div class="category-partsix-card active">
+          <div class="category-partsix-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h4>Smartphones</h4>
+          <span>iPhones & Xiaomi</span>
+        </div>
+        <div class="category-partsix-card">
+          <div class="category-partsix-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+          <h4>Starlink Mini</h4>
+          <span>Kit Satélite</span>
+        </div>
+        <div class="category-partsix-card">
+          <div class="category-partsix-icon"><i class="fa-solid fa-volume-high"></i></div>
+          <h4>JBL & Áudio</h4>
+          <span>Caixas & Fones</span>
+        </div>
+        <div class="category-partsix-card">
+          <div class="category-partsix-icon"><i class="fa-solid fa-plug"></i></div>
+          <h4>Acessórios</h4>
+          <span>Suportes & Capas</span>
+        </div>
+        <div class="category-partsix-card">
+          <div class="category-partsix-icon"><i class="fa-solid fa-stopwatch"></i></div>
+          <h4>Smartwatches</h4>
+          <span>Apple Watch</span>
+        </div>
+        <div class="category-partsix-card">
+          <div class="category-partsix-icon"><i class="fa-solid fa-wrench"></i></div>
+          <h4>Assistência</h4>
+          <span>Telas & Baterias</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Products Preview Grid -->
+  <section class="catalog-partsix-section">
+    <div class="container">
+      <div class="partsix-section-title" style="margin-bottom: 1.5rem;">
+        <span class="partsix-dot-tag"></span>
+        <span>POPULAR PRODUCTS</span>
+      </div>
+
+      <div class="products-partsix-grid">
+        <div class="product-partsix-card">
+          <span class="product-partsix-badge">🎁 Copo Stanley</span>
+          <div class="product-partsix-img-stage">
+            <img src="../products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="product-partsix-img">
+          </div>
+          <div>
+            <div class="product-partsix-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary);">Smartphones</div>
+            <h3 class="product-partsix-title">iPhone 17 Pro Max 256GB</h3>
+            <div class="product-partsix-price">R$ 9.890,00</div>
+            <div class="product-partsix-installments">12x de R$ 915,00</div>
+          </div>
+          <button class="btn-partsix-buy"><i class="fa-brands fa-whatsapp"></i><span>Comprar no WhatsApp</span></button>
+        </div>
+
+        <div class="product-partsix-card">
+          <span class="product-partsix-badge">⚡ Ultrafino</span>
+          <div class="product-partsix-img-stage">
+            <img src="../products/iphone_air.png" alt="iPhone Air" class="product-partsix-img">
+          </div>
+          <div>
+            <div class="product-partsix-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary);">Smartphones</div>
+            <h3 class="product-partsix-title">Apple iPhone Air</h3>
+            <div class="product-partsix-price">R$ 7.490,00</div>
+            <div class="product-partsix-installments">12x de R$ 692,00</div>
+          </div>
+          <button class="btn-partsix-buy"><i class="fa-brands fa-whatsapp"></i><span>Comprar no WhatsApp</span></button>
+        </div>
+
+        <div class="product-partsix-card">
+          <span class="product-partsix-badge">📡 Pronta Entrega</span>
+          <div class="product-partsix-img-stage">
+            <img src="../products/starlink_mini.png" alt="Starlink Mini" class="product-partsix-img">
+          </div>
+          <div>
+            <div class="product-partsix-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary);">Starlink</div>
+            <h3 class="product-partsix-title">Starlink Mini Kit Portátil</h3>
+            <div class="product-partsix-price">R$ 2.890,00</div>
+            <div class="product-partsix-installments">10x de R$ 310,00</div>
+          </div>
+          <button class="btn-partsix-buy"><i class="fa-brands fa-whatsapp"></i><span>Comprar no WhatsApp</span></button>
+        </div>
+
+        <div class="product-partsix-card">
+          <span class="product-partsix-badge">🔥 24h Bateria</span>
+          <div class="product-partsix-img-stage">
+            <img src="../products/jbl_boombox_3.png" alt="JBL Boombox 3" class="product-partsix-img">
+          </div>
+          <div>
+            <div class="product-partsix-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary);">JBL & Áudio</div>
+            <h3 class="product-partsix-title">JBL Boombox 3 Wi-Fi & BT</h3>
+            <div class="product-partsix-price">R$ 2.490,00</div>
+            <div class="product-partsix-installments">10x de R$ 269,00</div>
+          </div>
+          <button class="btn-partsix-buy"><i class="fa-brands fa-whatsapp"></i><span>Comprar no WhatsApp</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
