@@ -1,5 +1,5 @@
 /* ==========================================================================
-   FCELL CELULARES - SCRIPT DROU MINIMAL E-COMMERCE
+   FCELL CELULARES - SCRIPT DROU MINIMAL E-COMMERCE (EYE CANDY & INTERACTIVE)
    ========================================================================== */
 
 const INITIAL_PRODUCTS = [
@@ -167,6 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initStoreData();
   setupEventListeners();
   renderStoreContent();
+  initCountdownTimer();
+  initScrollObserver();
 });
 
 function initStoreData() {
@@ -215,12 +217,12 @@ function renderStoreContent() {
 
   if (headerWaBtn) {
     headerWaBtn.href = `https://wa.me/${waNum}?text=${generalMsg}`;
-    headerWaBtn.onclick = () => trackLeadClick();
+    headerWaBtn.onclick = () => { showToast("Redirecionando para o WhatsApp da FCell..."); trackLeadClick(); };
   }
   if (dealWaBtn) {
     const dealMsg = encodeURIComponent("Olá! Quero aproveitar a oferta do iPhone 17 Pro Max com o brinde Copo Stanley!");
     dealWaBtn.href = `https://wa.me/${waNum}?text=${dealMsg}`;
-    dealWaBtn.onclick = () => trackLeadClick();
+    dealWaBtn.onclick = () => { showToast("Resgatando oferta do Copo Stanley no WhatsApp! 🎁"); trackLeadClick(); };
   }
 
   renderProductsGrid();
@@ -265,7 +267,7 @@ function renderProductsGrid() {
           <div class="drou-product-installments">${prod.installments || 'Consulte condições'}</div>
         </div>
 
-        <button class="btn-drou-buy" onclick="window.open('${waUrl}', '_blank'); trackLeadClick();">
+        <button class="btn-drou-buy" onclick="handleBuyClick('${waUrl}')">
           <i class="fa-brands fa-whatsapp"></i>
           <span>Comprar no WhatsApp</span>
         </button>
@@ -293,6 +295,12 @@ function getProductWhatsAppUrl(product) {
   const waNum = storeSettings.whatsappNumber || DEFAULT_SETTINGS.whatsappNumber;
   const rawMsg = `Olá! Vim pelo site da FCell Celulares e gostaria de consultar a disponibilidade do produto: ${product.name}.\nAinda ganho o Copo Stanley de brinde?`;
   return `https://wa.me/${waNum}?text=${encodeURIComponent(rawMsg)}`;
+}
+
+function handleBuyClick(url) {
+  showToast("Abrindo conversa oficial no WhatsApp... 🎁");
+  trackLeadClick();
+  setTimeout(() => { window.open(url, '_blank'); }, 300);
 }
 
 function trackLeadClick() {
@@ -372,7 +380,7 @@ function openProductModal(productId) {
 
       <ul style="list-style: none; margin-bottom: 1.75rem;">${benefitsHtml}</ul>
 
-      <a href="${waUrl}" target="_blank" class="btn-drou-buy" style="padding: 1rem; font-size: 1rem;" onclick="trackLeadClick()">
+      <a href="${waUrl}" target="_blank" class="btn-drou-buy" style="padding: 1rem; font-size: 1rem;" onclick="handleBuyClick('${waUrl}')">
         <i class="fa-brands fa-whatsapp"></i>
         <span>Garantir Produto pelo WhatsApp</span>
       </a>
@@ -389,4 +397,62 @@ function closeProductModal() {
     modalBackdrop.classList.remove('active');
     document.body.style.overflow = 'auto';
   }
+}
+
+/* Interactive Countdown Timer */
+function initCountdownTimer() {
+  let secondsTotal = (2 * 24 * 3600) + (14 * 3600) + (35 * 60) + 12; // 2d 14h 35m 12s
+
+  setInterval(() => {
+    if (secondsTotal <= 0) return;
+    secondsTotal -= 1;
+
+    const days = Math.floor(secondsTotal / (24 * 3600));
+    const hours = Math.floor((secondsTotal % (24 * 3600)) / 3600);
+    const mins = Math.floor((secondsTotal % 3600) / 60);
+    const secs = secondsTotal % 60;
+
+    const dEl = document.getElementById('timer-days');
+    const hEl = document.getElementById('timer-hours');
+    const mEl = document.getElementById('timer-mins');
+    const sEl = document.getElementById('timer-secs');
+
+    if (dEl) dEl.innerText = String(days).padStart(2, '0');
+    if (hEl) hEl.innerText = String(hours).padStart(2, '0');
+    if (mEl) mEl.innerText = String(mins).padStart(2, '0');
+    if (sEl) sEl.innerText = String(secs).padStart(2, '0');
+  }, 1000);
+}
+
+/* Scroll Reveal Observer */
+function initScrollObserver() {
+  const sections = document.querySelectorAll('section, .drou-banner-card, .drou-countdown-card');
+  sections.forEach(sec => sec.classList.add('reveal-on-scroll'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  sections.forEach(sec => observer.observe(sec));
+}
+
+/* Toast Notifications */
+function showToast(message) {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<i class="fa-brands fa-whatsapp text-whatsapp" style="font-size: 1.2rem;"></i> <span>${message}</span>`;
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 3200);
 }

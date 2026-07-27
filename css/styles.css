@@ -1,9 +1,8 @@
 /* ==========================================================================
-   FCELL CELULARES - DROU MINIMAL E-COMMERCE DESIGN SYSTEM
-   Visual Idêntico à Referência DROU: Limpo, Minimalista, Fundo Off-White, Vermelho (#f53d2d)
+   FCELL CELULARES - DROU MINIMAL E-COMMERCE DESIGN SYSTEM (EYE CANDY & ANIMATIONS)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
   /* DROU Color Tokens */
@@ -38,10 +37,12 @@
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
   --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.05);
-  --shadow-pop: 0 16px 32px rgba(0, 0, 0, 0.09);
+  --shadow-pop: 0 16px 36px rgba(0, 0, 0, 0.10);
+  --shadow-glow: 0 10px 28px rgba(245, 61, 45, 0.35);
 
-  --transition-fast: 0.15s ease-in-out;
-  --transition-normal: 0.25s ease-in-out;
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Reset & Base */
@@ -73,6 +74,18 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 0 1.5rem;
 }
 
+/* Scroll Reveal Animation Utility */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Section Title DROU Style */
 .drou-section-header {
   display: flex;
@@ -83,9 +96,11 @@ img { max-width: 100%; height: auto; display: block; }
 
 .drou-section-title {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   font-weight: 800;
   color: var(--color-text-dark);
+  position: relative;
+  display: inline-block;
 }
 
 .drou-view-all-link {
@@ -101,6 +116,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .drou-view-all-link:hover {
   color: var(--color-primary);
+  transform: translateX(4px);
 }
 
 /* Top Announcement Bar */
@@ -118,16 +134,19 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: space-between;
 }
 
-/* DROU Header Navbar */
+/* DROU Glassmorphism Header Navbar */
 .header-nav {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
 }
 
 .header-container {
@@ -142,6 +161,11 @@ img { max-width: 100%; height: auto; display: block; }
   height: 48px;
   width: auto;
   object-fit: contain;
+  transition: var(--transition-fast);
+}
+
+.logo-img:hover {
+  transform: scale(1.04);
 }
 
 .nav-links {
@@ -157,12 +181,30 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 700;
   color: var(--color-text-dark);
   transition: var(--transition-fast);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: var(--transition-fast);
 }
 
 .nav-link:hover, .nav-link.active {
   color: var(--color-primary);
 }
 
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+/* EYE CANDY CTA BUTTON WITH SHIMMER SWEEP */
 .btn-drou-cta {
   display: inline-flex;
   align-items: center;
@@ -170,24 +212,49 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--color-primary);
   color: #ffffff;
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.88rem;
-  padding: 0.65rem 1.5rem;
+  padding: 0.7rem 1.6rem;
   border-radius: var(--radius-full);
-  transition: var(--transition-fast);
-  box-shadow: 0 4px 12px rgba(245, 61, 45, 0.2);
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-drou-cta::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: rotate(30deg) translateY(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-drou-cta:hover::after {
+  transform: rotate(30deg) translateY(100%);
 }
 
 .btn-drou-cta:hover {
   background: var(--color-primary-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(245, 61, 45, 0.45);
 }
 
-/* DROU Hero Section */
+/* DROU Hero Showcase with Floating Eye Candy Animation */
 .drou-hero-section {
-  background: #ffffff;
-  padding: 4rem 0 5rem 0;
+  background: radial-gradient(circle at 80% 20%, rgba(245, 61, 45, 0.04) 0%, #ffffff 60%);
+  padding: 4.5rem 0 5.5rem 0;
   border-bottom: 1px solid var(--border-color);
+  position: relative;
 }
 
 .drou-hero-grid {
@@ -205,35 +272,52 @@ img { max-width: 100%; height: auto; display: block; }
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .drou-hero-title {
   font-family: var(--font-heading);
-  font-size: 3.6rem;
-  font-weight: 800;
-  line-height: 1.1;
+  font-size: 3.8rem;
+  font-weight: 900;
+  line-height: 1.08;
   color: var(--color-text-dark);
   margin-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
 .drou-hero-description {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--color-text-muted);
-  margin-bottom: 2rem;
+  margin-bottom: 2.2rem;
   max-width: 520px;
 }
 
+/* Floating Product Animation Keyframe */
+@keyframes heroFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(-1.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
 .drou-hero-img {
-  max-height: 380px;
+  max-height: 400px;
   width: auto;
   margin: 0 auto;
   object-fit: contain;
-  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.12));
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+  animation: heroFloat 5s ease-in-out infinite;
+  transition: var(--transition-bounce);
 }
 
-/* Trending Categories (DROU Style) */
+.drou-hero-img:hover {
+  transform: scale(1.06) rotate(2deg);
+}
+
+/* Trending Categories (Micro-animations) */
 .trending-categories-section {
-  padding: 4rem 0;
+  padding: 4.5rem 0;
 }
 
 .trending-categories-grid {
@@ -248,33 +332,34 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: var(--radius-md);
   padding: 1.75rem 1rem;
   text-align: center;
-  transition: var(--transition-fast);
+  transition: var(--transition-normal);
   cursor: pointer;
 }
 
 .trending-category-card:hover, .trending-category-card.active {
   border-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(245, 61, 45, 0.12);
+  transform: translateY(-6px);
 }
 
 .trending-icon-stage {
-  width: 60px;
-  height: 60px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
   background: var(--bg-main);
   margin: 0 auto 0.85rem auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   color: var(--color-primary);
-  transition: var(--transition-fast);
+  transition: var(--transition-bounce);
 }
 
-.trending-category-card:hover .trending-icon-stage {
+.trending-category-card:hover .trending-icon-stage, .trending-category-card.active .trending-icon-stage {
   background: var(--color-primary);
   color: #ffffff;
+  transform: scale(1.1) rotate(6deg);
 }
 
 .trending-category-card h4 {
@@ -283,7 +368,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 700;
 }
 
-/* DROU Dual Banners Section */
+/* Dual Promo Banners */
 .drou-dual-banners-section {
   padding: 2rem 0 4rem 0;
 }
@@ -302,18 +387,25 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   justify-content: space-between;
   border: 1px solid var(--border-color);
+  transition: var(--transition-normal);
 }
 
-.drou-banner-card h3 {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 800;
-  margin: 0.5rem 0;
+.drou-banner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
-/* DROU Clean 5-Column / 4-Column Product Cards Grid */
+.drou-banner-card img {
+  transition: var(--transition-bounce);
+}
+
+.drou-banner-card:hover img {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+/* Clean Product Cards Grid & Micro-interactions */
 .drou-products-section {
-  padding: 4rem 0;
+  padding: 4.5rem 0;
   background: #ffffff;
   border-y: 1px solid var(--border-color);
 }
@@ -332,14 +424,21 @@ img { max-width: 100%; height: auto; display: block; }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: var(--transition-fast);
+  transition: var(--transition-normal);
   position: relative;
 }
 
 .drou-product-card:hover {
   border-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-pop);
+  transform: translateY(-6px);
+}
+
+/* Eye Candy Badge Pulse */
+@keyframes badgePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .drou-product-badge {
@@ -351,9 +450,11 @@ img { max-width: 100%; height: auto; display: block; }
   font-family: var(--font-heading);
   font-size: 0.72rem;
   font-weight: 800;
-  padding: 0.25rem 0.6rem;
+  padding: 0.28rem 0.7rem;
   border-radius: var(--radius-sm);
   z-index: 2;
+  animation: badgePulse 3s infinite ease-in-out;
+  box-shadow: 0 4px 10px rgba(245, 61, 45, 0.3);
 }
 
 .drou-product-img-stage {
@@ -363,17 +464,20 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   justify-content: center;
   margin: 0.5rem 0 1rem 0;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
 }
 
 .drou-product-img {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  transition: var(--transition-fast);
+  transition: var(--transition-bounce);
 }
 
 .drou-product-card:hover .drou-product-img {
-  transform: scale(1.06);
+  transform: scale(1.10) rotate(-1deg);
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.12));
 }
 
 .drou-product-stars {
@@ -396,7 +500,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .drou-product-price {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   font-weight: 800;
   color: var(--color-primary);
 }
@@ -407,6 +511,7 @@ img { max-width: 100%; height: auto; display: block; }
   margin-bottom: 1rem;
 }
 
+/* EYE CANDY BUY BUTTON */
 .btn-drou-buy {
   width: 100%;
   display: flex;
@@ -416,20 +521,26 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--color-whatsapp);
   color: #ffffff;
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.85rem;
-  padding: 0.7rem;
+  text-transform: uppercase;
+  padding: 0.75rem;
   border-radius: var(--radius-sm);
-  transition: var(--transition-fast);
+  transition: var(--transition-normal);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-drou-buy:hover {
   background: var(--color-whatsapp-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
 }
 
-/* DROU Giant Countdown Banner ("Up to 25% Discount") */
+/* Countdown Box Timer Styling */
 .drou-countdown-banner-section {
-  padding: 4rem 0;
+  padding: 4.5rem 0;
 }
 
 .drou-countdown-card {
@@ -441,6 +552,8 @@ img { max-width: 100%; height: auto; display: block; }
   gap: 3rem;
   align-items: center;
   border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
 }
 
 .timer-boxes-flex {
@@ -452,14 +565,21 @@ img { max-width: 100%; height: auto; display: block; }
 .timer-box {
   background: #ffffff;
   border-radius: var(--radius-sm);
-  padding: 0.75rem 1.25rem;
+  padding: 0.85rem 1.4rem;
   text-align: center;
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.timer-box:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
 }
 
 .timer-box-num {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--color-primary);
 }
@@ -468,10 +588,10 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 0.7rem;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  font-weight: 700;
+  font-weight: 800;
 }
 
-/* Trust Features Strip (DROU Style) */
+/* Trust Features Strip */
 .drou-features-strip {
   background: #ffffff;
   border-y: 1px solid var(--border-color);
@@ -488,14 +608,19 @@ img { max-width: 100%; height: auto; display: block; }
   display: flex;
   align-items: center;
   gap: 1rem;
+  transition: var(--transition-fast);
+}
+
+.drou-feature-item:hover {
+  transform: translateY(-2px);
 }
 
 .drou-feature-icon {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--color-primary);
 }
 
-/* Footer (DROU Style) */
+/* Footer */
 .footer-drou {
   background: #ffffff;
   border-top: 1px solid var(--border-color);
@@ -536,12 +661,13 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--color-text-muted);
 }
 
-/* Modals & Toasts */
+/* Modals & Animated Toasts */
 .modal-backdrop {
   position: fixed;
   inset: 0;
   z-index: 2000;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -563,14 +689,20 @@ img { max-width: 100%; height: auto; display: block; }
   position: relative;
   padding: 2.5rem;
   box-shadow: var(--shadow-pop);
+  transform: translateY(20px) scale(0.96);
+  transition: var(--transition-bounce);
+}
+
+.modal-backdrop.active .modal-content {
+  transform: translateY(0) scale(1);
 }
 
 .modal-close-btn {
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--bg-main);
   border: 1px solid var(--border-color);
@@ -578,8 +710,15 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
+  transition: var(--transition-fast);
 }
 
+.modal-close-btn:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Animated Toast Notification */
 .toast-container {
   position: fixed;
   bottom: 2rem;
@@ -590,20 +729,43 @@ img { max-width: 100%; height: auto; display: block; }
   gap: 0.75rem;
 }
 
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.toast {
+  background: var(--color-dark);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-pop);
+  animation: slideInUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-left: 4px solid var(--color-whatsapp);
+}
+
 /* Responsive Queries */
 @media (max-width: 992px) {
   .trending-categories-grid { grid-template-columns: repeat(3, 1fr); }
   .drou-products-grid { grid-template-columns: repeat(2, 1fr); }
-  .drou-hero-grid { grid-template-columns: 1fr; }
+  .drou-hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .drou-hero-description { margin-left: auto; margin-right: auto; }
   .drou-dual-banners-grid { grid-template-columns: 1fr; }
-  .drou-countdown-card { grid-template-columns: 1fr; }
+  .drou-countdown-card { grid-template-columns: 1fr; text-align: center; }
+  .timer-boxes-flex { justify-content: center; }
   .drou-features-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
   .trending-categories-grid { grid-template-columns: repeat(2, 1fr); }
   .drou-products-grid { grid-template-columns: 1fr; }
-  .drou-hero-title { font-size: 2.2rem; }
+  .drou-hero-title { font-size: 2.5rem; }
   .drou-features-grid { grid-template-columns: 1fr; }
   .footer-drou-grid { grid-template-columns: 1fr; }
 }
