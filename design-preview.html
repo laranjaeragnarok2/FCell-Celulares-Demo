@@ -3,34 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preview de Direções Visuais - FCell Celulares</title>
+  <title>Preview de Direções Flat (Sem Gradientes) - FCell Celulares</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Syne:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap');
 
     :root {
-      /* OKLCH Brand Palette based on client choice */
+      /* OKLCH Color Palette (Client Selected) */
       --oklch-blue: oklch(0.66 0.18 250);      /* #4795F5 */
       --oklch-rose: oklch(0.55 0.14 15);       /* #BF5669 */
       --oklch-coral: oklch(0.62 0.23 28);      /* #F5432A */
       --oklch-cyan: oklch(0.78 0.14 210);      /* #47CCF5 */
       --oklch-red: oklch(0.58 0.26 22);        /* #F5142A */
+      --oklch-whatsapp: oklch(0.65 0.20 142);   /* #25D366 */
 
-      /* Tinted Neutrals (OKLCH - non pure black/white) */
-      --oklch-bg-light: oklch(0.98 0.008 250);
-      --oklch-surface-light: oklch(0.95 0.012 250);
-      --oklch-ink-light: oklch(0.14 0.025 250);
-      
-      --oklch-bg-dark: oklch(0.12 0.02 250);
-      --oklch-surface-dark: oklch(0.18 0.025 250);
-      --oklch-ink-dark: oklch(0.96 0.01 250);
+      /* Tinted Solid Neutrals (Zero Gradients) */
+      --oklch-bg: oklch(0.98 0.005 250);
+      --oklch-surface: #ffffff;
+      --oklch-ink: oklch(0.14 0.025 250);
+      --oklch-ink-muted: oklch(0.48 0.02 250);
+      --oklch-border: oklch(0.90 0.015 250);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--oklch-bg-light);
-      color: var(--oklch-ink-light);
+      background: var(--oklch-bg);
+      color: var(--oklch-ink);
       font-family: 'Inter', sans-serif;
-      padding: 2rem;
+      padding: 2.5rem;
       line-height: 1.5;
     }
 
@@ -49,49 +48,44 @@
       margin-bottom: 0.5rem;
     }
 
-    .thesis-banner {
-      background: var(--oklch-coral);
-      color: #fff;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
+    .subtitle-flat {
       font-family: 'Space Grotesk', sans-serif;
+      color: var(--oklch-coral);
       font-weight: 700;
-      margin-top: 1rem;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
     }
 
-    /* Swatches Grid */
-    .swatches-bar {
+    /* Palette Bar */
+    .palette-flat-bar {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 1rem;
       max-width: 1000px;
-      margin: 0 auto 3rem auto;
+      margin: 0 auto 3.5rem auto;
     }
 
-    .swatch-card {
-      border-radius: 14px;
-      padding: 1.5rem 1rem;
+    .swatch-flat {
+      border-radius: 12px;
+      padding: 1.25rem 1rem;
       color: #fff;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       font-size: 0.8rem;
       font-weight: 700;
     }
 
-    /* Directions Preview Grid */
-    .directions-grid {
+    /* Grid of 3 Flat Options */
+    .flat-directions-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
-      max-width: 1300px;
+      max-width: 1320px;
       margin: 0 auto;
     }
 
-    .direction-card {
-      border-radius: 24px;
+    .flat-card {
+      border-radius: 20px;
       padding: 2rem;
-      border: 2px solid transparent;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -110,196 +104,168 @@
       text-transform: uppercase;
       padding: 0.4rem 1rem;
       border-radius: 999px;
-      box-shadow: 0 4px 12px rgba(245, 67, 42, 0.4);
     }
 
-    /* Direction 1: Tech Dark Luxo */
-    .dir-1 {
-      background: var(--oklch-bg-dark);
-      color: var(--oklch-ink-dark);
-      border-color: var(--oklch-surface-dark);
-    }
-
-    /* Direction 2: Urban Neon Store (Selected) */
-    .dir-2 {
+    /* Option A: Swiss Flat Minimalist */
+    .opt-a {
       background: #ffffff;
-      color: var(--oklch-ink-light);
-      border-color: var(--oklch-coral);
+      border: 1px solid var(--oklch-border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     }
 
-    /* Direction 3: Minimalist Crisp */
-    .dir-3 {
-      background: var(--oklch-surface-light);
-      color: var(--oklch-ink-light);
-      border-color: #d1d5db;
+    /* Option B: Neo-Brutalist Flat Block */
+    .opt-b {
+      background: #ffffff;
+      border: 2px solid var(--oklch-ink);
+      box-shadow: 6px 6px 0px var(--oklch-ink);
     }
 
-    .dir-header {
-      margin-bottom: 1.5rem;
+    /* Option C: Clean Tech Vitrine */
+    .opt-c {
+      background: oklch(0.96 0.01 250);
+      border: 1px solid oklch(0.88 0.015 250);
     }
 
-    .dir-title {
+    .flat-dir-title {
       font-family: 'Syne', sans-serif;
       font-size: 1.6rem;
-      font-weight: 800;
+      font-weight: 900;
       margin-bottom: 0.4rem;
+      text-transform: uppercase;
     }
 
-    .dir-subtitle {
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-
-    .dir-preview-box {
-      border-radius: 16px;
+    .flat-preview-box {
+      border-radius: 14px;
       padding: 1.5rem;
       margin: 1.5rem 0;
       text-align: center;
     }
 
-    .dir-1 .dir-preview-box { background: var(--oklch-surface-dark); }
-    .dir-2 .dir-preview-box { background: oklch(0.97 0.015 250); border: 1px solid oklch(0.9 0.02 250); }
-    .dir-3 .dir-preview-box { background: #ffffff; border: 1px solid #e5e7eb; }
+    .opt-a .flat-preview-box { background: var(--oklch-bg); border: 1px solid var(--oklch-border); }
+    .opt-b .flat-preview-box { background: #ffffff; border: 2px solid var(--oklch-ink); }
+    .opt-c .flat-preview-box { background: #ffffff; border: 1px solid oklch(0.9 0.01 250); }
 
-    .dir-logo {
-      height: 40px;
-      object-fit: contain;
-      margin: 0 auto 1rem auto;
-    }
+    .flat-logo { height: 38px; object-fit: contain; margin: 0 auto 1rem auto; }
+    .flat-prod-img { height: 160px; object-fit: contain; margin: 0 auto 1rem auto; }
 
-    .dir-prod-img {
-      height: 160px;
-      object-fit: contain;
-      margin: 0 auto 1rem auto;
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
-    }
-
-    .btn-action {
+    .btn-flat-action {
       width: 100%;
-      padding: 0.8rem;
-      border-radius: 12px;
+      padding: 0.85rem;
+      border-radius: 10px;
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       border: none;
       cursor: pointer;
       margin-top: 1rem;
     }
 
-    .btn-dir-1 { background: var(--oklch-blue); color: #fff; }
-    .btn-dir-2 { background: var(--oklch-coral); color: #fff; box-shadow: 0 8px 20px rgba(245, 67, 42, 0.3); }
-    .btn-dir-3 { background: var(--oklch-ink-light); color: #fff; }
+    .btn-opt-a { background: var(--oklch-coral); color: #fff; }
+    .btn-opt-b { background: var(--oklch-blue); color: #fff; border: 2px solid var(--oklch-ink); box-shadow: 3px 3px 0px var(--oklch-ink); }
+    .btn-opt-c { background: var(--oklch-whatsapp); color: #fff; }
 
     @media (max-width: 992px) {
-      .directions-grid { grid-template-columns: 1fr; }
-      .swatches-bar { grid-template-columns: repeat(2, 1fr); }
+      .flat-directions-grid { grid-template-columns: 1fr; }
+      .palette-flat-bar { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Exploração de Direções Visuais OKLCH</h1>
-    <p>Plataforma Digital FCell Celulares — Cuiabá/MT</p>
-
-    <div class="thesis-banner">
-      Frase-Tese de Conversão: "Combinação imbatível de smartphones de alta performance com a oferta do Copo Stanley de brinde e suporte presencial imediato em Cuiabá."
-    </div>
+    <h1>Direções Visuais 100% Flat (Sem Gradientes)</h1>
+    <p class="subtitle-flat">Cores Sólidas OKLCH • Alto Contraste • Design Limpo e Direto</p>
   </header>
 
-  <!-- Swatches Palette in OKLCH -->
-  <div class="swatches-bar">
-    <div class="swatch-card" style="background: var(--oklch-blue);">
-      <div>#4795F5</div>
-      <div>Electric Blue</div>
-      <small>oklch(0.66 0.18 250)</small>
-    </div>
-    <div class="swatch-card" style="background: var(--oklch-rose);">
-      <div>#BF5669</div>
-      <div>Muted Rose</div>
-      <small>oklch(0.55 0.14 15)</small>
-    </div>
-    <div class="swatch-card" style="background: var(--oklch-coral);">
+  <!-- Palette Bar -->
+  <div class="palette-flat-bar">
+    <div class="swatch-flat" style="background: var(--oklch-coral);">
       <div>#F5432A</div>
       <div>Vibrant Coral</div>
-      <small>oklch(0.62 0.23 28)</small>
     </div>
-    <div class="swatch-card" style="background: var(--oklch-cyan); color: #000;">
+    <div class="swatch-flat" style="background: var(--oklch-blue);">
+      <div>#4795F5</div>
+      <div>Electric Blue</div>
+    </div>
+    <div class="swatch-flat" style="background: var(--oklch-rose);">
+      <div>#BF5669</div>
+      <div>Muted Rose</div>
+    </div>
+    <div class="swatch-flat" style="background: var(--oklch-cyan); color: #000;">
       <div>#47CCF5</div>
       <div>Tech Cyan</div>
-      <small>oklch(0.78 0.14 210)</small>
     </div>
-    <div class="swatch-card" style="background: var(--oklch-red);">
-      <div>#F5142A</div>
-      <div>Neon Red</div>
-      <small>oklch(0.58 0.26 22)</small>
+    <div class="swatch-flat" style="background: var(--oklch-whatsapp);">
+      <div>#25D366</div>
+      <div>WhatsApp Direct</div>
     </div>
   </div>
 
-  <!-- Directions Grid -->
-  <div class="directions-grid">
+  <!-- 3 Flat Directions Grid -->
+  <div class="flat-directions-grid">
 
-    <!-- Direction 1: Tech Dark Luxo -->
-    <div class="direction-card dir-1">
-      <div class="dir-header">
-        <h3 class="dir-title">1. Tech Dark Luxo</h3>
-        <p class="dir-subtitle">Atmosfera Midnight com cartões glassmorphism e iluminação em azul e coral neon.</p>
-      </div>
-
-      <div class="dir-preview-box">
-        <img src="./instagram/logo_transparent.png" alt="Logo" class="dir-logo">
-        <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="dir-prod-img">
-        <h4 style="font-family: 'Space Grotesk'; font-size: 1.1rem;">iPhone 17 Pro Max</h4>
-        <p style="color: var(--oklch-cyan); font-weight: 700; margin-top: 0.3rem;">R$ 9.890,00</p>
-      </div>
+    <!-- Option A: Swiss Flat Minimalist (RECOMMENDED) -->
+    <div class="flat-card opt-a">
+      <span class="badge-recommended">★ RECOMENDADO (SWISS FLAT)</span>
 
       <div>
-        <p style="font-size: 0.85rem; opacity: 0.8;">Foco em exclusividade, alta tecnologia e público premium da Apple.</p>
-        <button class="btn-action btn-dir-1">Comprar no WhatsApp</button>
-      </div>
-    </div>
-
-    <!-- Direction 2: Urban Neon Store (RECOMMENDED & SELECTED) -->
-    <div class="direction-card dir-2">
-      <span class="badge-recommended">★ RECOMENDADO / ESCOLHIDO</span>
-
-      <div class="dir-header">
-        <h3 class="dir-title" style="color: var(--oklch-coral);">2. Urban Neon Store</h3>
-        <p class="dir-subtitle">Canvas claro, vibrante, com a paleta escolhida pelo cliente e máxima energia visual de vitrine.</p>
+        <h3 class="flat-dir-title" style="color: var(--oklch-coral);">Opção A: Swiss Flat Minimal</h3>
+        <p style="font-size: 0.85rem; color: var(--oklch-ink-muted);">Estilo suíço ultra limpo. Cores 100% sólidas sem nenhum gradiente, bordas finas e tipografia bem estruturada.</p>
       </div>
 
-      <div class="dir-preview-box">
-        <img src="./instagram/logo_transparent.png" alt="Logo" class="dir-logo">
-        <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="dir-prod-img">
+      <div class="flat-preview-box">
+        <img src="./instagram/logo_transparent.png" alt="Logo" class="flat-logo">
+        <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="flat-prod-img">
         <span style="background: var(--oklch-coral); color: #fff; padding: 0.2rem 0.6rem; border-radius: 99px; font-size: 0.75rem; font-weight: 700;">🎁 Copo Stanley</span>
         <h4 style="font-family: 'Space Grotesk'; font-size: 1.1rem; margin-top: 0.5rem;">iPhone 17 Pro Max</h4>
-        <p style="color: var(--oklch-coral); font-family: 'Syne'; font-size: 1.4rem; font-weight: 900;">R$ 9.890,00</p>
+        <p style="color: var(--oklch-coral); font-family: 'Syne'; font-size: 1.5rem; font-weight: 900;">R$ 9.890,00</p>
       </div>
 
       <div>
-        <p style="font-size: 0.85rem; color: #555;">Combinações vibrantes em OKLCH com foco em conversão imediata e brinde exclusivo.</p>
-        <button class="btn-action btn-dir-2">Chamar no WhatsApp Direct</button>
+        <p style="font-size: 0.8rem; color: #666;">Zero transparências, zero gradientes. Foco em clareza, produtos e facilidade de leitura.</p>
+        <button class="btn-flat-action btn-opt-a">Comprar no WhatsApp</button>
       </div>
     </div>
 
-    <!-- Direction 3: Minimalista Estúdio Crisp -->
-    <div class="direction-card dir-3">
-      <div class="dir-header">
-        <h3 class="dir-title">3. Minimalista Crisp</h3>
-        <p class="dir-subtitle">Fundo off-white ultra limpo, tipografia marcante em alto contraste e foco total nos produtos.</p>
+    <!-- Option B: Neo-Brutalist Flat Block -->
+    <div class="flat-card opt-b">
+      <div>
+        <h3 class="flat-dir-title">Opção B: Neo-Brutalist Flat</h3>
+        <p style="font-size: 0.85rem; color: var(--oklch-ink-muted);">Contornos sólidos pretos, sombras duras e blocos de cor pura sem degradê. Estilo jovem e marcante.</p>
       </div>
 
-      <div class="dir-preview-box">
-        <img src="./instagram/logo_transparent.png" alt="Logo" class="dir-logo">
-        <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="dir-prod-img">
-        <h4 style="font-family: 'Space Grotesk'; font-size: 1.1rem;">iPhone 17 Pro Max</h4>
-        <p style="color: var(--oklch-ink-light); font-weight: 800; margin-top: 0.3rem;">R$ 9.890,00</p>
+      <div class="flat-preview-box">
+        <img src="./instagram/logo_transparent.png" alt="Logo" class="flat-logo">
+        <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="flat-prod-img">
+        <span style="background: var(--oklch-cyan); color: #000; border: 1px solid #000; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 800;">⚡ NOVO</span>
+        <h4 style="font-family: 'Space Grotesk'; font-size: 1.1rem; margin-top: 0.5rem;">iPhone 17 Pro Max</h4>
+        <p style="color: var(--oklch-blue); font-family: 'Syne'; font-size: 1.5rem; font-weight: 900;">R$ 9.890,00</p>
       </div>
 
       <div>
-        <p style="font-size: 0.85rem; color: #666;">Design sobriedade técnica, selos de garantia e clareza de informação.</p>
-        <button class="btn-action btn-dir-3">Solicitar Orçamento</button>
+        <p style="font-size: 0.8rem; color: #555;">Design arrojado com formas geométricas bem demarcadas e alto contraste.</p>
+        <button class="btn-flat-action btn-opt-b">Chamar no WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- Option C: Clean Tech Vitrine -->
+    <div class="flat-card opt-c">
+      <div>
+        <h3 class="flat-dir-title">Opção C: Clean Vitrine</h3>
+        <p style="font-size: 0.85rem; color: var(--oklch-ink-muted);">Cards 100% brancos sobre fundo cinza suave tintado. Visual de e-commerce tradicional de alta fidelidade.</p>
+      </div>
+
+      <div class="flat-preview-box">
+        <img src="./instagram/logo_transparent.png" alt="Logo" class="flat-logo">
+        <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="flat-prod-img">
+        <h4 style="font-family: 'Space Grotesk'; font-size: 1.1rem;">iPhone 17 Pro Max</h4>
+        <p style="color: var(--oklch-ink); font-family: 'Syne'; font-size: 1.4rem; font-weight: 900; margin-top: 0.2rem;">R$ 9.890,00</p>
+      </div>
+
+      <div>
+        <p style="font-size: 0.8rem; color: #666;">Estética clean corporativa. Minimalismo puro focado na conversão imediata.</p>
+        <button class="btn-flat-action btn-opt-c">Solicitar Orçamento</button>
       </div>
     </div>
 

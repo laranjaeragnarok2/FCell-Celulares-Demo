@@ -1,12 +1,12 @@
 /* ==========================================================================
-   FCELL CELULARES - URBAN NEON STORE (OKLCH DESIGN SYSTEM)
-   Direção Escolhida: Urban Neon Store com OKLCH & Paleta do Cliente
+   FCELL CELULARES - SWISS FLAT DESIGN SYSTEM (ZERO GRADIENTES)
+   100% Cores Sólidas em OKLCH • Alto Contraste • Design Limpo & Direto
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Syne:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* OKLCH Color Palette (Client Selected Palette) */
+  /* OKLCH Color Palette (Client Selected Palette - 100% Solid) */
   --oklch-blue: oklch(0.66 0.18 250);      /* #4795F5 */
   --oklch-rose: oklch(0.55 0.14 15);       /* #BF5669 */
   --oklch-coral: oklch(0.62 0.23 28);      /* #F5432A */
@@ -14,15 +14,15 @@
   --oklch-red: oklch(0.58 0.26 22);        /* #F5142A */
   --oklch-whatsapp: oklch(0.65 0.20 142);   /* #25D366 */
 
-  /* Tinted Neutrals in OKLCH (No Pure Black/White) */
-  --bg-main: oklch(0.98 0.008 250);
+  /* Tinted Solid Neutrals (Zero Gradients) */
+  --bg-main: oklch(0.98 0.005 250);
   --bg-card-light: #ffffff;
   --bg-card-dark: oklch(0.14 0.025 250);
   --bg-card-dark-hover: oklch(0.18 0.03 250);
   
   --border-light: oklch(0.90 0.015 250);
   --border-dark: oklch(0.24 0.02 250);
-  --border-coral: oklch(0.62 0.23 28 / 0.35);
+  --border-coral: oklch(0.62 0.23 28);
 
   --color-text-dark: oklch(0.14 0.025 250);
   --color-text-muted-dark: oklch(0.48 0.02 250);
@@ -34,20 +34,17 @@
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  /* Radii & Shadows */
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 36px;
+  /* Radii & Shadows (Flat Style) */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-full: 9999px;
 
-  --shadow-bento: 0 10px 30px oklch(0.14 0.025 250 / 0.05);
-  --shadow-pop: 0 20px 40px oklch(0.14 0.025 250 / 0.12);
-  --shadow-coral: 0 12px 30px oklch(0.62 0.23 28 / 0.30);
-  --shadow-blue: 0 12px 30px oklch(0.66 0.18 250 / 0.30);
+  --shadow-flat: 0 4px 16px rgba(0, 0, 0, 0.04);
+  --shadow-pop: 0 12px 28px rgba(0, 0, 0, 0.08);
 
-  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-normal: 0.2s ease-in-out;
 }
 
 /* Reset & Base */
@@ -82,7 +79,7 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 0 1.5rem;
 }
 
-/* Color Helper Utilities */
+/* Color Helpers (Solid) */
 .text-coral { color: var(--oklch-coral); }
 .text-blue { color: var(--oklch-blue); }
 .text-rose { color: var(--oklch-rose); }
@@ -109,16 +106,14 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--color-text-dark);
 }
 
-/* Header & Nav */
+/* Header (Solid Flat Backdrop) */
 .header-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: oklch(0.98 0.008 250 / 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #ffffff;
   border-bottom: 1px solid var(--border-light);
   transition: var(--transition-normal);
 }
@@ -170,21 +165,19 @@ img { max-width: 100%; height: auto; display: block; }
   letter-spacing: 0.04em;
   padding: 0.65rem 1.4rem;
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-coral);
   transition: var(--transition-normal);
 }
 
 .btn-whatsapp-pill:hover {
   background: oklch(0.58 0.24 28);
   transform: translateY(-2px);
-  box-shadow: 0 16px 32px oklch(0.62 0.23 28 / 0.4);
 }
 
 .btn-admin-icon {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--bg-main);
   border: 1px solid var(--border-light);
   color: var(--color-text-dark);
   display: inline-flex;
@@ -199,7 +192,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: #fff;
 }
 
-/* Hero Section */
+/* Hero Section (Flat Solid Layout) */
 .hero-editorial {
   padding-top: 130px;
   padding-bottom: 60px;
@@ -215,7 +208,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-family: var(--font-display);
   font-size: 16vw;
   font-weight: 900;
-  color: oklch(0.14 0.025 250 / 0.03);
+  color: oklch(0.92 0.01 250);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
@@ -248,7 +241,7 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: var(--radius-xl);
   padding: 3rem 2.5rem;
   border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-bento);
+  box-shadow: var(--shadow-flat);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -263,9 +256,8 @@ img { max-width: 100%; height: auto; display: block; }
   gap: 0.5rem;
   padding: 0.4rem 1rem;
   border-radius: var(--radius-full);
-  background: oklch(0.62 0.23 28 / 0.1);
-  border: 1px solid var(--border-coral);
-  color: var(--oklch-coral);
+  background: var(--oklch-coral);
+  color: #ffffff;
   font-family: var(--font-heading);
   font-size: 0.75rem;
   font-weight: 700;
@@ -279,12 +271,11 @@ img { max-width: 100%; height: auto; display: block; }
   width: 55%;
   max-height: 380px;
   object-fit: contain;
-  filter: drop-shadow(0 20px 30px oklch(0.14 0.025 250 / 0.18));
-  transition: var(--transition-bounce);
+  transition: var(--transition-normal);
 }
 
 .hero-stage-card:hover .hero-prod-floating {
-  transform: scale(1.06) rotate(-2deg);
+  transform: scale(1.04);
 }
 
 .hero-copy-block {
@@ -328,7 +319,7 @@ img { max-width: 100%; height: auto; display: block; }
 .series-pill-item {
   padding: 0.85rem 1.25rem;
   border-radius: var(--radius-md);
-  background: oklch(0.96 0.01 250 / 0.06);
+  background: oklch(0.20 0.02 250);
   border: 1px solid var(--border-dark);
   font-family: var(--font-heading);
   font-size: 0.85rem;
@@ -354,7 +345,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: #ffffff;
 }
 
-/* Bento Trio Grid */
+/* Bento Trio Grid (Flat Solid Colors) */
 .editorial-bento-section {
   padding: 4rem 0;
 }
@@ -386,7 +377,7 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: var(--radius-lg);
   padding: 2rem;
   border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-bento);
+  box-shadow: var(--shadow-flat);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -396,7 +387,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .bento-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-pop);
   border-color: var(--border-coral);
 }
@@ -431,14 +422,9 @@ img { max-width: 100%; height: auto; display: block; }
   height: 180px;
   object-fit: contain;
   margin: 1rem auto;
-  transition: var(--transition-bounce);
 }
 
-.bento-card:hover .bento-card-img {
-  transform: scale(1.08);
-}
-
-/* Catalog & Chips */
+/* Catalog & Chips (Flat Solid) */
 .catalog-editorial-section {
   padding: 4rem 0;
   background: #ffffff;
@@ -477,7 +463,6 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--oklch-coral);
   color: #ffffff;
   border-color: var(--oklch-coral);
-  box-shadow: var(--shadow-coral);
 }
 
 .search-editorial-bar {
@@ -522,7 +507,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .product-bento-card:hover {
   background: #ffffff;
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-pop);
   border-color: var(--border-coral);
 }
@@ -545,11 +530,6 @@ img { max-width: 100%; height: auto; display: block; }
   height: 200px;
   object-fit: contain;
   margin: 1.5rem auto 1rem auto;
-  transition: var(--transition-bounce);
-}
-
-.product-bento-card:hover .product-bento-img {
-  transform: scale(1.08);
 }
 
 .product-bento-title {
@@ -592,7 +572,6 @@ img { max-width: 100%; height: auto; display: block; }
 
 .btn-bento-buy:hover {
   background: oklch(0.58 0.22 142);
-  transform: translateY(-2px);
 }
 
 /* Gallery & Footer */
@@ -636,7 +615,6 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .gallery-item:hover .gallery-overlay { opacity: 1; }
-.gallery-item:hover .gallery-img { transform: scale(1.1); }
 
 .footer-editorial {
   background: var(--bg-card-dark);
@@ -660,7 +638,6 @@ img { max-width: 100%; height: auto; display: block; }
   inset: 0;
   z-index: 2000;
   background: oklch(0.14 0.025 250 / 0.85);
-  backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -682,7 +659,6 @@ img { max-width: 100%; height: auto; display: block; }
   overflow-y: auto;
   position: relative;
   padding: 2.5rem;
-  box-shadow: var(--shadow-pop);
 }
 
 .modal-close-btn {
