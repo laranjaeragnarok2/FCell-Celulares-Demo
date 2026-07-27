@@ -1,4 +1,4 @@
-// Admin Panel Logic — FCell Celulares (Santa Helena de Goiás)
+// Admin Panel Logic — FCell Celulares
 
 const ADMIN_PIN = "fcell2026";
 
@@ -151,10 +151,10 @@ const DEFAULT_PRODUCTS = [
 ];
 
 const DEFAULT_SETTINGS = {
-  heroBadge: "📍 FCELL CELULARES — 18 ANOS EM SANTA HELENA",
-  heroTitle: "Smartphones, JBL & Starlink Mini",
-  heroSubtitle: "Smartphones lacrados, produtos originais Apple, caixas de som JBL, Starlink Mini e suporte técnico especializado com 18 anos de tradição em Santa Helena.",
-  whatsappNumber: "5565999999999",
+  heroBadge: "OFERTAS ESPECIAIS COM 1 ANO DE GARANTIA",
+  heroTitle: "Apple Watch Series & iPhones",
+  heroSubtitle: "Smartphones lacrados, produtos originais Apple, caixas de som JBL e suporte técnico especializado com entrega expressa no mesmo dia em Cuiabá.",
+  whatsappNumber: "5565993049734",
   globalGiftText: "Ganhe Copo Stanley em compras no PIX"
 };
 
@@ -183,13 +183,8 @@ function showDashboard() {
   const overlay = document.getElementById("auth-overlay");
   const dashboard = document.getElementById("admin-dashboard");
 
-  if (overlay) {
-    overlay.classList.add("hidden");
-    overlay.style.display = "none";
-  }
-  if (dashboard) {
-    dashboard.style.display = "block";
-  }
+  if (overlay) overlay.style.display = "none";
+  if (dashboard) dashboard.style.display = "block";
 
   loadAdminDashboardData();
 }
@@ -224,7 +219,7 @@ function loadAdminDashboardData() {
 }
 
 function renderAdminTable() {
-  const tbody = document.getElementById("admin-products-table-body") || document.getElementById("admin-table-body");
+  const tbody = document.getElementById("admin-products-table-body");
   if (!tbody) return;
   tbody.innerHTML = "";
 
@@ -236,29 +231,32 @@ function renderAdminTable() {
   productsAdminState.forEach(p => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td><img src="${p.image}" class="img-thumb" alt="${p.name}" onerror="this.src='./products/iphone_17_promax.png'"></td>
+      <td><img src="${p.image}" class="prod-thumb-admin" alt="${p.name}" onerror="this.src='./products/iphone_17_promax.png'"></td>
       <td>
         <strong style="display: block; font-family: var(--font-heading);">${p.name}</strong>
         <span style="font-size: 0.75rem; color: var(--color-text-muted);">${p.category}</span>
       </td>
       <td>
-        <div style="font-family: var(--font-heading); color: var(--oklch-coral); font-weight: 800;">${p.price}</div>
+        <div style="font-family: var(--font-heading); color: var(--color-primary); font-weight: 800;">${p.price}</div>
         <div style="font-size: 0.75rem; color: var(--color-text-muted);">${p.installments || '-'}</div>
       </td>
-      <td>${p.badge ? `<span style="background: oklch(0.62 0.23 28 / 0.12); color: var(--oklch-coral); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 800;">${p.badge}</span>` : '-'}</td>
+      <td>${p.badge ? `<span style="background: rgba(245, 61, 45, 0.1); color: var(--color-primary); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 800;">${p.badge}</span>` : '-'}</td>
       <td>
-        <button class="btn-admin-icon" onclick="toggleStockStatus('${p.id}')" style="color: ${p.inStock !== false ? 'var(--oklch-whatsapp)' : 'var(--oklch-rose)'}; font-size: 0.8rem;">
-          <i class="fa-solid ${p.inStock !== false ? 'fa-check' : 'fa-xmark'}"></i> ${p.inStock !== false ? 'Em Estoque' : 'Esgotado'}
+        <span class="badge-status ${p.inStock !== false ? 'instock' : 'outstock'}">
+          ${p.inStock !== false ? 'Em Estoque' : 'Esgotado'}
+        </span>
+      </td>
+      <td>
+        <button class="btn-icon-admin" onclick="toggleFeaturedStatus('${p.id}')" style="color: ${p.featured ? 'var(--color-primary)' : 'var(--color-text-muted)'};" title="Alternar Destaque">
+          <i class="fa-solid fa-star"></i>
         </button>
       </td>
       <td>
-        <button class="btn-admin-icon" onclick="toggleFeaturedStatus('${p.id}')" style="color: ${p.featured ? 'var(--oklch-coral)' : 'var(--color-text-muted)'}; font-size: 0.8rem;">
-          <i class="fa-solid fa-star"></i> ${p.featured ? 'Sim' : 'Não'}
-        </button>
-      </td>
-      <td>
-        <button class="btn-admin-icon" onclick="editProductItem('${p.id}')" title="Editar"><i class="fa-solid fa-pen-to-square"></i></button>
-        <button class="btn-admin-icon" onclick="deleteProductItem('${p.id}')" title="Excluir" style="color: var(--oklch-rose);"><i class="fa-solid fa-trash"></i></button>
+        <div class="action-btn-group">
+          <button class="btn-icon-admin" onclick="editProductItem('${p.id}')" title="Editar"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="btn-icon-admin" onclick="toggleStockStatus('${p.id}')" title="Alternar Estoque"><i class="fa-solid fa-boxes-stacked"></i></button>
+          <button class="btn-icon-admin" onclick="deleteProductItem('${p.id}')" title="Excluir" style="color: #ef4444;"><i class="fa-solid fa-trash"></i></button>
+        </div>
       </td>
     `;
     tbody.appendChild(tr);
@@ -266,14 +264,14 @@ function renderAdminTable() {
 }
 
 function openProductFormModal(productId = null) {
-  const modal = document.getElementById("admin-product-modal") || document.getElementById("product-modal");
-  const modalTitle = document.getElementById("modal-form-title") || document.getElementById("modal-title");
+  const modal = document.getElementById("admin-product-modal");
+  const modalTitle = document.getElementById("modal-form-title");
   const form = document.getElementById("product-form");
 
   if (!modal) return;
   if (form) form.reset();
   
-  const hiddenId = document.getElementById("form-product-id") || document.getElementById("edit-product-id");
+  const hiddenId = document.getElementById("form-product-id");
   if (hiddenId) hiddenId.value = "";
 
   if (productId) {
@@ -290,6 +288,7 @@ function openProductFormModal(productId = null) {
       if (document.getElementById("form-description")) document.getElementById("form-description").value = p.description || "";
       if (document.getElementById("form-headline")) document.getElementById("form-headline").value = p.headline || "";
       if (document.getElementById("form-featured")) document.getElementById("form-featured").checked = !!p.featured;
+      if (document.getElementById("form-instock")) document.getElementById("form-instock").checked = p.inStock !== false;
     }
   } else {
     if (modalTitle) modalTitle.innerText = "Adicionar Novo Produto";
@@ -299,60 +298,48 @@ function openProductFormModal(productId = null) {
 }
 
 function closeProductFormModal() {
-  const modal = document.getElementById("admin-product-modal") || document.getElementById("product-modal");
+  const modal = document.getElementById("admin-product-modal");
   if (modal) modal.classList.remove("active");
 }
 
 function handleProductFormSubmit(e) {
-  if (e) e.preventDefault();
+  e.preventDefault();
+  const idInput = document.getElementById("form-product-id").value;
+  
+  const newProduct = {
+    id: idInput || "prod-" + Date.now(),
+    name: document.getElementById("form-name").value,
+    category: document.getElementById("form-category").value,
+    price: document.getElementById("form-price").value,
+    installments: document.getElementById("form-installments").value,
+    badge: document.getElementById("form-badge").value,
+    image: document.getElementById("form-image").value,
+    headline: document.getElementById("form-headline").value,
+    description: document.getElementById("form-description").value,
+    featured: document.getElementById("form-featured").checked,
+    inStock: document.getElementById("form-instock").checked
+  };
 
-  const hiddenId = document.getElementById("form-product-id") || document.getElementById("edit-product-id");
-  const id = hiddenId ? hiddenId.value : "";
-  const name = document.getElementById("form-name") ? document.getElementById("form-name").value : "";
-  const category = document.getElementById("form-category") ? document.getElementById("form-category").value : "";
-  const price = document.getElementById("form-price") ? document.getElementById("form-price").value : "";
-  const installments = document.getElementById("form-installments") ? document.getElementById("form-installments").value : "";
-  const badge = document.getElementById("form-badge") ? document.getElementById("form-badge").value : "";
-  const image = document.getElementById("form-image") ? document.getElementById("form-image").value : "";
-  const description = document.getElementById("form-description") ? document.getElementById("form-description").value : "";
-  const headline = document.getElementById("form-headline") ? document.getElementById("form-headline").value : "";
-  const featured = document.getElementById("form-featured") ? document.getElementById("form-featured").checked : true;
-
-  if (id) {
-    const idx = productsAdminState.findIndex(p => p.id === id);
-    if (idx !== -1) {
-      productsAdminState[idx] = {
-        ...productsAdminState[idx],
-        name, category, price, installments, badge, image, description, headline, featured
-      };
-    }
+  if (idInput) {
+    const idx = productsAdminState.findIndex(p => p.id === idInput);
+    if (idx !== -1) productsAdminState[idx] = newProduct;
   } else {
-    const newId = "prod-" + Date.now();
-    productsAdminState.unshift({
-      id: newId, name, category, price, installments, badge, image, description, headline, featured, inStock: true
-    });
+    productsAdminState.push(newProduct);
   }
 
-  saveProductsState();
+  localStorage.setItem("fcell_products", JSON.stringify(productsAdminState));
   closeProductFormModal();
-}
-
-function editProductItem(id) {
-  openProductFormModal(id);
-}
-
-function deleteProductItem(id) {
-  if (confirm("Tem certeza que deseja remover este produto do catálogo?")) {
-    productsAdminState = productsAdminState.filter(p => p.id !== id);
-    saveProductsState();
-  }
+  loadAdminDashboardData();
+  showAdminToast("Produto salvo com sucesso! 🚀");
 }
 
 function toggleStockStatus(id) {
   const p = productsAdminState.find(item => item.id === id);
   if (p) {
-    p.inStock = p.inStock === false ? true : false;
-    saveProductsState();
+    p.inStock = !(p.inStock !== false);
+    localStorage.setItem("fcell_products", JSON.stringify(productsAdminState));
+    loadAdminDashboardData();
+    showAdminToast(`Estoque de "${p.name}" alterado!`);
   }
 }
 
@@ -360,49 +347,73 @@ function toggleFeaturedStatus(id) {
   const p = productsAdminState.find(item => item.id === id);
   if (p) {
     p.featured = !p.featured;
-    saveProductsState();
+    localStorage.setItem("fcell_products", JSON.stringify(productsAdminState));
+    loadAdminDashboardData();
+    showAdminToast(`Status de destaque alterado!`);
   }
 }
 
-function saveProductsState() {
-  localStorage.setItem("fcell_products", JSON.stringify(productsAdminState));
-  loadAdminDashboardData();
-  window.dispatchEvent(new Event('storage'));
+function editProductItem(id) {
+  openProductFormModal(id);
+}
+
+function deleteProductItem(id) {
+  if (confirm("Tem certeza que deseja excluir este produto do catálogo?")) {
+    productsAdminState = productsAdminState.filter(p => p.id !== id);
+    localStorage.setItem("fcell_products", JSON.stringify(productsAdminState));
+    loadAdminDashboardData();
+    showAdminToast("Produto removido com sucesso.");
+  }
 }
 
 function resetToDefaultData() {
-  if (confirm("Deseja restaurar os produtos padrão da FCell Celulares em Santa Helena?")) {
-    productsAdminState = [...DEFAULT_PRODUCTS];
-    localStorage.setItem("fcell_products", JSON.stringify(productsAdminState));
+  if (confirm("Deseja restaurar o catálogo e as configurações para os valores originais de fábrica?")) {
+    localStorage.setItem("fcell_products", JSON.stringify(DEFAULT_PRODUCTS));
     localStorage.setItem("fcell_store_settings", JSON.stringify(DEFAULT_SETTINGS));
     loadAdminDashboardData();
-    window.dispatchEvent(new Event('storage'));
-    alert("Catálogo restaurado com sucesso!");
+    showAdminToast("Catálogo restaurado para os padrões!");
   }
 }
 
 function populateSettingsForm() {
   const localSet = localStorage.getItem("fcell_store_settings");
-  const settings = localSet ? JSON.parse(localSet) : DEFAULT_SETTINGS;
+  let settings = DEFAULT_SETTINGS;
+  if (localSet) {
+    try { settings = JSON.parse(localSet); } catch(e) {}
+  }
 
-  if (document.getElementById("setting-hero-badge")) document.getElementById("setting-hero-badge").value = settings.heroBadge || DEFAULT_SETTINGS.heroBadge;
-  if (document.getElementById("setting-hero-title")) document.getElementById("setting-hero-title").value = settings.heroTitle || DEFAULT_SETTINGS.heroTitle;
-  if (document.getElementById("setting-hero-subtitle")) document.getElementById("setting-hero-subtitle").value = settings.heroSubtitle || DEFAULT_SETTINGS.heroSubtitle;
-  if (document.getElementById("setting-whatsapp-num")) document.getElementById("setting-whatsapp-num").value = settings.whatsappNumber || DEFAULT_SETTINGS.whatsappNumber;
-  if (document.getElementById("setting-global-gift")) document.getElementById("setting-global-gift").value = settings.globalGiftText || DEFAULT_SETTINGS.globalGiftText;
+  if (document.getElementById("setting-hero-badge")) document.getElementById("setting-hero-badge").value = settings.heroBadge || "";
+  if (document.getElementById("setting-whatsapp-num")) document.getElementById("setting-whatsapp-num").value = settings.whatsappNumber || "";
+  if (document.getElementById("setting-hero-title")) document.getElementById("setting-hero-title").value = settings.heroTitle || "";
+  if (document.getElementById("setting-hero-subtitle")) document.getElementById("setting-hero-subtitle").value = settings.heroSubtitle || "";
+  if (document.getElementById("setting-global-gift")) document.getElementById("setting-global-gift").value = settings.globalGiftText || "";
 }
 
 function saveStoreSettings(e) {
-  if (e) e.preventDefault();
+  e.preventDefault();
   const settings = {
     heroBadge: document.getElementById("setting-hero-badge").value,
+    whatsappNumber: document.getElementById("setting-whatsapp-num").value,
     heroTitle: document.getElementById("setting-hero-title").value,
     heroSubtitle: document.getElementById("setting-hero-subtitle").value,
-    whatsappNumber: document.getElementById("setting-whatsapp-num").value,
     globalGiftText: document.getElementById("setting-global-gift").value
   };
 
   localStorage.setItem("fcell_store_settings", JSON.stringify(settings));
-  alert("Configurações de Copywriting salvas com sucesso!");
-  window.dispatchEvent(new Event('storage'));
+  showAdminToast("Configurações salvas! A loja pública foi atualizada. 🛍️");
+}
+
+function showAdminToast(msg) {
+  const container = document.getElementById("admin-toast-container");
+  if (!container) return;
+
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.innerHTML = `<i class="fa-solid fa-circle-check text-whatsapp"></i> <span>${msg}</span>`;
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
 }

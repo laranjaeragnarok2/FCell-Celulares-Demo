@@ -13,20 +13,20 @@
   
   <link rel="icon" type="image/png" href="./instagram/logo_transparent.png">
 </head>
-<body class="admin-body" style="background: var(--bg-editorial);">
+<body class="admin-body">
 
   <!-- ==========================================================================
        PIN / AUTHENTICATION OVERLAY
        ========================================================================== -->
   <div class="admin-auth-overlay" id="auth-overlay">
-    <div class="auth-card" style="background: #fff; border-radius: var(--radius-lg); padding: 2.5rem; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-pop);">
-      <img src="./instagram/logo_transparent.png" alt="FCell Celulares Logo" class="logo-img" style="height: 55px; margin: 0 auto 1.5rem auto;">
-      <h2 style="font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 0.5rem; text-transform: uppercase;">Painel Administrativo</h2>
+    <div class="auth-card">
+      <img src="./instagram/logo_transparent.png" alt="FCell Celulares Logo" class="logo-img" style="height: 52px; margin: 0 auto 1.25rem auto;">
+      <h2 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; margin-bottom: 0.4rem; text-transform: uppercase;">Painel Administrativo</h2>
       <p style="color: var(--color-text-muted); font-size: 0.85rem;">Digite a senha/PIN de acesso para continuar (Padrão: <code>fcell2026</code>)</p>
 
       <form id="pin-form" onsubmit="handlePinLogin(event)">
-        <input type="password" id="pin-input" class="pin-input" style="background: var(--bg-editorial); color: var(--color-text-dark); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);" placeholder="••••••••" maxlength="20" required autofocus>
-        <button type="submit" class="btn-whatsapp-pill" style="width: 100%; justify-content: center; border-radius: var(--radius-md);">
+        <input type="password" id="pin-input" class="pin-input" placeholder="••••••••" maxlength="20" required autofocus>
+        <button type="submit" class="btn-drou-cta" style="width: 100%; justify-content: center; border-radius: var(--radius-md);">
           <i class="fa-solid fa-lock-open"></i>
           <span>Acessar Painel</span>
         </button>
@@ -40,19 +40,19 @@
   <div id="admin-dashboard" style="display: none;">
 
     <!-- Admin Header Bar -->
-    <header class="admin-header" style="background: #fff; border-bottom: 1px solid var(--border-subtle); padding: 1rem 0;">
-      <div class="container admin-header-flex" style="display: flex; align-items: center; justify-content: space-between;">
-        <div class="logo-wrapper" style="display: flex; align-items: center; gap: 1rem;">
-          <img src="./instagram/logo_transparent.png" alt="FCell Celulares" class="logo-img" style="height: 40px;">
-          <span class="admin-title-badge" style="background: var(--oklch-coral); color: #fff; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 800; padding: 0.3rem 0.8rem; border-radius: var(--radius-full);"><i class="fa-solid fa-user-shield"></i> PAINEL ADMIN</span>
+    <header class="admin-header">
+      <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <img src="./instagram/logo_transparent.png" alt="FCell Celulares" class="logo-img" style="height: 42px;">
+          <span style="background: var(--color-primary); color: #fff; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 800; padding: 0.3rem 0.8rem; border-radius: var(--radius-full);"><i class="fa-solid fa-user-shield"></i> PAINEL ADMIN</span>
         </div>
 
         <div style="display: flex; align-items: center; gap: 1rem;">
-          <a href="index.html" target="_blank" class="btn-admin-icon" style="width: auto; height: auto; padding: 0.5rem 1.25rem; border-radius: var(--radius-full); font-size: 0.85rem; font-family: var(--font-heading); font-weight: 700;">
-            <i class="fa-solid fa-store" style="margin-right: 0.4rem;"></i>
+          <a href="index.html" target="_blank" class="btn-drou-cta" style="background: var(--color-dark); padding: 0.55rem 1.25rem;">
+            <i class="fa-solid fa-store"></i>
             <span>Ver Loja Pública</span>
           </a>
-          <button onclick="handleAdminLogout()" class="btn-admin-icon" style="color: var(--oklch-coral);" title="Sair do Painel">
+          <button onclick="handleAdminLogout()" class="btn-icon-admin" style="width: 40px; height: 40px; border-radius: 50%; color: var(--color-primary);" title="Sair do Painel">
             <i class="fa-solid fa-right-from-bracket"></i>
           </button>
         </div>
@@ -62,55 +62,55 @@
     <main class="container" style="padding-top: 2.5rem; padding-bottom: 4rem;">
 
       <!-- Metric Cards (Dashboard Overview) -->
-      <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
-        <div class="metric-card" style="background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+      <div class="metrics-grid">
+        <div class="metric-card">
           <div class="metric-info">
-            <h4 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--color-text-muted); text-transform: uppercase;">Total Produtos</h4>
-            <div class="metric-number" id="metric-total-products" style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; margin-top: 0.3rem;">0</div>
+            <h4>Total Produtos</h4>
+            <div class="metric-number" id="metric-total-products">0</div>
           </div>
-          <div class="metric-icon" style="width: 48px; height: 48px; border-radius: 50%; background: oklch(0.66 0.18 250 / 0.15); color: var(--oklch-blue); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;"><i class="fa-solid fa-mobile-screen"></i></div>
+          <div class="metric-icon" style="background: rgba(71, 149, 245, 0.15); color: #4795f5;"><i class="fa-solid fa-mobile-screen"></i></div>
         </div>
 
-        <div class="metric-card" style="background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+        <div class="metric-card">
           <div class="metric-info">
-            <h4 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--color-text-muted); text-transform: uppercase;">Leads WhatsApp</h4>
-            <div class="metric-number" id="metric-total-leads" style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; margin-top: 0.3rem; color: var(--oklch-whatsapp);">0</div>
+            <h4>Leads WhatsApp</h4>
+            <div class="metric-number" id="metric-total-leads" style="color: var(--color-whatsapp);">0</div>
           </div>
-          <div class="metric-icon" style="width: 48px; height: 48px; border-radius: 50%; background: oklch(0.65 0.20 142 / 0.15); color: var(--oklch-whatsapp); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;"><i class="fa-brands fa-whatsapp"></i></div>
+          <div class="metric-icon" style="background: rgba(37, 211, 102, 0.15); color: var(--color-whatsapp);"><i class="fa-brands fa-whatsapp"></i></div>
         </div>
 
-        <div class="metric-card" style="background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+        <div class="metric-card">
           <div class="metric-info">
-            <h4 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--color-text-muted); text-transform: uppercase;">Destaques Home</h4>
-            <div class="metric-number" id="metric-featured-products" style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; margin-top: 0.3rem; color: var(--oklch-coral);">0</div>
+            <h4>Destaques Home</h4>
+            <div class="metric-number" id="metric-featured-products" style="color: var(--color-primary);">0</div>
           </div>
-          <div class="metric-icon" style="width: 48px; height: 48px; border-radius: 50%; background: oklch(0.62 0.23 28 / 0.15); color: var(--oklch-coral); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;"><i class="fa-solid fa-star"></i></div>
+          <div class="metric-icon" style="background: rgba(245, 61, 45, 0.15); color: var(--color-primary);"><i class="fa-solid fa-star"></i></div>
         </div>
 
-        <div class="metric-card" style="background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+        <div class="metric-card">
           <div class="metric-info">
-            <h4 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--color-text-muted); text-transform: uppercase;">Fora de Estoque</h4>
-            <div class="metric-number" id="metric-out-stock" style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; margin-top: 0.3rem; color: var(--oklch-rose);">0</div>
+            <h4>Fora de Estoque</h4>
+            <div class="metric-number" id="metric-out-stock" style="color: #ef4444;">0</div>
           </div>
-          <div class="metric-icon" style="width: 48px; height: 48px; border-radius: 50%; background: oklch(0.55 0.14 15 / 0.15); color: var(--oklch-rose); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="metric-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-triangle-exclamation"></i></div>
         </div>
       </div>
 
       <!-- Section: Products Management -->
-      <div class="admin-table-container" style="background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 3rem; box-shadow: var(--shadow-bento);">
-        <div class="table-header-bar" style="padding: 1.5rem; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div class="admin-table-container">
+        <div class="table-header-bar">
           <div>
-            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; text-transform: uppercase;">Gestão de Catálogo & Produtos</h3>
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; text-transform: uppercase;">Gestão de Catálogo & Produtos</h3>
             <p style="color: var(--color-text-muted); font-size: 0.85rem;">Adicione, edite preços ou altere o status dos produtos em tempo real.</p>
           </div>
 
           <div style="display: flex; gap: 0.75rem;">
-            <button onclick="openProductFormModal()" class="btn-whatsapp-pill" style="border-radius: var(--radius-md);">
+            <button onclick="openProductFormModal()" class="btn-drou-cta">
               <i class="fa-solid fa-plus"></i>
               <span>Novo Produto</span>
             </button>
-            <button onclick="resetToDefaultData()" class="btn-admin-icon" style="width: auto; height: auto; padding: 0.6rem 1.25rem; border-radius: var(--radius-md); font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: var(--oklch-coral); border-color: var(--oklch-coral);">
-              <i class="fa-solid fa-rotate-left"></i>
+            <button onclick="resetToDefaultData()" class="btn-icon-admin" style="width: auto; height: auto; padding: 0.6rem 1.25rem; border-radius: var(--radius-sm); font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: var(--color-primary); border-color: var(--color-primary);">
+              <i class="fa-solid fa-rotate-left" style="margin-right: 0.4rem;"></i>
               <span>Restaurar Padrões</span>
             </button>
           </div>
@@ -137,15 +137,15 @@
       </div>
 
       <!-- Section: Store Copywriting & Settings Form -->
-      <div class="admin-table-container" style="background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-bento);">
-        <h3 style="font-family: var(--font-heading); font-size: 1.3rem; text-transform: uppercase; margin-bottom: 0.5rem;">Configurações de Copywriting & WhatsApp</h3>
+      <div class="admin-table-container" style="padding: 2rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.4rem;">Configurações de Copywriting & WhatsApp</h3>
         <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Altere os títulos principais da loja pública e o número oficial de vendas.</p>
 
         <form id="store-settings-form" onsubmit="saveStoreSettings(event)">
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Hero Badge Superior</label>
-              <input type="text" id="setting-hero-badge" class="form-control" placeholder="ex: LOJA OFICIAL SANTA HELENA">
+              <input type="text" id="setting-hero-badge" class="form-control" placeholder="ex: OFERTAS ESPECIAIS COM 1 ANO DE GARANTIA">
             </div>
 
             <div class="form-group">
@@ -155,7 +155,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">Título Principal da Home (Suporta tags HTML)</label>
+            <label class="form-label">Título Principal da Home (Suporta HTML)</label>
             <input type="text" id="setting-hero-title" class="form-control" placeholder="Título Hero">
           </div>
 
@@ -169,7 +169,7 @@
             <input type="text" id="setting-global-gift" class="form-control" placeholder="ex: Ganhe Copo Stanley em compras no PIX">
           </div>
 
-          <button type="submit" class="btn-whatsapp-pill" style="padding: 0.85rem 2rem; border-radius: var(--radius-md);">
+          <button type="submit" class="btn-drou-cta" style="padding: 0.85rem 2rem; border-radius: var(--radius-sm);">
             <i class="fa-solid fa-floppy-disk"></i>
             <span>Salvar Alterações de Copy</span>
           </button>
@@ -186,7 +186,7 @@
     <div class="modal-content" style="max-width: 650px; padding: 2rem;">
       <button class="modal-close-btn" onclick="closeProductFormModal()"><i class="fa-solid fa-xmark"></i></button>
 
-      <h3 style="font-family: var(--font-heading); font-size: 1.4rem; text-transform: uppercase; margin-bottom: 1.5rem;" id="modal-form-title">Adicionar Novo Produto</h3>
+      <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1.5rem;" id="modal-form-title">Adicionar Novo Produto</h3>
 
       <form id="product-form" onsubmit="handleProductFormSubmit(event)">
         <input type="hidden" id="form-product-id">
@@ -222,7 +222,7 @@
 
           <div class="form-group">
             <label class="form-label">Condições de Parcelamento</label>
-            <input type="text" id="form-installments" class="form-control" placeholder="ex: 12x de R$ 915,00">
+            <input type="text" id="form-installments" class="form-control" placeholder="ex: 12x de R$ 915,00 no cartão">
           </div>
         </div>
 
@@ -260,8 +260,8 @@
         </div>
 
         <div style="display: flex; justify-content: flex-end; gap: 1rem;">
-          <button type="button" onclick="closeProductFormModal()" class="btn-admin-icon" style="width: auto; height: auto; padding: 0.75rem 1.5rem; border-radius: var(--radius-md);">Cancelar</button>
-          <button type="submit" class="btn-whatsapp-pill" style="border-radius: var(--radius-md);">Salvar Produto</button>
+          <button type="button" onclick="closeProductFormModal()" class="btn-icon-admin" style="width: auto; height: auto; padding: 0.75rem 1.5rem; border-radius: var(--radius-sm);">Cancelar</button>
+          <button type="submit" class="btn-drou-cta" style="border-radius: var(--radius-sm);">Salvar Produto</button>
         </div>
       </form>
     </div>
