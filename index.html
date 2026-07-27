@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FCell Celulares | Loja Oficial de Smartphones, Acessórios e Assistência em Cuiabá</title>
+  <meta name="description" content="Compre iPhones, Xiaomi, JBL, Starlink e acessórios com garantia oficial e os melhores preços de Cuiabá. Assistência técnica especializada com entrega rápida.">
+  <meta name="keywords" content="FCell Celulares, iPhone Cuiabá, Comprar iPhone Cuiabá, Assistência Técnica Celular, Starlink Mini, JBL Boombox, Copo Stanley">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Design System CSS -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./instagram/logo_transparent.png">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER / GLASSMORPHIC NAVBAR
+       ========================================================================== -->
+  <header class="header-nav">
+    <div class="container header-container">
+      <a href="#" class="logo-wrapper" title="FCell Celulares - Home">
+        <img src="./instagram/logo_transparent.png" alt="FCell Celulares Logo" class="logo-img">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#catalogo" class="nav-link active">Catálogo</a></li>
+          <li><a href="#assistencia" class="nav-link">Assistência Técnica</a></li>
+          <li><a href="#feed-instagram" class="nav-link">Feed Instagram</a></li>
+          <li><a href="#unidades" class="nav-link">Lojas Cuiabá</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#" id="header-whatsapp-btn" target="_blank" class="btn-whatsapp-header">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Falar no WhatsApp</span>
+        </a>
+        <a href="admin.html" class="btn-admin-link" title="Painel de Administração">
+          <i class="fa-solid fa-user-gear"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero-section">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-bolt"></i>
+          <span id="hero-badge-text">LOJA OFICIAL & ASSISTÊNCIA EM CUIABÁ</span>
+        </div>
+
+        <h1 class="hero-title" id="hero-title">
+          Smartphones, Acessórios e Suporte de <span class="text-gradient">Alta Performance</span>
+        </h1>
+
+        <p class="hero-subtitle" id="hero-subtitle">
+          Encontre os últimos lançamentos de iPhones, Caixas JBL, Starlink e Gadgets com garantia oficial e entrega rápida no mesmo dia para Cuiabá e Várzea Grande.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#catalogo" class="btn-primary-gradient">
+            <span>Ver Catálogo Completo</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#" id="hero-consultant-btn" target="_blank" class="btn-outline-glass">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Consultar Estoque</span>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h3 class="text-gradient">+10 Mil</h3>
+            <p>Clientes Atendidos</p>
+          </div>
+          <div class="stat-item">
+            <h3>100%</h3>
+            <p>Garantia Oficial</p>
+          </div>
+          <div class="stat-item">
+            <h3>2 Lojas</h3>
+            <p>Em Cuiabá/MT</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Featured Card -->
+      <div class="hero-card-featured">
+        <span class="featured-tag"><i class="fa-solid fa-gift"></i> OFERTA BRINDE</span>
+        <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max 256GB" class="hero-card-img" id="hero-card-img">
+        <div class="hero-card-info">
+          <p class="product-category">Lançamento Exclusivo</p>
+          <h3 id="hero-card-title">iPhone 17 Pro Max 256GB</h3>
+          <div class="price-tag" id="hero-card-price">R$ 9.890,00</div>
+          <div class="installments" id="hero-card-installments">12x de R$ 915,00 no cartão</div>
+          <a href="#catalogo" class="btn-buy-whatsapp" style="margin-top: 0.5rem;" onclick="openProductModal('iphone-17-pro-max')">
+            <i class="fa-solid fa-fire"></i>
+            <span>Garantir com Copo Stanley</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TRUST BADGES STRIP
+       ========================================================================== -->
+  <section class="trust-strip">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="trust-text">
+          <h4>Garantia Total FCell</h4>
+          <p>Produtos 100% originais com suporte</p>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+        <div class="trust-text">
+          <h4>Entrega Expressa</h4>
+          <p>Receba no mesmo dia em Cuiabá</p>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon"><i class="fa-solid fa-gift"></i></div>
+        <div class="trust-text">
+          <h4>Brindes Exclusivos</h4>
+          <p id="global-gift-text">Ganhe Copo Stanley em compras no PIX</p>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon"><i class="fa-solid fa-wrench"></i></div>
+        <div class="trust-text">
+          <h4>Assistência Especializada</h4>
+          <p>Técnicos certificados e peças originais</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CATALOG SECTION & FILTERS
+       ========================================================================== -->
+  <section id="catalogo" class="catalog-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Catálogo <span class="text-gradient">FCell Celulares</span></h2>
+        <p class="section-subtitle">Navegue pelas nossas categorias e encontre a melhor tecnologia pelo melhor preço.</p>
+      </div>
+
+      <div class="catalog-controls">
+        <div class="category-filters" id="category-filters">
+          <button class="filter-btn active" data-category="Todos">Todos</button>
+          <button class="filter-btn" data-category="Smartphones">Smartphones</button>
+          <button class="filter-btn" data-category="Starlink">Starlink</button>
+          <button class="filter-btn" data-category="JBL & Áudio">JBL & Áudio</button>
+          <button class="filter-btn" data-category="Acessórios">Acessórios</button>
+          <button class="filter-btn" data-category="Smartwatches">Smartwatches</button>
+        </div>
+
+        <div class="search-bar-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="search-input" class="search-input" placeholder="Buscar por modelo (ex: iPhone, Starlink, JBL)...">
+        </div>
+      </div>
+
+      <!-- Products Grid (Rendered Dynamically) -->
+      <div class="products-grid" id="products-grid">
+        <!-- JS will render product cards here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ASSISTÊNCIA TÉCNICA SECTION
+       ========================================================================== -->
+  <section id="assistencia" class="support-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Assistência Técnica <span class="text-gradient">Especializada</span></h2>
+        <p class="section-subtitle">Seu celular quebrou? Nós consertamos com agilidade, peças de altíssima qualidade e garantia de laboratório.</p>
+      </div>
+
+      <div class="support-grid">
+        <div class="support-card">
+          <div class="support-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h3>Troca de Tela & Display</h3>
+          <p>Recupere o toque e a nitidez do seu smartphone com telas originais ou premium com garantia total.</p>
+        </div>
+
+        <div class="support-card">
+          <div class="support-icon"><i class="fa-solid fa-battery-full"></i></div>
+          <h3>Troca de Bateria Saúde 100%</h3>
+          <p>Seu celular descarrega rápido? Substituímos sua bateria por componentes novos e certificados.</p>
+        </div>
+
+        <div class="support-card">
+          <div class="support-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h3>Reparo de Placa & Conectores</h3>
+          <p>Conserto avançado de micro-solda em placa-mãe de iPhones e Androids por especialistas.</p>
+        </div>
+
+        <div class="support-card">
+          <div class="support-icon"><i class="fa-solid fa-droplet-slash"></i></div>
+          <h3>Desoxidação & Limpeza</h3>
+          <p>Recuperação de aparelhos que caíram na água ou sofreram oxidação nos componentes internos.</p>
+        </div>
+      </div>
+
+      <div class="support-banner-cta">
+        <h3 style="font-size: 1.8rem; margin-bottom: 0.75rem;">Precisa de um Orçamento de Reparo Rápido?</h3>
+        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Fale com nossa equipe técnica agora mesmo e traga seu aparelho na unidade mais próxima.
+        </p>
+        <a href="#" id="support-whatsapp-btn" target="_blank" class="btn-primary-gradient">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Solicitar Orçamento de Conserto</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INSTAGRAM FEED & SOCIAL PROOF
+       ========================================================================== -->
+  <section id="feed-instagram" class="instagram-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Siga a <span class="text-gradient">@fcellcelularesoficial</span></h2>
+        <p class="section-subtitle">Acompanhe nossas novidades diárias, bastidores da assistência e clientes satisfeitos no Instagram.</p>
+      </div>
+
+      <div class="insta-grid" id="insta-grid">
+        <!-- Rendered dynamically by script.js using POSTS_MANIFEST.json -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       UNIDADES & LOCALIZAÇÃO EM CUIABÁ
+       ========================================================================== -->
+  <section id="unidades" class="locations-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Nossas Unidades em <span class="text-gradient">Cuiabá</span></h2>
+        <p class="section-subtitle">Venha nos visitar em nossos pontos nos principais shoppings da capital.</p>
+      </div>
+
+      <div class="locations-grid">
+        <div class="location-card">
+          <h3><i class="fa-solid fa-store"></i> Unidade Pantanal Shopping</h3>
+          <ul class="location-info">
+            <li><i class="fa-solid fa-location-dot"></i> <span>Av. Historiador Rubens de Mendonça, 3300 - Bosque da Saúde, Cuiabá - MT</span></li>
+            <li><i class="fa-solid fa-clock"></i> <span>Segunda a Sábado: 10h às 22h | Domingo: 14h às 20h</span></li>
+            <li><i class="fa-solid fa-phone"></i> <span>WhatsApp: (65) 99304-9734</span></li>
+          </ul>
+        </div>
+
+        <div class="location-card">
+          <h3><i class="fa-solid fa-store"></i> Unidade Shopping Estação</h3>
+          <ul class="location-info">
+            <li><i class="fa-solid fa-location-dot"></i> <span>Av. Miguel Sutil, 9300 - Duque de Caxias, Cuiabá - MT</span></li>
+            <li><i class="fa-solid fa-clock"></i> <span>Segunda a Sábado: 10h às 22h | Domingo: 14h às 20h</span></li>
+            <li><i class="fa-solid fa-phone"></i> <span>WhatsApp: (65) 99304-9734</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PRODUCT DETAILS MODAL
+       ========================================================================== -->
+  <div class="modal-backdrop" id="product-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeProductModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-product-grid" id="modal-product-body">
+        <!-- Rendered by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="./instagram/logo_transparent.png" alt="FCell Celulares" style="height: 45px;">
+          <p>Sua loja completa de smartphones, produtos Apple, caixas de som JBL, internet Starlink e assistência técnica especializada em Cuiabá.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#assistencia">Assistência Técnica</a></li>
+            <li><a href="#feed-instagram">Instagram</a></li>
+            <li><a href="#unidades">Lojas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categorias</h4>
+          <ul class="footer-links">
+            <li><a href="#catalogo" onclick="setCategoryFilter('Smartphones')">iPhones & Androids</a></li>
+            <li><a href="#catalogo" onclick="setCategoryFilter('Starlink')">Starlink Portátil</a></li>
+            <li><a href="#catalogo" onclick="setCategoryFilter('JBL & Áudio')">JBL & AirPods</a></li>
+            <li><a href="#catalogo" onclick="setCategoryFilter('Smartwatches')">Apple Watch</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Administração</h4>
+          <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Área restrita de gestão de produtos e preços.</p>
+          <a href="admin.html" class="btn-outline-glass" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">
+            <i class="fa-solid fa-lock"></i>
+            <span>Painel Admin</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FCell Celulares. Todos os direitos reservados. Cuiabá - MT.</p>
+        <p>Desenvolvido com tecnologia de alta performance.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
