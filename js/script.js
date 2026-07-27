@@ -228,7 +228,7 @@ function renderStoreContent() {
 
 function renderProductsGrid() {
   const grid = document.getElementById('products-grid');
-  if (!grid) return;
+  const latestGrid = document.getElementById('latest-products-grid');
 
   const filtered = productsState.filter(prod => {
     const matchesCategory = (currentCategory === 'Todos') || (prod.category === currentCategory);
@@ -239,18 +239,7 @@ function renderProductsGrid() {
     return matchesCategory && matchesSearch;
   });
 
-  if (filtered.length === 0) {
-    grid.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--color-text-muted);">
-        <i class="fa-solid fa-box-open" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
-        <h3 style="font-family: var(--font-heading); font-size: 1.2rem;">Nenhum produto encontrado</h3>
-        <p>Tente selecionar outra categoria ou buscar por outro modelo.</p>
-      </div>
-    `;
-    return;
-  }
-
-  grid.innerHTML = filtered.map(prod => {
+  const cardsHtml = filtered.map(prod => {
     const waUrl = getProductWhatsAppUrl(prod);
     return `
       <div class="product-partsix-card">
@@ -283,6 +272,53 @@ function renderProductsGrid() {
       </div>
     `;
   }).join('');
+
+  if (grid) {
+    grid.innerHTML = filtered.length > 0 ? cardsHtml : `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--color-text-muted);">
+        <i class="fa-solid fa-box-open" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+        <h3 style="font-family: var(--font-heading); font-size: 1.2rem;">Nenhum produto encontrado</h3>
+        <p>Tente selecionar outra categoria ou buscar por outro modelo.</p>
+      </div>
+    `;
+  }
+
+  if (latestGrid) {
+    const latestFiltered = [...productsState].reverse();
+    latestGrid.innerHTML = latestFiltered.map(prod => {
+      const waUrl = getProductWhatsAppUrl(prod);
+      return `
+        <div class="product-partsix-card">
+          ${prod.badge ? `<span class="product-partsix-badge">${prod.badge}</span>` : ''}
+          
+          <div class="product-partsix-img-stage" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">
+            <img src="${prod.image}" alt="${prod.name}" class="product-partsix-img" onerror="this.src='./products/iphone_17_promax.png'">
+          </div>
+          
+          <div>
+            <div class="product-partsix-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span style="color: var(--color-text-muted); font-size: 0.7rem; margin-left: 0.2rem;">(5.0)</span>
+            </div>
+
+            <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary); font-family: var(--font-heading);">${prod.category}</div>
+            <h3 class="product-partsix-title" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">${prod.name}</h3>
+            <div class="product-partsix-price">${prod.price}</div>
+            <div class="product-partsix-installments">${prod.installments || 'Consulte condições'}</div>
+          </div>
+
+          <button class="btn-partsix-buy" onclick="window.open('${waUrl}', '_blank'); trackLeadClick();">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Comprar no WhatsApp</span>
+          </button>
+        </div>
+      `;
+    }).join('');
+  }
 }
 
 function getProductWhatsAppUrl(product) {
