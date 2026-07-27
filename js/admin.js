@@ -1,6 +1,17 @@
-// Admin Panel Logic — FCell Celulares
+// Admin Panel Logic — FCell Celulares (Exact Matching Thumbnails)
 
 const ADMIN_PIN = "fcell2026";
+
+const PRODUCT_IMAGE_MAP = {
+  "iphone-17-pro-max": "./products/iphone_17_promax.png",
+  "iphone-air": "./products/iphone_air.png",
+  "starlink-mini": "./products/starlink_mini.png",
+  "jbl-boombox-3": "./products/jbl_boombox_3.png",
+  "suporte-vacuum": "./products/suporte_vacuum.png",
+  "airpods-pro-2": "./products/airpods_pro_2.png",
+  "apple-watch-ultra-2": "./products/apple_watch_ultra.png",
+  "redmi-note-13-pro": "./products/xiaomi_redmi_note_13.png"
+};
 
 const DEFAULT_PRODUCTS = [
   {
@@ -197,11 +208,26 @@ function handleAdminLogout() {
 function loadAdminDashboardData() {
   const localProd = localStorage.getItem("fcell_products");
   if (localProd) {
-    try { productsAdminState = JSON.parse(localProd); } catch(e) { productsAdminState = [...DEFAULT_PRODUCTS]; }
+    try {
+      let parsed = JSON.parse(localProd);
+      if (!Array.isArray(parsed) || parsed.length === 0) {
+        productsAdminState = [...DEFAULT_PRODUCTS];
+      } else {
+        productsAdminState = parsed.map(p => {
+          if (PRODUCT_IMAGE_MAP[p.id]) {
+            p.image = PRODUCT_IMAGE_MAP[p.id];
+          }
+          return p;
+        });
+      }
+    } catch(e) {
+      productsAdminState = [...DEFAULT_PRODUCTS];
+    }
   } else {
     productsAdminState = [...DEFAULT_PRODUCTS];
-    localStorage.setItem("fcell_products", JSON.stringify(productsAdminState));
   }
+
+  localStorage.setItem("fcell_products", JSON.stringify(productsAdminState));
 
   // Populate Metrics
   const totalProd = document.getElementById("metric-total-products");
@@ -229,9 +255,11 @@ function renderAdminTable() {
   }
 
   productsAdminState.forEach(p => {
+    const imgSrc = PRODUCT_IMAGE_MAP[p.id] || p.image || './products/iphone_17_promax.png';
+
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td><img src="${p.image}" class="prod-thumb-admin" alt="${p.name}" onerror="this.src='./products/iphone_17_promax.png'"></td>
+      <td><img src="${imgSrc}" class="prod-thumb-admin" alt="${p.name}" onerror="this.src='./products/iphone_17_promax.png'"></td>
       <td>
         <strong style="display: block; font-family: var(--font-heading);">${p.name}</strong>
         <span style="font-size: 0.75rem; color: var(--color-text-muted);">${p.category}</span>
@@ -284,7 +312,7 @@ function openProductFormModal(productId = null) {
       if (document.getElementById("form-price")) document.getElementById("form-price").value = p.price;
       if (document.getElementById("form-installments")) document.getElementById("form-installments").value = p.installments || "";
       if (document.getElementById("form-badge")) document.getElementById("form-badge").value = p.badge || "";
-      if (document.getElementById("form-image")) document.getElementById("form-image").value = p.image;
+      if (document.getElementById("form-image")) document.getElementById("form-image").value = PRODUCT_IMAGE_MAP[p.id] || p.image;
       if (document.getElementById("form-description")) document.getElementById("form-description").value = p.description || "";
       if (document.getElementById("form-headline")) document.getElementById("form-headline").value = p.headline || "";
       if (document.getElementById("form-featured")) document.getElementById("form-featured").checked = !!p.featured;

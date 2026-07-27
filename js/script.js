@@ -1,6 +1,17 @@
 /* ==========================================================================
-   FCELL CELULARES - SCRIPT DROU MINIMAL E-COMMERCE (EYE CANDY & INTERACTIVE)
+   FCELL CELULARES - SCRIPT DROU MINIMAL E-COMMERCE (EXACT MATCHING THUMBNAILS)
    ========================================================================== */
+
+const PRODUCT_IMAGE_MAP = {
+  "iphone-17-pro-max": "./products/iphone_17_promax.png",
+  "iphone-air": "./products/iphone_air.png",
+  "starlink-mini": "./products/starlink_mini.png",
+  "jbl-boombox-3": "./products/jbl_boombox_3.png",
+  "suporte-vacuum": "./products/suporte_vacuum.png",
+  "airpods-pro-2": "./products/airpods_pro_2.png",
+  "apple-watch-ultra-2": "./products/apple_watch_ultra.png",
+  "redmi-note-13-pro": "./products/xiaomi_redmi_note_13.png"
+};
 
 const INITIAL_PRODUCTS = [
   {
@@ -151,10 +162,10 @@ const INITIAL_PRODUCTS = [
 ];
 
 const DEFAULT_SETTINGS = {
-  heroBadge: "📍 FCELL CELULARES — 18 ANOS EM SANTA HELENA",
-  heroTitle: "Smartphones, JBL & Starlink Mini",
-  heroSubtitle: "Smartphones lacrados, produtos originais Apple, caixas de som JBL, Starlink Mini e suporte técnico especializado com 18 anos de tradição em Santa Helena.",
-  whatsappNumber: "5565999999999",
+  heroBadge: "OFERTAS ESPECIAIS COM 1 ANO DE GARANTIA",
+  heroTitle: "Apple Watch Series & iPhones",
+  heroSubtitle: "Smartphones lacrados, produtos originais Apple, caixas de som JBL e suporte técnico especializado com entrega expressa no mesmo dia em Cuiabá.",
+  whatsappNumber: "5565993049734",
   globalGiftText: "Ganhe Copo Stanley em compras no PIX"
 };
 
@@ -175,21 +186,26 @@ function initStoreData() {
   const localProd = localStorage.getItem('fcell_products');
   if (localProd) {
     try {
-      const parsed = JSON.parse(localProd);
-      if (!Array.isArray(parsed) || parsed.length === 0 || parsed.some(p => !p.image || p.image.includes('unsplash') || p.image.includes('post_'))) {
+      let parsed = JSON.parse(localProd);
+      if (!Array.isArray(parsed) || parsed.length === 0) {
         productsState = [...INITIAL_PRODUCTS];
-        localStorage.setItem('fcell_products', JSON.stringify(productsState));
       } else {
-        productsState = parsed;
+        // Enforce exact matching product images
+        productsState = parsed.map(p => {
+          if (PRODUCT_IMAGE_MAP[p.id]) {
+            p.image = PRODUCT_IMAGE_MAP[p.id];
+          }
+          return p;
+        });
       }
     } catch (e) {
       productsState = [...INITIAL_PRODUCTS];
-      localStorage.setItem('fcell_products', JSON.stringify(productsState));
     }
   } else {
     productsState = [...INITIAL_PRODUCTS];
-    localStorage.setItem('fcell_products', JSON.stringify(productsState));
   }
+
+  localStorage.setItem('fcell_products', JSON.stringify(productsState));
 
   const localSet = localStorage.getItem('fcell_store_settings');
   if (localSet) {
@@ -243,12 +259,14 @@ function renderProductsGrid() {
 
   const createCardHtml = (prod) => {
     const waUrl = getProductWhatsAppUrl(prod);
+    const imgSrc = PRODUCT_IMAGE_MAP[prod.id] || prod.image || './products/iphone_17_promax.png';
+
     return `
       <div class="drou-product-card">
         ${prod.badge ? `<span class="drou-product-badge">${prod.badge}</span>` : ''}
         
         <div class="drou-product-img-stage" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">
-          <img src="${prod.image}" alt="${prod.name}" class="drou-product-img" onerror="this.src='./products/iphone_17_promax.png'">
+          <img src="${imgSrc}" alt="${prod.name}" class="drou-product-img" onerror="this.src='./products/iphone_17_promax.png'">
         </div>
         
         <div>
@@ -357,6 +375,7 @@ function openProductModal(productId) {
   const modalBackdrop = document.getElementById('product-modal');
   const modalBody = document.getElementById('modal-product-body');
   const waUrl = getProductWhatsAppUrl(product);
+  const imgSrc = PRODUCT_IMAGE_MAP[product.id] || product.image || './products/iphone_17_promax.png';
 
   const benefitsHtml = (product.benefits && product.benefits.length > 0)
     ? product.benefits.map(b => `<li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-check text-primary"></i> ${b}</li>`).join('')
@@ -364,7 +383,7 @@ function openProductModal(productId) {
 
   modalBody.innerHTML = `
     <div style="display: flex; align-items: center; justify-content: center; background: var(--bg-main); border-radius: var(--radius-md); padding: 2rem; border: 1px solid var(--border-color);">
-      <img src="${product.image}" alt="${product.name}" style="max-height: 320px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));" onerror="this.src='./products/iphone_17_promax.png'">
+      <img src="${imgSrc}" alt="${product.name}" style="max-height: 320px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));" onerror="this.src='./products/iphone_17_promax.png'">
     </div>
     <div>
       ${product.badge ? `<span class="drou-product-badge" style="margin-bottom: 0.75rem; display: inline-block;">${product.badge}</span>` : ''}
