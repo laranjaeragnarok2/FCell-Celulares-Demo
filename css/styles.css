@@ -1,28 +1,29 @@
 /* ==========================================================================
-   FCELL CELULARES - EXACT PARTSiX E-COMMERCE DESIGN SYSTEM
-   Visual Idêntico à Referência PartSix: Limpo, Red/Coral (#f53d2d), Alta Conversão
+   FCELL CELULARES - DROU MINIMAL E-COMMERCE DESIGN SYSTEM
+   Visual Idêntico à Referência DROU: Limpo, Minimalista, Fundo Off-White, Vermelho (#f53d2d)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Exact PartSix Colors */
-  --color-primary: #f53d2d;         /* PartSix Red */
+  /* DROU Color Tokens */
+  --color-primary: #f53d2d;          /* DROU Red */
   --color-primary-hover: #d73223;
   --color-dark: #1e232a;
   --color-whatsapp: #25d366;
+  --color-whatsapp-hover: #1eb957;
   --color-gold: #ffaa00;
 
-  /* Backgrounds & Neutrals */
-  --bg-main: #f8f9fa;
+  /* Surfaces */
+  --bg-main: #f7f7f8;               /* Soft DROU Off-White */
   --bg-card: #ffffff;
-  --bg-subtle: #f1f5f9;
+  --bg-banner: #f1f3f5;
   
-  --border-color: #e2e8f0;
+  --border-color: #e9ecef;
   --border-dark: #333c48;
 
   --color-text-dark: #1a202c;
-  --color-text-muted: #64748b;
+  --color-text-muted: #718096;
   --color-text-light: #ffffff;
 
   /* Typography */
@@ -30,14 +31,14 @@
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Radii & Shadows */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.07);
-  --shadow-pop: 0 12px 24px rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.05);
+  --shadow-pop: 0 16px 32px rgba(0, 0, 0, 0.09);
 
   --transition-fast: 0.15s ease-in-out;
   --transition-normal: 0.25s ease-in-out;
@@ -72,34 +73,43 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 0 1.5rem;
 }
 
-/* Section Title Tag PartSix Style */
-.partsix-section-title {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+/* Section Title DROU Style */
+.drou-section-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+}
+
+.drou-section-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
   color: var(--color-text-dark);
 }
 
-.partsix-dot-tag {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  display: inline-block;
+.drou-view-all-link {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.drou-view-all-link:hover {
+  color: var(--color-primary);
 }
 
 /* Top Announcement Bar */
 .top-bar {
-  background: var(--color-dark);
-  color: #e2e8f0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--color-text-muted);
   font-size: 0.8rem;
   padding: 0.5rem 0;
-  border-bottom: 1px solid var(--border-dark);
 }
 
 .top-bar-flex {
@@ -108,7 +118,7 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: space-between;
 }
 
-/* Main Header Navbar */
+/* DROU Header Navbar */
 .header-nav {
   position: sticky;
   top: 0;
@@ -137,7 +147,7 @@ img { max-width: 100%; height: auto; display: block; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.2rem;
   list-style: none;
 }
 
@@ -153,118 +163,86 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--color-primary);
 }
 
-.btn-header-cta {
+.btn-drou-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   background: var(--color-primary);
   color: #ffffff;
   font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  padding: 0.65rem 1.4rem;
-  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-full);
   transition: var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(245, 61, 45, 0.2);
 }
 
-.btn-header-cta:hover {
+.btn-drou-cta:hover {
   background: var(--color-primary-hover);
+  transform: translateY(-1px);
 }
 
-/* Hero Section (PartSix Style with Vehicle Search Bar) */
-.hero-partsix-section {
-  background: linear-gradient(180deg, #fdf2f2 0%, #f8f9fa 100%);
-  padding: 3.5rem 0 4rem 0;
+/* DROU Hero Section */
+.drou-hero-section {
+  background: #ffffff;
+  padding: 4rem 0 5rem 0;
   border-bottom: 1px solid var(--border-color);
 }
 
-.hero-partsix-grid {
+.drou-hero-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  text-align: center;
-  position: relative;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
 }
 
-.hero-partsix-title {
+.drou-hero-subtitle-tag {
+  color: var(--color-primary);
   font-family: var(--font-heading);
-  font-size: 3.2rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.drou-hero-title {
+  font-family: var(--font-heading);
+  font-size: 3.6rem;
   font-weight: 800;
   line-height: 1.1;
   color: var(--color-text-dark);
+  margin-bottom: 1rem;
 }
 
-.hero-partsix-title span {
-  color: var(--color-primary);
-}
-
-.hero-partsix-subtitle {
+.drou-hero-description {
   font-size: 1.1rem;
   color: var(--color-text-muted);
-  max-width: 650px;
-  margin: 0.75rem auto 2rem auto;
+  margin-bottom: 2rem;
+  max-width: 520px;
 }
 
-/* PartSix Search Filter Selector Bar */
-.search-selector-bar {
-  background: #ffffff;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1rem;
-  display: flex;
-  gap: 0.75rem;
-  max-width: 1100px;
+.drou-hero-img {
+  max-height: 380px;
+  width: auto;
   margin: 0 auto;
-  box-shadow: var(--shadow-md);
-  flex-wrap: wrap;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.12));
 }
 
-.selector-select {
-  flex-grow: 1;
-  padding: 0.7rem 1rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-color);
-  background: #ffffff;
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  outline: none;
-  cursor: pointer;
+/* Trending Categories (DROU Style) */
+.trending-categories-section {
+  padding: 4rem 0;
 }
 
-.selector-select:focus {
-  border-color: var(--color-primary);
-}
-
-.btn-search-partsix {
-  background: var(--color-primary);
-  color: #ffffff;
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  padding: 0.7rem 2rem;
-  border-radius: var(--radius-sm);
-  transition: var(--transition-fast);
-}
-
-.btn-search-partsix:hover {
-  background: var(--color-primary-hover);
-}
-
-/* Shop by Categories Section */
-.categories-partsix-section {
-  padding: 3.5rem 0;
-}
-
-.categories-partsix-grid {
+.trending-categories-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 1.25rem;
-  margin-top: 1.5rem;
 }
 
-.category-partsix-card {
+.trending-category-card {
   background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -272,18 +250,17 @@ img { max-width: 100%; height: auto; display: block; }
   text-align: center;
   transition: var(--transition-fast);
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
 }
 
-.category-partsix-card:hover, .category-partsix-card.active {
+.trending-category-card:hover, .trending-category-card.active {
   border-color: var(--color-primary);
-  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
 }
 
-.category-partsix-icon {
-  width: 56px;
-  height: 56px;
+.trending-icon-stage {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: var(--bg-main);
   margin: 0 auto 0.85rem auto;
@@ -295,37 +272,59 @@ img { max-width: 100%; height: auto; display: block; }
   transition: var(--transition-fast);
 }
 
-.category-partsix-card:hover .category-partsix-icon, .category-partsix-card.active .category-partsix-icon {
+.trending-category-card:hover .trending-icon-stage {
   background: var(--color-primary);
   color: #ffffff;
 }
 
-.category-partsix-card h4 {
+.trending-category-card h4 {
   font-family: var(--font-heading);
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 700;
 }
 
-.category-partsix-card span {
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
+/* DROU Dual Banners Section */
+.drou-dual-banners-section {
+  padding: 2rem 0 4rem 0;
 }
 
-/* Products E-Commerce Catalog Grid (PartSix Style 4 Columns) */
-.catalog-partsix-section {
-  padding: 3.5rem 0;
+.drou-dual-banners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.drou-banner-card {
+  background: var(--bg-banner);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--border-color);
+}
+
+.drou-banner-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+}
+
+/* DROU Clean 5-Column / 4-Column Product Cards Grid */
+.drou-products-section {
+  padding: 4rem 0;
   background: #ffffff;
   border-y: 1px solid var(--border-color);
 }
 
-.products-partsix-grid {
+.drou-products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.75rem;
-  margin-top: 2rem;
 }
 
-.product-partsix-card {
+.drou-product-card {
   background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -337,13 +336,13 @@ img { max-width: 100%; height: auto; display: block; }
   position: relative;
 }
 
-.product-partsix-card:hover {
+.drou-product-card:hover {
   border-color: var(--color-primary);
   box-shadow: var(--shadow-md);
   transform: translateY(-4px);
 }
 
-.product-partsix-badge {
+.drou-product-badge {
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -357,7 +356,7 @@ img { max-width: 100%; height: auto; display: block; }
   z-index: 2;
 }
 
-.product-partsix-img-stage {
+.drou-product-img-stage {
   width: 100%;
   height: 200px;
   display: flex;
@@ -366,49 +365,49 @@ img { max-width: 100%; height: auto; display: block; }
   margin: 0.5rem 0 1rem 0;
 }
 
-.product-partsix-img {
+.drou-product-img {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
   transition: var(--transition-fast);
 }
 
-.product-partsix-card:hover .product-partsix-img {
+.drou-product-card:hover .drou-product-img {
   transform: scale(1.06);
 }
 
-.product-partsix-stars {
+.drou-product-stars {
   color: var(--color-gold);
   font-size: 0.75rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
-.product-partsix-title {
+.drou-product-title {
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
+  color: var(--color-text-dark);
   margin-bottom: 0.4rem;
   line-height: 1.3;
-  color: var(--color-text-dark);
 }
 
-.product-partsix-price {
+.drou-product-price {
   font-family: var(--font-heading);
   font-size: 1.4rem;
   font-weight: 800;
   color: var(--color-primary);
 }
 
-.product-partsix-installments {
+.drou-product-installments {
   font-size: 0.8rem;
   color: var(--color-text-muted);
   margin-bottom: 1rem;
 }
 
-.btn-partsix-buy {
+.btn-drou-buy {
   width: 100%;
   display: flex;
   align-items: center;
@@ -417,133 +416,124 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--color-whatsapp);
   color: #ffffff;
   font-family: var(--font-heading);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 0.85rem;
-  text-transform: uppercase;
   padding: 0.7rem;
   border-radius: var(--radius-sm);
   transition: var(--transition-fast);
 }
 
-.btn-partsix-buy:hover {
-  background: oklch(0.58 0.22 142);
+.btn-drou-buy:hover {
+  background: var(--color-whatsapp-hover);
 }
 
-/* Dual Banner Strip (PartSix Style) */
-.dual-banner-section {
-  padding: 3.5rem 0;
+/* DROU Giant Countdown Banner ("Up to 25% Discount") */
+.drou-countdown-banner-section {
+  padding: 4rem 0;
 }
 
-.dual-banner-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.75rem;
-}
-
-.promo-banner-card {
-  background: var(--color-dark);
-  color: #ffffff;
+.drou-countdown-card {
+  background: var(--bg-banner);
   border-radius: var(--radius-lg);
-  padding: 2.5rem;
-  display: flex;
+  padding: 3.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
   align-items: center;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-}
-
-.promo-banner-card.coral-theme {
-  background: linear-gradient(135deg, #1e232a 0%, #3a1515 100%);
-  border: 1px solid rgba(245, 61, 45, 0.3);
-}
-
-/* Deal of the Day Box */
-.deal-partsix-section {
-  padding: 3.5rem 0;
-  background: var(--bg-main);
-}
-
-.deal-partsix-box {
-  background: #ffffff;
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 0.8fr;
-  gap: 2rem;
-  align-items: center;
-  box-shadow: var(--shadow-md);
 }
 
-/* Trust Badges Strip (PartSix Style) */
-.features-partsix-strip {
+.timer-boxes-flex {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.timer-box {
+  background: #ffffff;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.timer-box-num {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.timer-box-lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+/* Trust Features Strip (DROU Style) */
+.drou-features-strip {
   background: #ffffff;
   border-y: 1px solid var(--border-color);
   padding: 2.5rem 0;
 }
 
-.features-partsix-grid {
+.drou-features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
-.feature-partsix-item {
+.drou-feature-item {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.feature-partsix-icon {
+.drou-feature-icon {
   font-size: 2rem;
   color: var(--color-primary);
 }
 
-/* Newsletter Strip */
-.newsletter-strip {
-  background: linear-gradient(180deg, #fdf2f2 0%, #ffffff 100%);
-  padding: 3.5rem 0;
-  border-t: 1px solid var(--border-color);
-  text-align: center;
-}
-
-/* Footer (PartSix Style) */
-.footer-partsix {
-  background: var(--color-dark);
-  color: #cbd5e1;
+/* Footer (DROU Style) */
+.footer-drou {
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  color: var(--color-text-dark);
   padding: 4rem 0 2rem 0;
 }
 
-.footer-partsix-grid {
+.footer-drou-grid {
   display: grid;
   grid-template-columns: 1.5fr repeat(3, 1fr);
   gap: 2.5rem;
   margin-bottom: 3rem;
 }
 
-.footer-partsix-col h4 {
+.footer-drou-col h4 {
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
-  color: #ffffff;
   margin-bottom: 1.25rem;
 }
 
-.footer-partsix-links {
+.footer-drou-links {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
   font-size: 0.9rem;
+  color: var(--color-text-muted);
 }
 
-.footer-partsix-bottom {
-  border-top: 1px solid var(--border-dark);
+.footer-drou-bottom {
+  border-top: 1px solid var(--border-color);
   padding-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.85rem;
+  color: var(--color-text-muted);
 }
 
 /* Modals & Toasts */
@@ -600,32 +590,20 @@ img { max-width: 100%; height: auto; display: block; }
   gap: 0.75rem;
 }
 
-.toast {
-  background: var(--color-dark);
-  color: #fff;
-  padding: 1rem 1.5rem;
-  border-radius: var(--radius-md);
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-/* Responsive Media Queries */
+/* Responsive Queries */
 @media (max-width: 992px) {
-  .categories-partsix-grid { grid-template-columns: repeat(3, 1fr); }
-  .products-partsix-grid { grid-template-columns: repeat(2, 1fr); }
-  .dual-banner-grid { grid-template-columns: 1fr; }
-  .deal-partsix-box { grid-template-columns: 1fr; }
-  .features-partsix-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-partsix-grid { grid-template-columns: 1fr 1fr; }
+  .trending-categories-grid { grid-template-columns: repeat(3, 1fr); }
+  .drou-products-grid { grid-template-columns: repeat(2, 1fr); }
+  .drou-hero-grid { grid-template-columns: 1fr; }
+  .drou-dual-banners-grid { grid-template-columns: 1fr; }
+  .drou-countdown-card { grid-template-columns: 1fr; }
+  .drou-features-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
-  .categories-partsix-grid { grid-template-columns: repeat(2, 1fr); }
-  .products-partsix-grid { grid-template-columns: 1fr; }
-  .hero-partsix-title { font-size: 2.2rem; }
-  .features-partsix-grid { grid-template-columns: 1fr; }
-  .footer-partsix-grid { grid-template-columns: 1fr; }
+  .trending-categories-grid { grid-template-columns: repeat(2, 1fr); }
+  .drou-products-grid { grid-template-columns: 1fr; }
+  .drou-hero-title { font-size: 2.2rem; }
+  .drou-features-grid { grid-template-columns: 1fr; }
+  .footer-drou-grid { grid-template-columns: 1fr; }
 }

@@ -9,7 +9,7 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Custom E-Commerce CSS (PartSix Style) -->
+  <!-- Custom E-Commerce CSS (DROU Minimal Style) -->
   <link rel="stylesheet" href="css/styles.css">
   
   <link rel="icon" type="image/png" href="./instagram/logo_transparent.png">
@@ -32,7 +32,7 @@
   </div>
 
   <!-- ==========================================================================
-       HEADER NAVIGATION
+       DROU HEADER NAVIGATION
        ========================================================================== -->
   <header class="header-nav">
     <div class="container header-container">
@@ -40,20 +40,25 @@
         <img src="./instagram/logo_transparent.png" alt="FCell Celulares Logo" class="logo-img">
       </a>
 
+      <!-- Search Input -->
+      <div style="flex-grow: 1; max-width: 440px; position: relative;">
+        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--color-text-muted);"></i>
+        <input type="text" id="search-input" style="width: 100%; padding: 0.65rem 1rem 0.65rem 2.8rem; border-radius: var(--radius-full); border: 1px solid var(--border-color); background: var(--bg-main); font-size: 0.9rem; outline: none;" placeholder="Buscar modelo (ex: iPhone 17, Starlink, JBL)...">
+      </div>
+
       <nav>
         <ul class="nav-links">
           <li><a href="#" class="nav-link active">Home</a></li>
-          <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
-          <li><a href="#categorias" class="nav-link">Categorias</a></li>
           <li><a href="#lancamentos" class="nav-link">Lançamentos</a></li>
-          <li><a href="#oferta" class="nav-link">Oferta do Dia</a></li>
+          <li><a href="#categorias" class="nav-link">Categorias</a></li>
+          <li><a href="#populares" class="nav-link">Populares</a></li>
+          <li><a href="#oferta" class="nav-link">Ofertas</a></li>
           <li><a href="#assistencia" class="nav-link">Assistência</a></li>
-          <li><a href="#unidades" class="nav-link">Lojas</a></li>
         </ul>
       </nav>
 
       <div style="display: flex; align-items: center; gap: 1rem;">
-        <a href="#" id="header-whatsapp-btn" target="_blank" class="btn-header-cta">
+        <a href="#" id="header-whatsapp-btn" target="_blank" class="btn-drou-cta">
           <i class="fa-brands fa-whatsapp"></i>
           <span>Comprar Direct</span>
         </a>
@@ -65,285 +70,237 @@
   </header>
 
   <!-- ==========================================================================
-       HERO SECTION WITH PARTSiX SEARCH SELECTOR BAR
+       DROU HERO SHOWCASE SECTION
        ========================================================================== -->
-  <section class="hero-partsix-section">
-    <div class="container hero-partsix-grid">
+  <section class="drou-hero-section">
+    <div class="container drou-hero-grid">
       <div>
-        <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(245, 61, 45, 0.1); color: var(--color-primary); font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; padding: 0.35rem 1rem; border-radius: var(--radius-full); margin-bottom: 1rem;">
-          <i class="fa-solid fa-fire"></i>
-          <span id="hero-badge-text">GARANTIA OFICIAL & PRONTA ENTREGA EM CUIABÁ</span>
+        <div class="drou-hero-subtitle-tag" id="hero-badge-text">
+          OFERTAS ESPECIAIS COM 1 ANO DE GARANTIA
         </div>
 
-        <h1 class="hero-partsix-title" id="hero-title">
-          Smartphones, Starlink e JBL com<br><span>A Maior Garantia de Cuiabá</span>
+        <h1 class="drou-hero-title" id="hero-title">
+          Apple Watch Series & iPhones
         </h1>
 
-        <p class="hero-partsix-subtitle" id="hero-subtitle">
-          Smartphones lacrados, produtos originais Apple, caixas de som JBL e suporte técnico especializado com entrega expressa no mesmo dia.
+        <p class="drou-hero-description" id="hero-subtitle">
+          Smartphones lacrados, produtos originais Apple, caixas de som JBL e suporte técnico especializado com entrega expressa no mesmo dia em Cuiabá.
         </p>
 
-        <!-- PartSix Search Filter Selector Bar -->
-        <div class="search-selector-bar">
-          <select id="hero-select-category" class="selector-select">
-            <option value="Todos">Todas as Categorias</option>
-            <option value="Smartphones">Smartphones (iPhones & Xiaomi)</option>
-            <option value="Starlink">Starlink Mini Kit</option>
-            <option value="JBL & Áudio">JBL & Fones Bluetooth</option>
-            <option value="Acessórios">Acessórios & Suportes</option>
-            <option value="Smartwatches">Apple Watch & Relógios</option>
-          </select>
+        <a href="#populares" class="btn-drou-cta" style="padding: 0.85rem 2.2rem; font-size: 1rem;">
+          <span>Comprar Agora</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
 
-          <input type="text" id="search-input" class="selector-select" style="flex-grow: 1.5;" placeholder="Buscar modelo (ex: iPhone 17, Starlink Mini, JBL Boombox)...">
-
-          <button onclick="executeHeroSearch()" class="btn-search-partsix">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <span>BUSCAR</span>
-          </button>
-        </div>
+      <div style="text-align: center;">
+        <img src="./products/iphone_17_promax.png" alt="Apple Showcase" class="drou-hero-img" id="hero-card-img">
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       SHOP BY CATEGORIES (PARTSiX STYLE)
+       TRENDING CATEGORIES (DROU STYLE)
        ========================================================================== -->
-  <section id="categorias" class="categories-partsix-section">
+  <section id="categorias" class="trending-categories-section">
     <div class="container">
-      <div class="partsix-section-title">
-        <span class="partsix-dot-tag"></span>
-        <span>SHOP BY CATEGORIES</span>
+      <div class="drou-section-header">
+        <h2 class="drou-section-title">Trending Categories</h2>
+        <a href="#populares" class="drou-view-all-link">Ver todas ↗</a>
       </div>
 
-      <div class="categories-partsix-grid" id="category-filters">
-        <div class="category-partsix-card active" data-category="Todos">
-          <div class="category-partsix-icon"><i class="fa-solid fa-border-all"></i></div>
+      <div class="trending-categories-grid" id="category-filters">
+        <div class="trending-category-card active" data-category="Todos">
+          <div class="trending-icon-stage"><i class="fa-solid fa-border-all"></i></div>
           <h4>Todos</h4>
-          <span>Ver catálogo</span>
         </div>
 
-        <div class="category-partsix-card" data-category="Smartphones">
-          <div class="category-partsix-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <div class="trending-category-card" data-category="Smartphones">
+          <div class="trending-icon-stage"><i class="fa-solid fa-mobile-screen-button"></i></div>
           <h4>Smartphones</h4>
-          <span>iPhones & Xiaomi</span>
         </div>
 
-        <div class="category-partsix-card" data-category="Starlink">
-          <div class="category-partsix-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+        <div class="trending-category-card" data-category="Starlink">
+          <div class="trending-icon-stage"><i class="fa-solid fa-satellite-dish"></i></div>
           <h4>Starlink Mini</h4>
-          <span>Kit Portátil</span>
         </div>
 
-        <div class="category-partsix-card" data-category="JBL & Áudio">
-          <div class="category-partsix-icon"><i class="fa-solid fa-volume-high"></i></div>
+        <div class="trending-category-card" data-category="JBL & Áudio">
+          <div class="trending-icon-stage"><i class="fa-solid fa-volume-high"></i></div>
           <h4>JBL & Áudio</h4>
-          <span>Caixas & Fones</span>
         </div>
 
-        <div class="category-partsix-card" data-category="Acessórios">
-          <div class="category-partsix-icon"><i class="fa-solid fa-plug"></i></div>
+        <div class="trending-category-card" data-category="Acessórios">
+          <div class="trending-icon-stage"><i class="fa-solid fa-plug"></i></div>
           <h4>Acessórios</h4>
-          <span>Suportes & Capas</span>
         </div>
 
-        <div class="category-partsix-card" data-category="Smartwatches">
-          <div class="category-partsix-icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <div class="trending-category-card" data-category="Smartwatches">
+          <div class="trending-icon-stage"><i class="fa-solid fa-stopwatch"></i></div>
           <h4>Smartwatches</h4>
-          <span>Apple Watch Series</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       POPULAR PRODUCTS CATALOG GRID (PARTSiX STYLE)
+       DROU DUAL BANNERS SECTION
        ========================================================================== -->
-  <section id="catalogo" class="catalog-partsix-section">
+  <section class="drou-dual-banners-section">
+    <div class="container drou-dual-banners-grid">
+      <!-- Banner 1 -->
+      <div class="drou-banner-card">
+        <div>
+          <span style="color: var(--color-primary); font-size: 0.78rem; font-weight: 800; text-transform: uppercase;">TECNOLOGIA AVANÇADA</span>
+          <h3>Starlink Mini Kit</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">Internet portátil via satélite para fazenda e viagens.</p>
+          <a href="#populares" class="btn-drou-cta" onclick="openProductModal('starlink-mini')">Comprar Direct ↗</a>
+        </div>
+        <img src="./products/starlink_mini.png" alt="Starlink Mini" style="max-height: 160px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
+      </div>
+
+      <!-- Banner 2 -->
+      <div class="drou-banner-card">
+        <div>
+          <span style="color: var(--color-primary); font-size: 0.78rem; font-weight: 800; text-transform: uppercase;">SOM DE VERDADE</span>
+          <h3>JBL Boombox 3</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">24h de bateria com graves insanos à prova d'água.</p>
+          <a href="#populares" class="btn-drou-cta" onclick="openProductModal('jbl-boombox-3')">Garantir Brinde ↗</a>
+        </div>
+        <img src="./products/jbl_boombox_3.png" alt="JBL Boombox 3" style="max-height: 160px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       LATEST PRODUCTS GRID (DROU STYLE)
+       ========================================================================== -->
+  <section id="lancamentos" class="drou-products-section">
     <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
-        <div class="partsix-section-title">
-          <span class="partsix-dot-tag"></span>
-          <span>POPULAR PRODUCTS</span>
+      <div class="drou-section-header">
+        <h2 class="drou-section-title">Latest Products</h2>
+        <a href="#populares" class="drou-view-all-link">Ver catálogo completo ↗</a>
+      </div>
+
+      <div class="drou-products-grid" id="latest-products-grid">
+        <!-- Rendered by js/script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       DROU COUNTDOWN BANNER ("Up to 25% Discount")
+       ========================================================================== -->
+  <section id="oferta" class="drou-countdown-banner-section">
+    <div class="container">
+      <div class="drou-countdown-card">
+        <div>
+          <span style="background: var(--color-primary); color: #fff; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); text-transform: uppercase;">Hurry Up!</span>
+          <h2 style="font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; margin: 1rem 0 0.5rem 0; line-height: 1.15;">
+            Ganhe 1 Copo Stanley de Brinde no PIX!
+          </h2>
+          <p style="color: var(--color-text-muted); font-size: 1rem; margin-bottom: 1rem;">
+            Na compra do seu <strong>iPhone 17 Pro Max 256GB</strong> à vista ou via PIX com entrega expressa no mesmo dia em Cuiabá.
+          </p>
+
+          <div class="timer-boxes-flex">
+            <div class="timer-box">
+              <div class="timer-box-num">02</div>
+              <div class="timer-box-lbl">Dias</div>
+            </div>
+            <div class="timer-box">
+              <div class="timer-box-num">14</div>
+              <div class="timer-box-lbl">Horas</div>
+            </div>
+            <div class="timer-box">
+              <div class="timer-box-num">35</div>
+              <div class="timer-box-lbl">Min</div>
+            </div>
+            <div class="timer-box">
+              <div class="timer-box-num">12</div>
+              <div class="timer-box-lbl">Seg</div>
+            </div>
+          </div>
+
+          <a href="#" id="deal-whatsapp-btn" target="_blank" class="btn-drou-cta" style="padding: 0.9rem 2rem; font-size: 1rem;">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Garantir Oferta com Brinde</span>
+          </a>
         </div>
 
+        <div style="text-align: center;">
+          <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max Promo" style="max-height: 320px; margin: 0 auto; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15));">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       POPULAR PRODUCTS GRID (DROU STYLE)
+       ========================================================================== -->
+  <section id="populares" class="drou-products-section" style="background: var(--bg-main);">
+    <div class="container">
+      <div class="drou-section-header">
+        <h2 class="drou-section-title">Popular Products</h2>
         <div style="display: flex; gap: 0.5rem;">
-          <button class="chip-btn active" onclick="setCategoryFilter('Todos')">TODOS</button>
-          <button class="chip-btn" onclick="setCategoryFilter('Smartphones')">SMARTPHONES</button>
-          <button class="chip-btn" onclick="setCategoryFilter('Starlink')">STARLINK</button>
+          <button class="chip-btn active" onclick="setCategoryFilter('Todos')">Todos</button>
+          <button class="chip-btn" onclick="setCategoryFilter('Smartphones')">iPhones</button>
+          <button class="chip-btn" onclick="setCategoryFilter('Starlink')">Starlink</button>
           <button class="chip-btn" onclick="setCategoryFilter('JBL & Áudio')">JBL</button>
         </div>
       </div>
 
-      <!-- 4-Column E-Commerce Grid (Rendered by js/script.js) -->
-      <div class="products-partsix-grid" id="products-grid">
+      <div class="drou-products-grid" id="products-grid">
         <!-- Rendered by js/script.js -->
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       DUAL BANNER STRIP (PARTSiX STYLE)
+       ASSISTÊNCIA TÉCNICA ESPECIALIZADA & LOJAS CUIABÁ
        ========================================================================== -->
-  <section class="dual-banner-section">
-    <div class="container dual-banner-grid">
-      <!-- Banner 1 -->
-      <div class="promo-banner-card coral-theme">
-        <div>
-          <span style="background: var(--color-primary); color: #fff; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); text-transform: uppercase;">IPHONE 17 PRO MAX</span>
-          <h3 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin: 0.75rem 0 0.5rem 0;">Ganhe 1 Copo Stanley de Brinde</h3>
-          <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1.25rem;">Nas compras realizadas via PIX ou à vista.</p>
-          <a href="#catalogo" class="btn-header-cta" onclick="openProductModal('iphone-17-pro-max')">Garantir com Brinde ↗</a>
-        </div>
-        <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max" style="max-height: 180px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">
-      </div>
-
-      <!-- Banner 2 -->
-      <div class="promo-banner-card">
-        <div>
-          <span style="background: oklch(0.66 0.18 250); color: #fff; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); text-transform: uppercase;">STARLINK MINI KIT</span>
-          <h3 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin: 0.75rem 0 0.5rem 0;">Internet Sem Limites em Cuiabá</h3>
-          <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1.25rem;">Conexão via satélite para fazenda e viagens.</p>
-          <a href="#catalogo" class="btn-header-cta" style="background: oklch(0.66 0.18 250);" onclick="openProductModal('starlink-mini')">Ver Detalhes ↗</a>
-        </div>
-        <img src="./products/starlink_mini.png" alt="Starlink Mini" style="max-height: 170px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       LATEST PRODUCTS SECTION (PARTSiX STYLE)
-       ========================================================================== -->
-  <section id="lancamentos" class="catalog-partsix-section" style="background: var(--bg-main);">
+  <section id="assistencia" style="padding: 4rem 0; background: #ffffff; border-t: 1px solid var(--border-color);">
     <div class="container">
-      <div class="partsix-section-title" style="margin-bottom: 1.5rem;">
-        <span class="partsix-dot-tag"></span>
-        <span>LATEST PRODUCTS</span>
+      <div class="drou-section-header" style="justify-content: center; text-align: center; flex-direction: column; margin-bottom: 2.5rem;">
+        <h2 class="drou-section-title"><i class="fa-solid fa-wrench text-primary"></i> Assistência Técnica em Cuiabá</h2>
+        <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-top: 0.4rem;">Manutenção para iPhones e Androids com componentes originais e garantia de laboratório.</p>
       </div>
 
-      <!-- 4-Column E-Commerce Grid (Rendered by js/script.js) -->
-      <div class="products-partsix-grid" id="latest-products-grid">
-        <!-- Rendered by js/script.js -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       DEAL OF THE DAY (PARTSiX STYLE)
-       ========================================================================== -->
-  <section id="oferta" class="deal-partsix-section">
-    <div class="container">
-      <div class="partsix-section-title" style="margin-bottom: 1.5rem;">
-        <span class="partsix-dot-tag"></span>
-        <span>DEAL OF THE DAY</span>
-      </div>
-
-      <div class="deal-partsix-box">
-        <!-- Main Image Stage -->
-        <div style="text-align: center;">
-          <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max Oferta" style="max-height: 280px; margin: 0 auto; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.15));">
-        </div>
-
-        <!-- Deal Content & Countdown -->
-        <div>
-          <span style="background: var(--color-primary); color: #fff; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm);">🔥 OFERTA EXCLUSIVA</span>
-          <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin: 0.75rem 0 0.5rem 0;">iPhone 17 Pro Max 256GB</h2>
-          
-          <div style="display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1rem;">
-            <span style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--color-primary);">R$ 9.890,00</span>
-            <span style="font-size: 0.9rem; color: var(--color-text-muted); text-decoration: line-through;">R$ 10.990,00</span>
-          </div>
-
-          <!-- Progress Bar -->
-          <div style="margin-bottom: 1.25rem;">
-            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem;">
-              <span>Disponibilidade de Estoque:</span>
-              <span class="text-primary">85% Vendido</span>
-            </div>
-            <div style="width: 100%; height: 8px; background: var(--bg-subtle); border-radius: var(--radius-full); overflow: hidden;">
-              <div style="width: 85%; height: 100%; background: var(--color-primary); border-radius: var(--radius-full);"></div>
-            </div>
-          </div>
-
-          <a href="#" id="deal-whatsapp-btn" target="_blank" class="btn-partsix-buy" style="padding: 0.85rem 1.5rem; font-size: 0.95rem;">
-            <i class="fa-brands fa-whatsapp"></i>
-            <span>Comprar Agora com Brinde</span>
-          </a>
-        </div>
-
-        <!-- Side Promo Banners -->
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <div style="background: var(--color-dark); color: #fff; padding: 1.25rem; border-radius: var(--radius-md); text-align: center;">
-            <span style="font-size: 0.75rem; color: var(--color-primary); font-weight: 800; text-transform: uppercase;">MEGA SALE</span>
-            <h4 style="font-size: 1.1rem; font-weight: 800;">10% OFF NO PIX</h4>
-            <p style="font-size: 0.8rem; color: #cbd5e1;">+ Brinde Copo Stanley</p>
-          </div>
-
-          <div style="background: oklch(0.66 0.18 250); color: #fff; padding: 1.25rem; border-radius: var(--radius-md); text-align: center;">
-            <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">ENTREGA RÁPIDA</span>
-            <h4 style="font-size: 1.1rem; font-weight: 800;">MESMO DIA</h4>
-            <p style="font-size: 0.8rem; color: #fff;">Entregamos em toda Cuiabá</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       ASSISTÊNCIA TÉCNICA ESPECIALIZADA
-       ========================================================================== -->
-  <section id="assistencia" style="padding: 3.5rem 0; background: var(--color-dark); color: #ffffff;">
-    <div class="container">
-      <div class="partsix-section-title" style="color: #fff; margin-bottom: 1.5rem;">
-        <span class="partsix-dot-tag"></span>
-        <span>ASSISTÊNCIA TÉCNICA EM CUIABÁ</span>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
-        <div style="background: #272d36; padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-dark); text-align: center;">
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3.5rem;">
+        <div style="background: var(--bg-main); padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
           <i class="fa-solid fa-mobile-screen-button" style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
           <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.5rem;">Troca de Tela</h3>
-          <p style="color: #94a3b8; font-size: 0.85rem;">Telas de nitidez original com garantia de laboratório.</p>
+          <p style="color: var(--color-text-muted); font-size: 0.85rem;">Telas de nitidez original trocadas no mesmo dia.</p>
         </div>
 
-        <div style="background: #272d36; padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-dark); text-align: center;">
+        <div style="background: var(--bg-main); padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
           <i class="fa-solid fa-battery-full" style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
           <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.5rem;">Bateria Saúde 100%</h3>
-          <p style="color: #94a3b8; font-size: 0.85rem;">Substituição de bateria com componentes novos.</p>
+          <p style="color: var(--color-text-muted); font-size: 0.85rem;">Substituição com peças novas e duráveis.</p>
         </div>
 
-        <div style="background: #272d36; padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-dark); text-align: center;">
+        <div style="background: var(--bg-main); padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
           <i class="fa-solid fa-microchip" style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
           <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.5rem;">Reparo de Placa</h3>
-          <p style="color: #94a3b8; font-size: 0.85rem;">Micro-solda avançada para aparelhos que não ligam.</p>
+          <p style="color: var(--color-text-muted); font-size: 0.85rem;">Micro-solda para placas com defeito de fábrica.</p>
         </div>
 
-        <div style="background: #272d36; padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-dark); text-align: center;">
+        <div style="background: var(--bg-main); padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
           <i class="fa-solid fa-droplet-slash" style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
           <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.5rem;">Desoxidação</h3>
-          <p style="color: #94a3b8; font-size: 0.85rem;">Recuperação química de aparelhos molhados.</p>
+          <p style="color: var(--color-text-muted); font-size: 0.85rem;">Recuperação química para aparelhos molhados.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ==========================================================================
-       LOJAS & UNIDADES EM CUIABÁ
-       ========================================================================== -->
-  <section id="unidades" style="padding: 3.5rem 0;">
-    <div class="container">
-      <div class="partsix-section-title" style="margin-bottom: 1.5rem;">
-        <span class="partsix-dot-tag"></span>
-        <span>UNIDADES FCELL EM CUIABÁ</span>
-      </div>
-
+      <!-- Locations -->
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-        <div style="background: #ffffff; padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+        <div style="background: var(--bg-main); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
           <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-store text-primary"></i> Pantanal Shopping</h3>
           <p style="color: var(--color-text-muted); font-size: 0.9rem;">Av. Historiador Rubens de Mendonça, 3300 - Bosque da Saúde, Cuiabá - MT</p>
           <p style="font-size: 0.85rem; font-weight: 700; margin-top: 0.75rem;"><i class="fa-solid fa-clock"></i> Seg a Sáb: 10h às 22h | Dom: 14h às 20h</p>
         </div>
 
-        <div style="background: #ffffff; padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+        <div style="background: var(--bg-main); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
           <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-store text-primary"></i> Shopping Estação</h3>
           <p style="color: var(--color-text-muted); font-size: 0.9rem;">Av. Miguel Sutil, 9300 - Duque de Caxias, Cuiabá - MT</p>
           <p style="font-size: 0.85rem; font-weight: 700; margin-top: 0.75rem;"><i class="fa-solid fa-clock"></i> Seg a Sáb: 10h às 22h | Dom: 14h às 20h</p>
@@ -353,36 +310,36 @@
   </section>
 
   <!-- ==========================================================================
-       TRUST FEATURES STRIP (PARTSiX STYLE)
+       TRUST FEATURES STRIP (DROU STYLE)
        ========================================================================== -->
-  <section class="features-partsix-strip">
-    <div class="container features-partsix-grid">
-      <div class="feature-partsix-item">
-        <i class="fa-solid fa-truck-fast feature-partsix-icon"></i>
+  <section class="drou-features-strip">
+    <div class="container drou-features-grid">
+      <div class="drou-feature-item">
+        <i class="fa-solid fa-truck-fast drou-feature-icon"></i>
         <div>
           <h5 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;">Entrega no Mesmo Dia</h5>
           <p style="font-size: 0.8rem; color: var(--color-text-muted);">Entrega rápida em Cuiabá</p>
         </div>
       </div>
 
-      <div class="feature-partsix-item">
-        <i class="fa-solid fa-shield-halved feature-partsix-icon"></i>
+      <div class="drou-feature-item">
+        <i class="fa-solid fa-shield-halved drou-feature-icon"></i>
         <div>
           <h5 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;">Garantia de 1 Ano</h5>
           <p style="font-size: 0.8rem; color: var(--color-text-muted);">Produtos 100% originais</p>
         </div>
       </div>
 
-      <div class="feature-partsix-item">
-        <i class="fa-solid fa-gift feature-partsix-icon"></i>
+      <div class="drou-feature-item">
+        <i class="fa-solid fa-gift drou-feature-icon"></i>
         <div>
           <h5 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;">Copo Stanley de Brinde</h5>
           <p style="font-size: 0.8rem; color: var(--color-text-muted);">Em compras no PIX</p>
         </div>
       </div>
 
-      <div class="feature-partsix-item">
-        <i class="fa-solid fa-credit-card feature-partsix-icon"></i>
+      <div class="drou-feature-item">
+        <i class="fa-solid fa-credit-card drou-feature-icon"></i>
         <div>
           <h5 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;">Até 12x no Cartão</h5>
           <p style="font-size: 0.8rem; color: var(--color-text-muted);">Condições facilitadas</p>
@@ -406,47 +363,47 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- ==========================================================================
-       FOOTER (PARTSiX STYLE)
+       FOOTER (DROU STYLE)
        ========================================================================== -->
-  <footer class="footer-partsix">
+  <footer class="footer-drou">
     <div class="container">
-      <div class="footer-partsix-grid">
+      <div class="footer-drou-grid">
         <div>
           <img src="./instagram/logo_transparent.png" alt="FCell Celulares" style="height: 44px; margin-bottom: 1rem;">
-          <p style="font-size: 0.9rem; color: #94a3b8;">Sua loja de smartphones, produtos Apple, JBL, Starlink e assistência técnica autorizada em Cuiabá.</p>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted);">Sua loja de smartphones, produtos Apple, JBL, Starlink e assistência técnica autorizada em Cuiabá.</p>
         </div>
 
-        <div class="footer-partsix-col">
+        <div class="footer-drou-col">
           <h4>Navegação</h4>
-          <ul class="footer-partsix-links">
-            <li><a href="#catalogo">Catálogo</a></li>
+          <ul class="footer-drou-links">
+            <li><a href="#lancamentos">Lançamentos</a></li>
             <li><a href="#categorias">Categorias</a></li>
-            <li><a href="#oferta">Oferta do Dia</a></li>
+            <li><a href="#populares">Populares</a></li>
             <li><a href="#assistencia">Assistência Técnica</a></li>
           </ul>
         </div>
 
-        <div class="footer-partsix-col">
+        <div class="footer-drou-col">
           <h4>Categorias</h4>
-          <ul class="footer-partsix-links">
-            <li><a href="#catalogo" onclick="setCategoryFilter('Smartphones')">iPhones & Androids</a></li>
-            <li><a href="#catalogo" onclick="setCategoryFilter('Starlink')">Starlink Mini</a></li>
-            <li><a href="#catalogo" onclick="setCategoryFilter('JBL & Áudio')">JBL & Áudio</a></li>
-            <li><a href="#catalogo" onclick="setCategoryFilter('Smartwatches')">Apple Watch</a></li>
+          <ul class="footer-drou-links">
+            <li><a href="#populares" onclick="setCategoryFilter('Smartphones')">iPhones & Androids</a></li>
+            <li><a href="#populares" onclick="setCategoryFilter('Starlink')">Starlink Mini</a></li>
+            <li><a href="#populares" onclick="setCategoryFilter('JBL & Áudio')">JBL & Áudio</a></li>
+            <li><a href="#populares" onclick="setCategoryFilter('Smartwatches')">Apple Watch</a></li>
           </ul>
         </div>
 
-        <div class="footer-partsix-col">
+        <div class="footer-drou-col">
           <h4>Painel Admin</h4>
-          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 1rem;">Gerenciamento de estoque e preços.</p>
-          <a href="admin.html" class="btn-header-cta" style="background: oklch(0.20 0.02 250); color: #fff;">
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1rem;">Gerenciamento de estoque e preços.</p>
+          <a href="admin.html" class="btn-drou-cta" style="background: var(--color-dark); color: #fff;">
             <i class="fa-solid fa-lock"></i>
             <span>Acessar Painel</span>
           </a>
         </div>
       </div>
 
-      <div class="footer-partsix-bottom">
+      <div class="footer-drou-bottom">
         <p>&copy; 2026 FCell Celulares. Todos os direitos reservados. Cuiabá - MT.</p>
         <p>Desenvolvido para máxima conversão de vendas.</p>
       </div>
