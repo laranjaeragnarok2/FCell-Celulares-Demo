@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FCell Celulares | Loja Oficial de Smartphones, Acessórios e Assistência em Cuiabá</title>
-  <meta name="description" content="Compre iPhones, Xiaomi, JBL, Starlink e acessórios com garantia oficial e os melhores preços de Cuiabá. Assistência técnica especializada com entrega no mesmo dia.">
+  <meta name="description" content="Compre iPhones, Xiaomi, JBL, Starlink e acessórios com garantia oficial e os melhores preços de Cuiabá. Assistência técnica especializada com entrega rápida.">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,7 +21,7 @@
        ========================================================================== -->
   <div class="top-bar">
     <div class="container top-bar-flex">
-      <div class="top-bar-info">
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
         <span><i class="fa-solid fa-location-dot text-primary"></i> Lojas no Pantanal Shopping & Shopping Estação Cuiabá</span>
         <span><i class="fa-solid fa-truck-fast text-primary"></i> Entrega Expressa no Mesmo Dia</span>
       </div>
@@ -32,7 +32,7 @@
   </div>
 
   <!-- ==========================================================================
-       HEADER NAVIGATION
+       HEADER NAV
        ========================================================================== -->
   <header class="header-nav">
     <div class="container header-container">
@@ -43,10 +43,10 @@
       <nav>
         <ul class="nav-links">
           <li><a href="#catalogo" class="nav-link active">Catálogo</a></li>
-          <li><a href="#categorias" class="nav-link">Categorias</a></li>
-          <li><a href="#ofertas" class="nav-link">Oferta do Dia</a></li>
+          <li><a href="#series" class="nav-link">Series</a></li>
           <li><a href="#assistencia" class="nav-link">Assistência Técnica</a></li>
-          <li><a href="#unidades" class="nav-link">Unidades Cuiabá</a></li>
+          <li><a href="#gallery" class="nav-link">Galeria</a></li>
+          <li><a href="#unidades" class="nav-link">Lojas</a></li>
         </ul>
       </nav>
 
@@ -55,133 +55,176 @@
           <i class="fa-brands fa-whatsapp"></i>
           <span>Comprar no WhatsApp</span>
         </a>
-        <a href="admin.html" class="btn-admin-link" title="Painel de Administração">
-          <i class="fa-solid fa-user-gear"></i>
+        <a href="admin.html" class="btn-admin-icon" title="Painel Admin">
+          <i class="fa-solid fa-gear"></i>
         </a>
       </div>
     </div>
   </header>
 
   <!-- ==========================================================================
-       HERO CLEAN SECTION WITH SEARCH & SELECTOR
+       HERO SECTION WITH FEATURED IPHONE 17 PRO MAX
        ========================================================================== -->
-  <section class="hero-clean-section">
-    <div class="container hero-clean-grid">
-      <div>
-        <div class="hero-badge-tag">
-          <i class="fa-solid fa-bolt"></i>
-          <span id="hero-badge-text">GARANTIA OFICIAL & PRONTA ENTREGA</span>
-        </div>
-
-        <h1 class="hero-clean-title" id="hero-title">
-          Smartphones, Acessórios e Suporte de <span class="text-primary">Alta Performance</span>
-        </h1>
-
-        <p class="hero-clean-subtitle" id="hero-subtitle">
-          Encontre os melhores modelos de iPhones, Starlink Mini, Caixas JBL e Smartwatches com suporte especializado e entrega rápida em Cuiabá.
-        </p>
-
-        <!-- Search Selector Bar (PartSix Ref) -->
-        <div class="hero-search-selector">
-          <i class="fa-solid fa-magnifying-glass" style="margin-left: 0.5rem; color: var(--color-text-muted); align-self: center;"></i>
-          <input type="text" id="search-input" class="hero-search-input" placeholder="Buscar por produto ou modelo (ex: iPhone, Starlink, JBL)...">
-          <button class="btn-header-cta" style="border-radius: var(--radius-sm);">Buscar</button>
-        </div>
-      </div>
-
-      <div style="position: relative; text-align: center;">
-        <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max" id="hero-card-img" style="max-height: 380px; margin: 0 auto; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.12));">
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       SHOP BY CATEGORIES (COMPRE POR CATEGORIA)
-       ========================================================================== -->
-  <section id="categorias" class="categories-clean-section">
+  <section class="hero-editorial">
     <div class="container">
-      <h2 class="section-clean-title"><i class="fa-solid fa-grid-2 text-primary"></i> Compre por Categoria</h2>
+      <h1 class="hero-main-title" id="hero-title">
+        FCELL PRO <span class="text-primary">E-3</span>
+      </h1>
 
-      <div class="categories-grid" id="category-filters">
-        <div class="category-card-clean active" data-category="Todos">
-          <div class="category-icon-box"><i class="fa-solid fa-layer-group"></i></div>
-          <h4>Todos</h4>
+      <div class="hero-bento-grid">
+        <!-- Left Hero Stage Card -->
+        <div class="hero-stage-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; z-index: 2;">
+            <div class="hero-badge-pill">
+              <i class="fa-solid fa-fire"></i>
+              <span id="hero-badge-text">LOJA OFICIAL CUIABÁ</span>
+            </div>
+          </div>
+
+          <div class="hero-copy-block">
+            <h2 id="hero-card-title">iPhone 17 Pro Max</h2>
+            <p id="hero-subtitle">Desempenho implacável com acabamento em Titânio, chip A19 Pro e câmeras profissionais. Ganhe 1 Copo Stanley de brinde no PIX!</p>
+            
+            <div style="font-family: var(--font-body); font-size: 1.8rem; font-weight: 800; color: var(--color-primary); margin-bottom: 1rem;">R$ 9.890,00</div>
+            
+            <a href="#catalogo" class="btn-header-cta" onclick="openProductModal('iphone-17-pro-max')">
+              <span>Garantir com Brinde</span>
+              <i class="fa-solid fa-gift"></i>
+            </a>
+          </div>
+
+          <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="hero-prod-floating" id="hero-card-img">
         </div>
 
-        <div class="category-card-clean" data-category="Smartphones">
-          <div class="category-icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
-          <h4>Smartphones</h4>
-        </div>
+        <!-- Right Series Selection Card -->
+        <div class="hero-series-card" id="series">
+          <div>
+            <span style="font-family: var(--font-heading); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: oklch(0.78 0.015 250);">Categorias FCell</span>
+            <h3 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 900; margin-top: 0.4rem; text-transform: uppercase;">SELEÇÕES EXCLUSIVAS</h3>
+          </div>
 
-        <div class="category-card-clean" data-category="Starlink">
-          <div class="category-icon-box"><i class="fa-solid fa-satellite-dish"></i></div>
-          <h4>Starlink Mini</h4>
-        </div>
+          <div class="series-pills-list">
+            <div class="series-pill-item active" onclick="setCategoryFilter('Smartphones')">
+              <span>SMARTPHONES APPLE & ANDROID</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+            <div class="series-pill-item" onclick="setCategoryFilter('Starlink')">
+              <span>STARLINK MINI KIT PORTÁTIL</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+            <div class="series-pill-item" onclick="setCategoryFilter('JBL & Áudio')">
+              <span>JBL BOOMBOX & AIRPODS</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+            <div class="series-pill-item" onclick="setCategoryFilter('Smartwatches')">
+              <span>APPLE WATCH TITANIUM</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
 
-        <div class="category-card-clean" data-category="JBL & Áudio">
-          <div class="category-icon-box"><i class="fa-solid fa-volume-high"></i></div>
-          <h4>JBL & Áudio</h4>
-        </div>
-
-        <div class="category-card-clean" data-category="Acessórios">
-          <div class="category-icon-box"><i class="fa-solid fa-plug"></i></div>
-          <h4>Acessórios</h4>
-        </div>
-
-        <div class="category-card-clean" data-category="Smartwatches">
-          <div class="category-icon-box"><i class="fa-solid fa-stopwatch"></i></div>
-          <h4>Smartwatches</h4>
+          <div style="font-size: 0.8rem; color: oklch(0.75 0.015 250); border-top: 1px solid var(--border-dark); padding-top: 1rem; display: flex; justify-content: space-between;">
+            <span>GARANTIA 1 ANO</span>
+            <span>ENTREGA EXPRESSA CUIABÁ</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       PRODUCT CATALOG GRID (4-COLUMN CLEAN E-COMMERCE GRID)
+       EDITORIAL BENTO TRIO ("LUXURY MEETS PRECISION") WITH CLEAN PNG IMAGES
+       ========================================================================== -->
+  <section class="editorial-bento-section">
+    <div class="container">
+      <div class="editorial-header-row">
+        <div>
+          <span style="font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted);">Destaques de Alta Performance</span>
+          <h2 class="editorial-title">LUXURY MEETS <span class="text-primary">PRECISION</span></h2>
+        </div>
+        <a href="#catalogo" class="btn-header-cta" style="background: var(--bg-dark);">
+          <span>Ver Coleção Completa</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="bento-trio-grid">
+        <!-- Bento Item 1: Starlink Mini (Clean PNG) -->
+        <div class="bento-card dark-theme">
+          <div class="bento-card-header">
+            <span class="bento-card-title">STARLINK MINI</span>
+            <button onclick="openProductModal('starlink-mini')" style="color: #fff;"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          </div>
+          <div class="bento-card-img-stage">
+            <img src="./products/starlink_mini.png" alt="Starlink Mini Kit" class="bento-card-img">
+          </div>
+          <div>
+            <p style="font-size: 0.85rem; color: oklch(0.75 0.015 250); margin-bottom: 0.5rem;">Internet via satélite portátil para fazenda e praia.</p>
+            <div class="bento-card-price" style="color: var(--color-secondary);">R$ 2.890,00</div>
+          </div>
+        </div>
+
+        <!-- Bento Item 2: JBL Boombox 3 (Clean PNG) -->
+        <div class="bento-card bento-card-coral">
+          <div class="bento-card-header">
+            <span class="bento-card-title" style="color: #fff;">JBL BOOMBOX 3</span>
+            <button onclick="openProductModal('jbl-boombox-3')" style="color: #fff;"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          </div>
+          <div class="bento-card-img-stage" style="background: rgba(255,255,255,0.15);">
+            <img src="./products/jbl_boombox_3.png" alt="JBL Boombox 3" class="bento-card-img">
+          </div>
+          <div>
+            <p style="font-size: 0.85rem; margin-bottom: 0.5rem; color: #ffffff;">24h de bateria com graves profundos à prova d'água.</p>
+            <div class="bento-card-price">R$ 2.490,00</div>
+          </div>
+        </div>
+
+        <!-- Bento Item 3: Apple Watch Ultra 2 (Clean PNG) -->
+        <div class="bento-card">
+          <div class="bento-card-header">
+            <span class="bento-card-title">WATCH ULTRA 2</span>
+            <button onclick="openProductModal('apple-watch-ultra-2')"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          </div>
+          <div class="bento-card-img-stage">
+            <img src="./products/apple_watch_ultra.png" alt="Apple Watch Ultra 2" class="bento-card-img">
+          </div>
+          <div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.5rem;">Caixa em Titânio de 49mm com GPS de dupla frequência.</p>
+            <div class="bento-card-price">R$ 5.890,00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CATALOG SECTION (4-COLUMN CLEAN PRODUCT GRID)
        ========================================================================== -->
   <section id="catalogo" class="catalog-clean-section">
     <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem;">
+      <div class="editorial-header-row">
         <div>
-          <h2 class="section-clean-title" style="margin-bottom: 0.3rem;"><i class="fa-solid fa-fire text-primary"></i> Catálogo de Produtos</h2>
-          <p style="color: var(--color-text-muted); font-size: 0.95rem;">Confira nossas ofertas atualizadas à pronta entrega em Cuiabá.</p>
+          <span style="font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted);">Nosso Estoque Atualizado</span>
+          <h2 class="editorial-title">CATÁLOGO DE <span class="text-primary">PRODUTOS</span></h2>
         </div>
+      </div>
+
+      <div class="filter-chips-row" id="category-filters">
+        <button class="chip-btn active" data-category="Todos">TODOS OS PRODUTOS</button>
+        <button class="chip-btn" data-category="Smartphones">SMARTPHONES</button>
+        <button class="chip-btn" data-category="Starlink">STARLINK</button>
+        <button class="chip-btn" data-category="JBL & Áudio">JBL & ÁUDIO</button>
+        <button class="chip-btn" data-category="Acessórios">ACESSÓRIOS</button>
+        <button class="chip-btn" data-category="Smartwatches">SMARTWATCHES</button>
+      </div>
+
+      <div class="search-editorial-bar">
+        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); color: var(--color-text-muted);"></i>
+        <input type="text" id="search-input" class="search-editorial-input" placeholder="Buscar modelo (ex: iPhone, Starlink, JBL)...">
       </div>
 
       <!-- 4-Column Clean E-Commerce Grid (Rendered by js/script.js) -->
-      <div class="products-clean-grid" id="products-grid">
+      <div class="products-bento-grid" id="products-grid">
         <!-- Rendered by js/script.js -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       DEAL OF THE DAY BANNER (OFERTA DO DIA)
-       ========================================================================== -->
-  <section id="ofertas" class="deal-clean-section">
-    <div class="container">
-      <div class="deal-card-banner">
-        <div>
-          <span style="background: var(--color-primary); color: #fff; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; padding: 0.3rem 0.8rem; border-radius: var(--radius-sm); text-transform: uppercase;">🔥 Oferta Especial FCell</span>
-          <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin: 1rem 0 0.5rem 0;">iPhone 17 Pro Max 256GB</h2>
-          <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-            Acabamento em Titânio, chip A19 Pro e sistema avançado de câmeras. <strong>Ganhe 1 Copo Stanley exclusivo de brinde no pagamento à vista ou PIX!</strong>
-          </p>
-
-          <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem;">
-            <span style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--color-primary);">R$ 9.890,00</span>
-            <span style="font-size: 0.9rem; color: var(--color-text-muted);">ou 12x de R$ 915,00 no cartão</span>
-          </div>
-
-          <a href="#" id="deal-whatsapp-btn" target="_blank" class="btn-header-cta" style="padding: 0.85rem 2rem; font-size: 1rem;">
-            <i class="fa-brands fa-whatsapp"></i>
-            <span>Garantir Oferta com Brinde</span>
-          </a>
-        </div>
-
-        <div style="text-align: center;">
-          <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max Oferta" style="max-height: 320px; margin: 0 auto; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));">
-        </div>
       </div>
     </div>
   </section>
@@ -192,98 +235,73 @@
   <section id="assistencia" class="support-clean-section">
     <div class="container">
       <div style="text-align: center; max-width: 700px; margin: 0 auto 2.5rem auto;">
-        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem;"><i class="fa-solid fa-wrench text-primary"></i> Assistência Técnica em Cuiabá</h2>
-        <p style="color: oklch(0.75 0.015 250); font-size: 0.95rem;">Seu celular quebrou? Consertamos com peças de altíssima qualidade, agilidade e garantia de laboratório.</p>
+        <h2 style="font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem;"><i class="fa-solid fa-wrench text-primary"></i> Assistência Técnica Especializada</h2>
+        <p style="color: oklch(0.75 0.015 250); font-size: 0.95rem;">Seu celular quebrou? Consertamos com peças originais, rapidez e garantia total.</p>
       </div>
 
-      <div class="support-clean-grid">
-        <div class="support-clean-card">
-          <i class="fa-solid fa-mobile-screen-button" style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
-          <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.5rem;">Troca de Tela & Display</h3>
-          <p style="color: oklch(0.75 0.015 250); font-size: 0.85rem;">Telas de nitidez original com garantia total e troca ágil.</p>
+      <div class="bento-trio-grid">
+        <div style="background: oklch(0.20 0.02 250); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-dark); text-align: center;">
+          <i class="fa-solid fa-mobile-screen-button" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+          <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Troca de Tela & Display</h3>
+          <p style="color: oklch(0.75 0.015 250); font-size: 0.85rem;">Telas de nitidez original com garantia estendida de laboratório.</p>
         </div>
 
-        <div class="support-clean-card">
-          <i class="fa-solid fa-battery-full" style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
-          <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.5rem;">Bateria Saúde 100%</h3>
+        <div style="background: oklch(0.20 0.02 250); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-dark); text-align: center;">
+          <i class="fa-solid fa-battery-full" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+          <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Bateria Saúde 100%</h3>
           <p style="color: oklch(0.75 0.015 250); font-size: 0.85rem;">Substituição de bateria por componentes novos e certificados.</p>
         </div>
 
-        <div class="support-clean-card">
-          <i class="fa-solid fa-microchip" style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
-          <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.5rem;">Reparo de Placa-Mãe</h3>
+        <div style="background: oklch(0.20 0.02 250); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-dark); text-align: center;">
+          <i class="fa-solid fa-microchip" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+          <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Reparo de Placa-Mãe</h3>
           <p style="color: oklch(0.75 0.015 250); font-size: 0.85rem;">Micro-solda avançada em placa de iPhones e Androids.</p>
-        </div>
-
-        <div class="support-clean-card">
-          <i class="fa-solid fa-droplet-slash" style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
-          <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.5rem;">Desoxidação</h3>
-          <p style="color: oklch(0.75 0.015 250); font-size: 0.85rem;">Limpeza e recuperação de aparelhos com contato com água.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       UNIDADES & LOCALIZAÇÃO EM CUIABÁ
+       OUR GALLERY / INSTAGRAM FEED
        ========================================================================== -->
-  <section id="unidades" style="padding: 4rem 0; background: #ffffff; border-t: 1px solid var(--border-light);">
+  <section id="gallery" class="gallery-editorial-section">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 2.5rem;">
-        <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;"><i class="fa-solid fa-store text-primary"></i> Nossas Lojas em Cuiabá</h2>
-        <p style="color: var(--color-text-muted); font-size: 0.95rem;">Venha nos visitar em nossas unidades nos principais shoppings da capital.</p>
+      <div class="editorial-header-row">
+        <div>
+          <span style="font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted);">Siga no Instagram @fcellcelularesoficial</span>
+          <h2 class="editorial-title">OUR <span class="text-primary">GALLERY</span></h2>
+        </div>
+      </div>
+
+      <div class="gallery-grid" id="insta-grid">
+        <!-- Rendered by js/script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       UNIDADES EM CUIABÁ
+       ========================================================================== -->
+  <section id="unidades" style="padding: 4rem 0; background: var(--bg-main); border-t: 1px solid var(--border-light);">
+    <div class="container">
+      <div class="editorial-header-row">
+        <div>
+          <span style="font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted);">Atendimento Presencial</span>
+          <h2 class="editorial-title">UNIDADES <span class="text-primary">CUIABÁ</span></h2>
+        </div>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-        <div style="background: var(--bg-main); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-          <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-location-dot text-primary"></i> Unidade Pantanal Shopping</h3>
+        <div style="background: #fff; padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light);">
+          <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-store text-primary"></i> Pantanal Shopping</h3>
           <p style="color: var(--color-text-muted); font-size: 0.9rem;">Av. Historiador Rubens de Mendonça, 3300 - Bosque da Saúde, Cuiabá - MT</p>
           <p style="font-size: 0.85rem; font-weight: 700; margin-top: 0.75rem;"><i class="fa-solid fa-clock"></i> Seg a Sáb: 10h às 22h | Dom: 14h às 20h</p>
         </div>
 
-        <div style="background: var(--bg-main); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-          <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-location-dot text-primary"></i> Unidade Shopping Estação</h3>
+        <div style="background: #fff; padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light);">
+          <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-store text-primary"></i> Shopping Estação</h3>
           <p style="color: var(--color-text-muted); font-size: 0.9rem;">Av. Miguel Sutil, 9300 - Duque de Caxias, Cuiabá - MT</p>
           <p style="font-size: 0.85rem; font-weight: 700; margin-top: 0.75rem;"><i class="fa-solid fa-clock"></i> Seg a Sáb: 10h às 22h | Dom: 14h às 20h</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       TRUST BADGES STRIP (PARTSiX STYLE)
-       ========================================================================== -->
-  <section class="features-clean-strip">
-    <div class="container features-grid">
-      <div class="feature-item">
-        <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
-        <div class="feature-text">
-          <h5>Entrega Expressa</h5>
-          <p>No mesmo dia em Cuiabá</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <div class="feature-text">
-          <h5>Garantia de 1 Ano</h5>
-          <p>Produtos 100% originais</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon"><i class="fa-solid fa-gift"></i></div>
-        <div class="feature-text">
-          <h5>Copo Stanley de Brinde</h5>
-          <p>Em compras no PIX</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon"><i class="fa-solid fa-credit-card"></i></div>
-        <div class="feature-text">
-          <h5>Parcelamento em 12x</h5>
-          <p>Condições facilitadas no cartão</p>
         </div>
       </div>
     </div>
@@ -306,47 +324,19 @@
   <!-- ==========================================================================
        FOOTER
        ========================================================================== -->
-  <footer class="footer-clean">
+  <footer class="footer-editorial">
     <div class="container">
-      <div class="footer-grid">
-        <div>
-          <img src="./instagram/logo_transparent.png" alt="FCell Celulares" style="height: 45px; margin-bottom: 1rem;">
-          <p style="font-size: 0.9rem; color: oklch(0.75 0.015 250);">Sua loja completa de smartphones, produtos Apple, caixas JBL, internet Starlink e assistência técnica em Cuiabá.</p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Navegação</h4>
-          <ul class="footer-links">
-            <li><a href="#catalogo">Catálogo</a></li>
-            <li><a href="#categorias">Categorias</a></li>
-            <li><a href="#ofertas">Oferta do Dia</a></li>
-            <li><a href="#assistencia">Assistência Técnica</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Categorias</h4>
-          <ul class="footer-links">
-            <li><a href="#catalogo" onclick="setCategoryFilter('Smartphones')">iPhones & Androids</a></li>
-            <li><a href="#catalogo" onclick="setCategoryFilter('Starlink')">Starlink Mini</a></li>
-            <li><a href="#catalogo" onclick="setCategoryFilter('JBL & Áudio')">JBL & Áudio</a></li>
-            <li><a href="#catalogo" onclick="setCategoryFilter('Smartwatches')">Apple Watch</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Painel Admin</h4>
-          <p style="font-size: 0.85rem; color: oklch(0.75 0.015 250); margin-bottom: 1rem;">Gerenciamento de estoque e preços.</p>
-          <a href="admin.html" class="btn-admin-link" style="color: #fff; border-color: var(--border-dark);">
-            <i class="fa-solid fa-lock"></i>
-            <span>Acessar Painel</span>
-          </a>
-        </div>
+      <div class="footer-big-text">
+        THANK YOU FOR <br>
+        <span class="text-primary">CHOOSING FCELL.</span>
       </div>
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 FCell Celulares. Todos os direitos reservados. Cuiabá - MT.</p>
-        <p>Desenvolvido com tecnologia de alta performance.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-dark); padding-top: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <p style="color: oklch(0.75 0.015 250); font-size: 0.85rem;">&copy; 2026 FCell Celulares. Todos os direitos reservados. Cuiabá - MT.</p>
+        <a href="admin.html" class="btn-header-cta" style="background: oklch(0.20 0.02 250); color: #fff;">
+          <i class="fa-solid fa-lock"></i>
+          <span>Painel Admin</span>
+        </a>
       </div>
     </div>
   </footer>
