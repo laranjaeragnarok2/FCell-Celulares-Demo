@@ -1,6 +1,6 @@
 # 📱 FCell Celulares — Site Oficial & Painel de Gerenciamento
 
-> **Plataforma completa de E-Commerce e Dashboard Administrativo de alta conversão** para lojas de smartphones, acessórios premium e assistência técnica em Cuiabá/MT. Pronta para **deploy instantâneo na Vercel**.
+> **Plataforma completa de E-Commerce e Dashboard Administrativo de alta conversão** para a FCell Celulares em Santa Helena de Goiás - GO (18 Anos de Tradição). Pronta para **deploy instantâneo na Vercel**.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 ![License](https://img.shields.io/badge/license-MIT-orange.svg)
