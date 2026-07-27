@@ -3,356 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preview Visual FCell Celulares - Estilo WATCH PRO E-3</title>
+  <title>Preview do E-Commerce Tradicional FCell Celulares</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Syne:wght@800;900&family=Inter:wght@400;500;600;700&display=swap');
-
-    :root {
-      /* OKLCH Color Tokens */
-      --oklch-coral: oklch(0.62 0.23 28);      /* #F5432A (Vibrant Orange Red) */
-      --oklch-blue: oklch(0.66 0.18 250);      /* #4795F5 */
-      --oklch-cyan: oklch(0.78 0.14 210);      /* #47CCF5 */
-      --oklch-rose: oklch(0.55 0.14 15);       /* #BF5669 */
-      --oklch-whatsapp: oklch(0.65 0.20 142);   /* #25D366 */
-
-      /* Tinted Backgrounds & Neutrals */
-      --bg-editorial: oklch(0.96 0.005 250);   /* Soft Off-White */
-      --bg-card: #ffffff;
-      --bg-dark: oklch(0.14 0.025 250);       /* Solid Dark Ink */
-      
-      --border-subtle: oklch(0.90 0.015 250);
-      --border-dark: oklch(0.24 0.02 250);
-
-      --color-text-dark: oklch(0.14 0.025 250);
-      --color-text-muted: oklch(0.48 0.02 250);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background-color: var(--bg-editorial);
-      color: var(--color-text-dark);
-      font-family: 'Inter', sans-serif;
-      padding: 2.5rem;
-      line-height: 1.4;
-    }
-
-    header {
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto 3rem auto;
-    }
-
-    h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: 3.2rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.04em;
-      line-height: 0.95;
-    }
-
-    .tagline-hero {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--oklch-coral);
-      margin-top: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Color Swatches Bar */
-    .color-swatches-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-      max-width: 1100px;
-      margin: 0 auto 3.5rem auto;
-    }
-
-    .swatch-item {
-      border-radius: 16px;
-      padding: 1.25rem;
-      color: #fff;
-      text-align: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-
-    /* 3 Direction Cards Grid */
-    .preview-directions-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 1380px;
-      margin: 0 auto;
-    }
-
-    .preview-card {
-      border-radius: 28px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-    }
-
-    .badge-recommended {
-      position: absolute;
-      top: -14px;
-      right: 1.5rem;
-      background: var(--oklch-coral);
-      color: #fff;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      padding: 0.4rem 1.2rem;
-      border-radius: 999px;
-      box-shadow: 0 6px 16px rgba(245, 67, 42, 0.35);
-    }
-
-    /* Direction Headers */
-    .dir-heading {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.4rem;
-    }
-
-    .dir-subheading {
-      font-size: 0.85rem;
-      color: var(--color-text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    /* Watch Pro Mockup Box inside preview */
-    .watchpro-mockup-box {
-      border-radius: 20px;
-      padding: 1.75rem;
-      margin-bottom: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .mockup-1 { background: var(--bg-editorial); border: 1px solid var(--border-subtle); }
-    .mockup-2 { background: var(--oklch-coral); color: #fff; }
-    .mockup-3 { background: var(--bg-dark); color: #fff; }
-
-    .mockup-title-giant {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 900;
-      line-height: 0.9;
-      text-transform: uppercase;
-      letter-spacing: -0.04em;
-    }
-
-    .mockup-img {
-      height: 170px;
-      object-fit: contain;
-      margin: 0.5rem auto;
-    }
-
-    .pill-series-demo {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.6rem 1rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .btn-circle-arrow {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: #000;
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-    }
-
-    .btn-circle-arrow-white {
-      background: #fff;
-      color: #000;
-    }
-
-    .btn-cta-watchpro {
-      width: 100%;
-      padding: 0.85rem;
-      border-radius: 999px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .btn-coral { background: var(--oklch-coral); color: #fff; }
-    .btn-blue { background: var(--oklch-blue); color: #fff; }
-    .btn-whatsapp { background: var(--oklch-whatsapp); color: #fff; }
-
-    @media (max-width: 992px) {
-      .preview-directions-grid { grid-template-columns: 1fr; }
-      .color-swatches-grid { grid-template-columns: repeat(2, 1fr); }
-    }
+    body { padding: 2rem 0; }
   </style>
 </head>
 <body>
+  <div class="container" style="text-align: center; margin-bottom: 2rem;">
+    <span style="background: var(--color-primary); color: #fff; font-size: 0.8rem; font-weight: 800; padding: 0.35rem 1rem; border-radius: var(--radius-full); text-transform: uppercase;">DESIGN SYSTEM & PREVIEW TRADICIONAL</span>
+    <h1 style="font-size: 2.5rem; font-weight: 800; margin-top: 0.5rem;">FCell Celulares — E-Commerce Tradicional</h1>
+    <p style="color: var(--color-text-muted); font-size: 1rem; margin-bottom: 1.5rem;">Layout de alta conversão, tipografia Inter/Roboto e vitrine em 4 colunas.</p>
 
-  <header>
-    <h1>FCELL PRO — REFERÊNCIA VISUAL WATCH PRO E-3</h1>
-    <p class="tagline-hero">Design Editorial • Tipografia Gigante Syne • Estética Bento Cards</p>
-  </header>
-
-  <!-- Color Palette (Client OKLCH Colors) -->
-  <div class="color-swatches-grid">
-    <div class="swatch-item" style="background: var(--oklch-coral);">
-      <div>#F5432A</div>
-      <div>Vibrant Coral</div>
-    </div>
-    <div class="swatch-item" style="background: var(--oklch-blue);">
-      <div>#4795F5</div>
-      <div>Electric Blue</div>
-    </div>
-    <div class="swatch-item" style="background: var(--oklch-rose);">
-      <div>#BF5669</div>
-      <div>Muted Rose</div>
-    </div>
-    <div class="swatch-item" style="background: var(--oklch-cyan); color: #000;">
-      <div>#47CCF5</div>
-      <div>Tech Cyan</div>
-    </div>
-    <div class="swatch-item" style="background: var(--oklch-whatsapp);">
-      <div>#25D366</div>
-      <div>WhatsApp Direct</div>
+    <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem;">
+      <a href="../index.html" class="btn-header-cta" style="padding: 0.85rem 2rem; font-size: 1rem;">
+        <i class="fa-solid fa-store"></i>
+        <span>Abrir Loja Virtual (index.html)</span>
+      </a>
+      <a href="../admin.html" class="btn-admin-link" style="padding: 0.85rem 1.5rem;">
+        <i class="fa-solid fa-lock"></i>
+        <span>Painel Admin (admin.html)</span>
+      </a>
     </div>
   </div>
 
-  <!-- 3 Watch Pro Directions Grid -->
-  <div class="preview-directions-grid">
-
-    <!-- Direção 1: Watch Pro Orange Editorial (RECOMMENDED / EXACT REF MATCH) -->
-    <div class="preview-card">
-      <span class="badge-recommended">★ RECOMENDADO (FOTO DA REF)</span>
-
-      <div>
-        <h3 class="dir-heading" style="color: var(--oklch-coral);">1. Watch Pro Orange</h3>
-        <p class="dir-subheading">Idêntico à foto de referência: fundo off-white, tipografia gigante Syne, cartões com cantos arredondados (28px) e destaques em Coral Neon.</p>
-      </div>
-
-      <div class="watchpro-mockup-box mockup-1">
-        <img src="./instagram/logo_transparent.png" alt="Logo" style="height: 36px; object-fit: contain;">
-        <div class="mockup-title-giant">IPHONE 17<br><span style="color: var(--oklch-coral);">PRO MAX</span></div>
-        
-        <img src="./products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="mockup-img">
-
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-family: 'Space Grotesk'; font-weight: 800; font-size: 1.2rem; color: var(--oklch-coral);">R$ 9.890,00</span>
-          <span class="btn-circle-arrow">↗</span>
+  <!-- Preview Product Grid Component -->
+  <div class="container">
+    <h2 class="section-title-clean"><i class="fa-solid fa-bag-shopping text-primary"></i> Preview da Vitrine de Produtos</h2>
+    
+    <div class="products-grid-traditional">
+      <!-- Item 1 -->
+      <div class="product-card-traditional">
+        <span class="product-badge-tag">🎁 Copo Stanley</span>
+        <div class="product-img-box">
+          <img src="../products/iphone_17_promax.png" alt="iPhone 17 Pro Max" class="product-img-clean">
         </div>
-      </div>
-
-      <div>
-        <div class="pill-series-demo" style="width: 100%; margin-bottom: 1rem; background: #fff;">
-          <span>🎁 GANHE COPO STANLEY DE BRINDE</span>
-          <span class="btn-circle-arrow" style="width: 24px; height: 24px; font-size: 0.6rem;">↗</span>
+        <div>
+          <div class="product-category-name">Smartphones</div>
+          <h3 class="product-title-text">iPhone 17 Pro Max 256GB</h3>
+          <div class="product-price-value">R$ 9.890,00</div>
+          <div class="product-installments-text">12x de R$ 915,00 no cartão</div>
         </div>
-
-        <button class="btn-cta-watchpro btn-coral">
+        <button class="btn-buy-whatsapp-clean">
+          <i class="fa-brands fa-whatsapp"></i>
           <span>Comprar no WhatsApp</span>
-          <span>↗</span>
+        </button>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="product-card-traditional">
+        <span class="product-badge-tag">⚡ Ultrafino</span>
+        <div class="product-img-box">
+          <img src="../products/iphone_air.png" alt="iPhone Air" class="product-img-clean">
+        </div>
+        <div>
+          <div class="product-category-name">Smartphones</div>
+          <h3 class="product-title-text">Apple iPhone Air</h3>
+          <div class="product-price-value">R$ 7.490,00</div>
+          <div class="product-installments-text">12x de R$ 692,00 no cartão</div>
+        </div>
+        <button class="btn-buy-whatsapp-clean">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Comprar no WhatsApp</span>
+        </button>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="product-card-traditional">
+        <span class="product-badge-tag">📡 Pronta Entrega</span>
+        <div class="product-img-box">
+          <img src="../products/starlink_mini.png" alt="Starlink Mini" class="product-img-clean">
+        </div>
+        <div>
+          <div class="product-category-name">Starlink</div>
+          <h3 class="product-title-text">Starlink Mini Kit Portátil</h3>
+          <div class="product-price-value">R$ 2.890,00</div>
+          <div class="product-installments-text">10x de R$ 310,00 no cartão</div>
+        </div>
+        <button class="btn-buy-whatsapp-clean">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Comprar no WhatsApp</span>
+        </button>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="product-card-traditional">
+        <span class="product-badge-tag">🔥 24h Bateria</span>
+        <div class="product-img-box">
+          <img src="../products/jbl_boombox_3.png" alt="JBL Boombox 3" class="product-img-clean">
+        </div>
+        <div>
+          <div class="product-category-name">JBL & Áudio</div>
+          <h3 class="product-title-text">JBL Boombox 3 Wi-Fi & BT</h3>
+          <div class="product-price-value">R$ 2.490,00</div>
+          <div class="product-installments-text">10x de R$ 269,00 no cartão</div>
+        </div>
+        <button class="btn-buy-whatsapp-clean">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Comprar no WhatsApp</span>
         </button>
       </div>
     </div>
-
-    <!-- Direção 2: Dual Block Blue & Coral -->
-    <div class="preview-card">
-      <div>
-        <h3 class="dir-heading" style="color: var(--oklch-blue);">2. Dual Block Coral/Blue</h3>
-        <p class="dir-subheading">Mesma estrutura Watch Pro, alternando blocos de destaque entre o Azul Elétrico e o Coral Red da sua paleta.</p>
-      </div>
-
-      <div class="watchpro-mockup-box mockup-2">
-        <img src="./instagram/logo_transparent.png" alt="Logo" style="height: 36px; object-fit: contain; filter: brightness(0) invert(1);">
-        <div class="mockup-title-giant">STARLINK<br>MINI KIT</div>
-
-        <img src="./products/starlink_mini.png" alt="Starlink Mini" class="mockup-img">
-
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-family: 'Space Grotesk'; font-weight: 800; font-size: 1.2rem; color: #fff;">R$ 2.890,00</span>
-          <span class="btn-circle-arrow btn-circle-arrow-white">↗</span>
-        </div>
-      </div>
-
-      <div>
-        <div class="pill-series-demo" style="width: 100%; margin-bottom: 1rem; background: oklch(0.96 0.005 250);">
-          <span>📡 PRONTA ENTREGA CUIABÁ</span>
-          <span class="btn-circle-arrow" style="width: 24px; height: 24px; font-size: 0.6rem;">↗</span>
-        </div>
-
-        <button class="btn-cta-watchpro btn-blue">
-          <span>Consultar no WhatsApp</span>
-          <span>↗</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Direção 3: Dark Luxury Watch Pro -->
-    <div class="preview-card">
-      <div>
-        <h3 class="dir-heading">3. Dark Luxury Watch Pro</h3>
-        <p class="dir-subheading">Variação da estrutura Watch Pro em fundo dark midnight, ideal para ressaltar produtos Apple em alta definição.</p>
-      </div>
-
-      <div class="watchpro-mockup-box mockup-3">
-        <img src="./instagram/logo_transparent.png" alt="Logo" style="height: 36px; object-fit: contain;">
-        <div class="mockup-title-giant" style="color: #fff;">WATCH<br><span style="color: var(--oklch-coral);">ULTRA 2</span></div>
-
-        <img src="./products/apple_watch_ultra.png" alt="Apple Watch Ultra" class="mockup-img">
-
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-family: 'Space Grotesk'; font-weight: 800; font-size: 1.2rem; color: var(--oklch-cyan);">R$ 5.890,00</span>
-          <span class="btn-circle-arrow btn-circle-arrow-white">↗</span>
-        </div>
-      </div>
-
-      <div>
-        <div class="pill-series-demo" style="width: 100%; margin-bottom: 1rem; background: oklch(0.96 0.005 250);">
-          <span>⏱️ CAIXA EM TITÂNIO 49MM</span>
-          <span class="btn-circle-arrow" style="width: 24px; height: 24px; font-size: 0.6rem;">↗</span>
-        </div>
-
-        <button class="btn-cta-watchpro btn-whatsapp">
-          <span>Garantir Produto</span>
-          <span>↗</span>
-        </button>
-      </div>
-    </div>
-
   </div>
-
 </body>
 </html>
