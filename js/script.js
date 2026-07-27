@@ -3,14 +3,14 @@
    ========================================================================== */
 
 const PRODUCT_IMAGE_MAP = {
-  "iphone-17-pro-max": "./products/iphone_17_promax.png",
-  "iphone-air": "./products/iphone_air.png",
-  "starlink-mini": "./products/starlink_mini.png",
-  "jbl-boombox-3": "./products/jbl_boombox_3.png",
-  "suporte-vacuum": "./products/suporte_vacuum.png",
-  "airpods-pro-2": "./products/airpods_pro_2.png",
-  "apple-watch-ultra-2": "./products/apple_watch_ultra.png",
-  "redmi-note-13-pro": "./products/xiaomi_redmi_note_13.png"
+  "iphone-17-pro-max": "/products/iphone_17_promax.png",
+  "iphone-air": "/products/iphone_air.png",
+  "starlink-mini": "/products/starlink_mini.png",
+  "jbl-boombox-3": "/products/jbl_boombox_3.png",
+  "suporte-vacuum": "/products/suporte_vacuum.png",
+  "airpods-pro-2": "/products/airpods_pro_2.png",
+  "apple-watch-ultra-2": "/products/apple_watch_ultra.png",
+  "redmi-note-13-pro": "/products/xiaomi_redmi_note_13.png"
 };
 
 const INITIAL_PRODUCTS = [
@@ -21,7 +21,7 @@ const INITIAL_PRODUCTS = [
     "price": "R$ 9.890,00",
     "installments": "12x de R$ 915,00 no cartão",
     "badge": "🎁 Copo Stanley",
-    "image": "./products/iphone_17_promax.png",
+    "image": "/products/iphone_17_promax.png",
     "featured": true,
     "inStock": true,
     "description": "O smartphone mais desejado da Apple com acabamento em Titânio, chip A19 Pro e câmeras quádruplas.",
@@ -40,7 +40,7 @@ const INITIAL_PRODUCTS = [
     "price": "R$ 7.490,00",
     "installments": "12x de R$ 692,00 no cartão",
     "badge": "⚡ Ultrafino",
-    "image": "./products/iphone_air.png",
+    "image": "/products/iphone_air.png",
     "featured": true,
     "inStock": true,
     "description": "Design ultrafino revolucionário com alta performance da Apple.",
@@ -58,7 +58,7 @@ const INITIAL_PRODUCTS = [
     "price": "R$ 2.890,00",
     "installments": "10x de R$ 310,00 no cartão",
     "badge": "📡 Pronta Entrega",
-    "image": "./products/starlink_mini.png",
+    "image": "/products/starlink_mini.png",
     "featured": true,
     "inStock": true,
     "description": "Internet via satélite portátil de altíssima velocidade para fazenda, praia e estrada.",
@@ -76,7 +76,7 @@ const INITIAL_PRODUCTS = [
     "price": "R$ 2.490,00",
     "installments": "10x de R$ 269,00 no cartão",
     "badge": "🔥 24h Bateria",
-    "image": "./products/jbl_boombox_3.png",
+    "image": "/products/jbl_boombox_3.png",
     "featured": true,
     "inStock": true,
     "description": "Som potente com graves profundos e proteção IP67 à prova d'água.",
@@ -94,7 +94,7 @@ const INITIAL_PRODUCTS = [
     "price": "R$ 149,00",
     "installments": "À vista ou PIX",
     "badge": "🧲 Top Vendas",
-    "image": "./products/suporte_vacuum.png",
+    "image": "/products/suporte_vacuum.png",
     "featured": false,
     "inStock": true,
     "description": "Suporte articulado 360° com ventosa a vácuo para todos os smartphones.",
@@ -112,7 +112,7 @@ const INITIAL_PRODUCTS = [
     "price": "R$ 1.790,00",
     "installments": "10x de R$ 195,00 no cartão",
     "badge": "🎧 Áudio Pro",
-    "image": "./products/airpods_pro_2.png",
+    "image": "/products/airpods_pro_2.png",
     "featured": false,
     "inStock": true,
     "description": "Cancelamento Ativo de Ruído de nível pro com Áudio Espacial.",
@@ -130,7 +130,7 @@ const INITIAL_PRODUCTS = [
     "price": "R$ 5.890,00",
     "installments": "12x de R$ 540,00 no cartão",
     "badge": "⏱️ GPS Duplo",
-    "image": "./products/apple_watch_ultra.png",
+    "image": "/products/apple_watch_ultra.png",
     "featured": false,
     "inStock": true,
     "description": "Relógio em Titânio ultra resistente para esportes de aventura.",
@@ -148,7 +148,7 @@ const INITIAL_PRODUCTS = [
     "price": "R$ 2.490,00",
     "installments": "10x de R$ 269,00 no cartão",
     "badge": "📸 200MP OIS",
-    "image": "./products/xiaomi_redmi_note_13.png",
+    "image": "/products/xiaomi_redmi_note_13.png",
     "featured": false,
     "inStock": true,
     "description": "Câmera Pro de 200MP, 512GB de memória e carregamento turbo de 67W.",
@@ -194,6 +194,8 @@ function initStoreData() {
         productsState = parsed.map(p => {
           if (PRODUCT_IMAGE_MAP[p.id]) {
             p.image = PRODUCT_IMAGE_MAP[p.id];
+          } else if (p.image && p.image.startsWith('./')) {
+            p.image = p.image.replace(/^\.\//, '/');
           }
           return p;
         });
@@ -259,14 +261,15 @@ function renderProductsGrid() {
 
   const createCardHtml = (prod) => {
     const waUrl = getProductWhatsAppUrl(prod);
-    const imgSrc = PRODUCT_IMAGE_MAP[prod.id] || prod.image || './products/iphone_17_promax.png';
+    let imgSrc = PRODUCT_IMAGE_MAP[prod.id] || prod.image || '/products/iphone_17_promax.png';
+    if (imgSrc.startsWith('./')) imgSrc = imgSrc.replace(/^\.\//, '/');
 
     return `
       <div class="drou-product-card">
         ${prod.badge ? `<span class="drou-product-badge">${prod.badge}</span>` : ''}
         
         <div class="drou-product-img-stage" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">
-          <img src="${imgSrc}" alt="${prod.name}" class="drou-product-img" onerror="this.src='./products/iphone_17_promax.png'">
+          <img src="${imgSrc}" alt="${prod.name}" class="drou-product-img" onerror="this.onerror=null; this.src='/products/iphone_17_promax.png';">
         </div>
         
         <div>
@@ -375,7 +378,8 @@ function openProductModal(productId) {
   const modalBackdrop = document.getElementById('product-modal');
   const modalBody = document.getElementById('modal-product-body');
   const waUrl = getProductWhatsAppUrl(product);
-  const imgSrc = PRODUCT_IMAGE_MAP[product.id] || product.image || './products/iphone_17_promax.png';
+  let imgSrc = PRODUCT_IMAGE_MAP[product.id] || product.image || '/products/iphone_17_promax.png';
+  if (imgSrc.startsWith('./')) imgSrc = imgSrc.replace(/^\.\//, '/');
 
   const benefitsHtml = (product.benefits && product.benefits.length > 0)
     ? product.benefits.map(b => `<li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-check text-primary"></i> ${b}</li>`).join('')
@@ -383,7 +387,7 @@ function openProductModal(productId) {
 
   modalBody.innerHTML = `
     <div style="display: flex; align-items: center; justify-content: center; background: var(--bg-main); border-radius: var(--radius-md); padding: 2rem; border: 1px solid var(--border-color);">
-      <img src="${imgSrc}" alt="${product.name}" style="max-height: 320px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));" onerror="this.src='./products/iphone_17_promax.png'">
+      <img src="${imgSrc}" alt="${product.name}" style="max-height: 320px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));" onerror="this.onerror=null; this.src='/products/iphone_17_promax.png';">
     </div>
     <div>
       ${product.badge ? `<span class="drou-product-badge" style="margin-bottom: 0.75rem; display: inline-block;">${product.badge}</span>` : ''}

@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
 /* ==========================================================================
    FCELL CELULARES - DROU MINIMAL E-COMMERCE DESIGN SYSTEM & ADMIN PANEL
    ========================================================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
   /* DROU Color Tokens */
@@ -370,7 +370,8 @@ img { max-width: 100%; height: auto; display: block; }
 .drou-products-section {
   padding: 4.5rem 0;
   background: #ffffff;
-  border-y: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .drou-products-grid {

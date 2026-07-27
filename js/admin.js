@@ -3,14 +3,14 @@
 const ADMIN_PIN = "fcell2026";
 
 const PRODUCT_IMAGE_MAP = {
-  "iphone-17-pro-max": "./products/iphone_17_promax.png",
-  "iphone-air": "./products/iphone_air.png",
-  "starlink-mini": "./products/starlink_mini.png",
-  "jbl-boombox-3": "./products/jbl_boombox_3.png",
-  "suporte-vacuum": "./products/suporte_vacuum.png",
-  "airpods-pro-2": "./products/airpods_pro_2.png",
-  "apple-watch-ultra-2": "./products/apple_watch_ultra.png",
-  "redmi-note-13-pro": "./products/xiaomi_redmi_note_13.png"
+  "iphone-17-pro-max": "/products/iphone_17_promax.png",
+  "iphone-air": "/products/iphone_air.png",
+  "starlink-mini": "/products/starlink_mini.png",
+  "jbl-boombox-3": "/products/jbl_boombox_3.png",
+  "suporte-vacuum": "/products/suporte_vacuum.png",
+  "airpods-pro-2": "/products/airpods_pro_2.png",
+  "apple-watch-ultra-2": "/products/apple_watch_ultra.png",
+  "redmi-note-13-pro": "/products/xiaomi_redmi_note_13.png"
 };
 
 const DEFAULT_PRODUCTS = [
@@ -21,7 +21,7 @@ const DEFAULT_PRODUCTS = [
     "price": "R$ 9.890,00",
     "installments": "12x de R$ 915,00 no cartão",
     "badge": "🎁 Copo Stanley",
-    "image": "./products/iphone_17_promax.png",
+    "image": "/products/iphone_17_promax.png",
     "featured": true,
     "inStock": true,
     "description": "O smartphone mais desejado da Apple com acabamento em Titânio, chip A19 Pro e câmeras quádruplas.",
@@ -40,7 +40,7 @@ const DEFAULT_PRODUCTS = [
     "price": "R$ 7.490,00",
     "installments": "12x de R$ 692,00 no cartão",
     "badge": "⚡ Ultrafino",
-    "image": "./products/iphone_air.png",
+    "image": "/products/iphone_air.png",
     "featured": true,
     "inStock": true,
     "description": "Design ultrafino revolucionário com alta performance da Apple.",
@@ -58,7 +58,7 @@ const DEFAULT_PRODUCTS = [
     "price": "R$ 2.890,00",
     "installments": "10x de R$ 310,00 no cartão",
     "badge": "📡 Pronta Entrega",
-    "image": "./products/starlink_mini.png",
+    "image": "/products/starlink_mini.png",
     "featured": true,
     "inStock": true,
     "description": "Internet via satélite portátil de altíssima velocidade para fazenda, praia e estrada.",
@@ -76,7 +76,7 @@ const DEFAULT_PRODUCTS = [
     "price": "R$ 2.490,00",
     "installments": "10x de R$ 269,00 no cartão",
     "badge": "🔥 24h Bateria",
-    "image": "./products/jbl_boombox_3.png",
+    "image": "/products/jbl_boombox_3.png",
     "featured": true,
     "inStock": true,
     "description": "Som potente com graves profundos e proteção IP67 à prova d'água.",
@@ -94,7 +94,7 @@ const DEFAULT_PRODUCTS = [
     "price": "R$ 149,00",
     "installments": "À vista ou PIX",
     "badge": "🧲 Top Vendas",
-    "image": "./products/suporte_vacuum.png",
+    "image": "/products/suporte_vacuum.png",
     "featured": false,
     "inStock": true,
     "description": "Suporte articulado 360° com ventosa a vácuo para todos os smartphones.",
@@ -112,7 +112,7 @@ const DEFAULT_PRODUCTS = [
     "price": "R$ 1.790,00",
     "installments": "10x de R$ 195,00 no cartão",
     "badge": "🎧 Áudio Pro",
-    "image": "./products/airpods_pro_2.png",
+    "image": "/products/airpods_pro_2.png",
     "featured": false,
     "inStock": true,
     "description": "Cancelamento Ativo de Ruído de nível pro com Áudio Espacial.",
@@ -130,7 +130,7 @@ const DEFAULT_PRODUCTS = [
     "price": "R$ 5.890,00",
     "installments": "12x de R$ 540,00 no cartão",
     "badge": "⏱️ GPS Duplo",
-    "image": "./products/apple_watch_ultra.png",
+    "image": "/products/apple_watch_ultra.png",
     "featured": false,
     "inStock": true,
     "description": "Relógio em Titânio ultra resistente para esportes de aventura.",
@@ -148,7 +148,7 @@ const DEFAULT_PRODUCTS = [
     "price": "R$ 2.490,00",
     "installments": "10x de R$ 269,00 no cartão",
     "badge": "📸 200MP OIS",
-    "image": "./products/xiaomi_redmi_note_13.png",
+    "image": "/products/xiaomi_redmi_note_13.png",
     "featured": false,
     "inStock": true,
     "description": "Câmera Pro de 200MP, 512GB de memória e carregamento turbo de 67W.",
@@ -216,6 +216,8 @@ function loadAdminDashboardData() {
         productsAdminState = parsed.map(p => {
           if (PRODUCT_IMAGE_MAP[p.id]) {
             p.image = PRODUCT_IMAGE_MAP[p.id];
+          } else if (p.image && p.image.startsWith('./')) {
+            p.image = p.image.replace(/^\.\//, '/');
           }
           return p;
         });
@@ -255,11 +257,12 @@ function renderAdminTable() {
   }
 
   productsAdminState.forEach(p => {
-    const imgSrc = PRODUCT_IMAGE_MAP[p.id] || p.image || './products/iphone_17_promax.png';
+    let imgSrc = PRODUCT_IMAGE_MAP[p.id] || p.image || '/products/iphone_17_promax.png';
+    if (imgSrc.startsWith('./')) imgSrc = imgSrc.replace(/^\.\//, '/');
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td><img src="${imgSrc}" class="prod-thumb-admin" alt="${p.name}" onerror="this.src='./products/iphone_17_promax.png'"></td>
+      <td><img src="${imgSrc}" class="prod-thumb-admin" alt="${p.name}" onerror="this.onerror=null; this.src='/products/iphone_17_promax.png';"></td>
       <td>
         <strong style="display: block; font-family: var(--font-heading);">${p.name}</strong>
         <span style="font-size: 0.75rem; color: var(--color-text-muted);">${p.category}</span>
