@@ -345,6 +345,27 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 700;
 }
 
+/* Category Filter Chips */
+.chip-btn {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-full);
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.chip-btn:hover, .chip-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(245, 61, 45, 0.25);
+}
+
 /* Product Grid */
 .drou-products-section {
   padding: 4.5rem 0;
