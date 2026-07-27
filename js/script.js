@@ -1,5 +1,5 @@
 /* ==========================================================================
-   FCELL CELULARES - SCRIPT DE ALTA PERFORMANCE (UI/UX REDESIGN FIX)
+   FCELL CELULARES - SCRIPT TRADICIONAL DE E-COMMERCE (INTER & ALTA CONVERSÃO)
    ========================================================================== */
 
 const INITIAL_PRODUCTS = [
@@ -151,23 +151,12 @@ const INITIAL_PRODUCTS = [
 ];
 
 const DEFAULT_SETTINGS = {
-  heroBadge: "LOJA OFICIAL CUIABÁ",
-  heroTitle: "FCELL PRO <span class=\"text-primary\">E-3</span>",
-  heroSubtitle: "Desempenho implacável com acabamento em Titânio, chip A19 Pro e câmeras profissionais. Ganhe 1 Copo Stanley de brinde!",
+  heroBadge: "GANHE 1 COPO STANLEY DE BRINDE NO PIX",
+  heroTitle: "iPhones, Starlink e JBL com <span class=\"text-primary\">Garantia Oficial</span> em Cuiabá",
+  heroSubtitle: "Smartphones lacrados, produtos originais Apple, caixas de som JBL e suporte técnico especializado com entrega expressa no mesmo dia.",
   whatsappNumber: "5565993049734",
   globalGiftText: "Ganhe Copo Stanley em compras no PIX"
 };
-
-const INSTAGRAM_POSTS = [
-  { id: "post_1", filename: "post_1.jpg", caption: "Assistência Especializada FCell! Troca de tela e bateria em Cuiabá.", url: "https://www.instagram.com/fcellcelularesoficial/" },
-  { id: "post_2", filename: "post_2.jpg", caption: "Novas unidades de iPhones e Tablets à pronta entrega!", url: "https://www.instagram.com/fcellcelularesoficial/" },
-  { id: "post_3", filename: "post_3.jpg", caption: "Ofertas imperdíveis da semana na FCell Celulares!", url: "https://www.instagram.com/fcellcelularesoficial/" },
-  { id: "post_4", filename: "post_4.jpg", caption: "Troca de vidro e tela de iPhone na hora com peças premium.", url: "https://www.instagram.com/fcellcelularesoficial/" },
-  { id: "post_5", filename: "post_5.jpg", caption: "Starlink Mini Kit disponível na FCell Celulares!", url: "https://www.instagram.com/fcellcelularesoficial/" },
-  { id: "post_6", filename: "post_6.jpg", caption: "Caixas de Som JBL originais com potência máxima.", url: "https://www.instagram.com/fcellcelularesoficial/" },
-  { id: "post_7", filename: "post_7.jpg", caption: "Cliente garantindo seu iPhone com brinde Copo Stanley!", url: "https://www.instagram.com/fcellcelularesoficial/" },
-  { id: "post_8", filename: "post_8.jpg", caption: "Unidades no Pantanal Shopping e Shopping Estação.", url: "https://www.instagram.com/fcellcelularesoficial/" }
-];
 
 let productsState = [];
 let storeSettings = {};
@@ -178,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initStoreData();
   setupEventListeners();
   renderStoreContent();
-  renderInstagramFeed();
 });
 
 function initStoreData() {
@@ -186,8 +174,7 @@ function initStoreData() {
   if (localProd) {
     try {
       const parsed = JSON.parse(localProd);
-      // Force reset if outdated schema or broken image paths
-      if (!Array.isArray(parsed) || parsed.some(p => !p.image || p.image.includes('unsplash') || p.image.includes('post_'))) {
+      if (!Array.isArray(parsed) || parsed.length === 0 || parsed.some(p => !p.image || p.image.includes('unsplash') || p.image.includes('post_'))) {
         productsState = [...INITIAL_PRODUCTS];
         localStorage.setItem('fcell_products', JSON.stringify(productsState));
       } else {
@@ -221,13 +208,24 @@ function renderStoreContent() {
   if (subEl) subEl.innerText = storeSettings.heroSubtitle || DEFAULT_SETTINGS.heroSubtitle;
 
   const waNum = storeSettings.whatsappNumber || DEFAULT_SETTINGS.whatsappNumber;
-  const generalMsg = encodeURIComponent("Olá! Vim pelo site da FCell Celulares e gostaria de tirar uma dúvida.");
+  const generalMsg = encodeURIComponent("Olá! Vim pelo site da FCell Celulares e gostaria de consultar produtos.");
 
   const headerWaBtn = document.getElementById('header-whatsapp-btn');
+  const heroWaBtn = document.getElementById('hero-wa-direct-btn');
+  const dealWaBtn = document.getElementById('deal-whatsapp-btn');
 
   if (headerWaBtn) {
     headerWaBtn.href = `https://wa.me/${waNum}?text=${generalMsg}`;
     headerWaBtn.onclick = () => trackLeadClick();
+  }
+  if (heroWaBtn) {
+    heroWaBtn.href = `https://wa.me/${waNum}?text=${generalMsg}`;
+    heroWaBtn.onclick = () => trackLeadClick();
+  }
+  if (dealWaBtn) {
+    const dealMsg = encodeURIComponent("Olá! Quero garantir a oferta do iPhone 17 Pro Max com o Copo Stanley de brinde!");
+    dealWaBtn.href = `https://wa.me/${waNum}?text=${dealMsg}`;
+    dealWaBtn.onclick = () => trackLeadClick();
   }
 
   renderProductsGrid();
@@ -250,8 +248,8 @@ function renderProductsGrid() {
     grid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--color-text-muted);">
         <i class="fa-solid fa-box-open" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
-        <h3 style="font-family: var(--font-heading);">Nenhum produto encontrado</h3>
-        <p>Tente selecionar outra categoria ou buscar por outro modelo.</p>
+        <h3 style="font-size: 1.2rem; font-weight: 700;">Nenhum produto encontrado</h3>
+        <p style="font-size: 0.9rem;">Tente selecionar outra categoria ou buscar por outro modelo.</p>
       </div>
     `;
     return;
@@ -260,21 +258,21 @@ function renderProductsGrid() {
   grid.innerHTML = filtered.map(prod => {
     const waUrl = getProductWhatsAppUrl(prod);
     return `
-      <div class="product-bento-card">
-        ${prod.badge ? `<span class="product-bento-tag">${prod.badge}</span>` : ''}
+      <div class="product-card-traditional">
+        ${prod.badge ? `<span class="product-badge-tag">${prod.badge}</span>` : ''}
         
-        <div class="product-stage-view" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">
-          <img src="${prod.image}" alt="${prod.name}" class="product-bento-img" onerror="this.src='./products/iphone_17_promax.png'">
+        <div class="product-img-box" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">
+          <img src="${prod.image}" alt="${prod.name}" class="product-img-clean" onerror="this.src='./products/iphone_17_promax.png'">
         </div>
         
         <div>
-          <div class="product-bento-category">${prod.category}</div>
-          <h3 class="product-bento-title" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">${prod.name}</h3>
-          <div class="product-bento-price">${prod.price}</div>
-          <div class="product-bento-installments">${prod.installments || 'Consulte condições'}</div>
+          <div class="product-category-name">${prod.category}</div>
+          <h3 class="product-title-text" onclick="openProductModal('${prod.id}')" style="cursor: pointer;">${prod.name}</h3>
+          <div class="product-price-value">${prod.price}</div>
+          <div class="product-installments-text">${prod.installments || 'Consulte condições'}</div>
         </div>
 
-        <button class="btn-bento-buy" onclick="window.open('${waUrl}', '_blank'); trackLeadClick();">
+        <button class="btn-buy-whatsapp-clean" onclick="window.open('${waUrl}', '_blank'); trackLeadClick();">
           <i class="fa-brands fa-whatsapp"></i>
           <span>Comprar no WhatsApp</span>
         </button>
@@ -296,12 +294,13 @@ function trackLeadClick() {
 }
 
 function setupEventListeners() {
-  const filterBtns = document.querySelectorAll('.chip-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active');
-      currentCategory = e.target.getAttribute('data-category');
+  const categoryCards = document.querySelectorAll('.category-card');
+  categoryCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      categoryCards.forEach(c => c.classList.remove('active'));
+      const target = e.currentTarget;
+      target.classList.add('active');
+      currentCategory = target.getAttribute('data-category');
       renderProductsGrid();
     });
   });
@@ -324,12 +323,12 @@ function setupEventListeners() {
 
 function setCategoryFilter(categoryName) {
   currentCategory = categoryName;
-  const filterBtns = document.querySelectorAll('.chip-btn');
-  filterBtns.forEach(btn => {
-    if (btn.getAttribute('data-category') === categoryName) {
-      btn.classList.add('active');
+  const categoryCards = document.querySelectorAll('.category-card');
+  categoryCards.forEach(card => {
+    if (card.getAttribute('data-category') === categoryName) {
+      card.classList.add('active');
     } else {
-      btn.classList.remove('active');
+      card.classList.remove('active');
     }
   });
   renderProductsGrid();
@@ -348,16 +347,16 @@ function openProductModal(productId) {
     : `<li style="display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-check text-primary"></i> Garantia Oficial FCell 1 Ano</li>`;
 
   modalBody.innerHTML = `
-    <div style="display: flex; align-items: center; justify-content: center; background: var(--bg-main); border-radius: var(--radius-md); padding: 2rem; border: 1px solid var(--border-light);">
+    <div style="display: flex; align-items: center; justify-content: center; background: var(--bg-main); border-radius: var(--radius-md); padding: 2rem; border: 1px solid var(--border-color);">
       <img src="${product.image}" alt="${product.name}" style="max-height: 320px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));" onerror="this.src='./products/iphone_17_promax.png'">
     </div>
     <div>
-      ${product.badge ? `<span class="hero-badge-pill" style="margin-bottom: 0.75rem; display: inline-block;">${product.badge}</span>` : ''}
-      <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; line-height: 1.2;">${product.name}</h2>
-      ${product.headline ? `<p style="font-weight: 700; color: var(--color-primary); margin-bottom: 1rem; font-family: var(--font-heading);">"${product.headline}"</p>` : ''}
+      ${product.badge ? `<span class="hero-badge-tag" style="margin-bottom: 0.75rem; display: inline-block;">${product.badge}</span>` : ''}
+      <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.4rem; line-height: 1.2;">${product.name}</h2>
+      ${product.headline ? `<p style="font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">"${product.headline}"</p>` : ''}
       
-      <div style="background: var(--bg-main); padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; border: 1px solid var(--border-light);">
-        <div style="font-family: var(--font-body); font-size: 2.2rem; font-weight: 800; color: var(--color-primary);">${product.price}</div>
+      <div style="background: var(--bg-main); padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; border: 1px solid var(--border-color);">
+        <div style="font-size: 2.2rem; font-weight: 800; color: var(--color-primary);">${product.price}</div>
         <div style="font-size: 0.85rem; color: var(--color-text-muted);">${product.installments || 'Consulte condições'}</div>
       </div>
 
@@ -365,7 +364,7 @@ function openProductModal(productId) {
 
       <ul style="list-style: none; margin-bottom: 1.75rem;">${benefitsHtml}</ul>
 
-      <a href="${waUrl}" target="_blank" class="btn-bento-buy" style="padding: 1rem; font-size: 1rem;" onclick="trackLeadClick()">
+      <a href="${waUrl}" target="_blank" class="btn-buy-whatsapp-clean" style="padding: 1rem; font-size: 1rem;" onclick="trackLeadClick()">
         <i class="fa-brands fa-whatsapp"></i>
         <span>Garantir Produto pelo WhatsApp</span>
       </a>
@@ -382,21 +381,4 @@ function closeProductModal() {
     modalBackdrop.classList.remove('active');
     document.body.style.overflow = 'auto';
   }
-}
-
-function renderInstagramFeed() {
-  const instaGrid = document.getElementById('insta-grid');
-  if (!instaGrid) return;
-
-  instaGrid.innerHTML = INSTAGRAM_POSTS.map(post => `
-    <div class="gallery-item">
-      <img src="./instagram/posts/${post.filename}" alt="${post.id}" class="gallery-img" onerror="this.src='./instagram/posts/post_1.jpg'">
-      <div class="gallery-overlay">
-        <p style="font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.4;">${post.caption}</p>
-        <a href="${post.url}" target="_blank" class="btn-arrow-circle btn-arrow-circle-white" title="Ver post no Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-      </div>
-    </div>
-  `).join('');
 }
