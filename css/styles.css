@@ -1,21 +1,23 @@
 /* ==========================================================================
-   FCELL CELULARES - WATCH PRO E-3 EDITORIAL DESIGN SYSTEM (OKLCH)
-   100% Baseado na Referência Visual WATCH PRO E-3 & Paleta do Cliente
+   FCELL CELULARES - UI/UX REFINEMENT (WATCH PRO E-3 EDITORIAL OKLCH)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Syne:wght@800;900&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   /* OKLCH Color Palette (Client Choice) */
-  --oklch-coral: oklch(0.62 0.23 28);      /* #F5432A (Vibrant Orange Red) */
+  --oklch-coral: oklch(0.62 0.23 28);      /* #F5432A (Vibrant Coral Red) */
+  --oklch-coral-hover: oklch(0.56 0.24 28);
   --oklch-blue: oklch(0.66 0.18 250);      /* #4795F5 */
   --oklch-cyan: oklch(0.78 0.14 210);      /* #47CCF5 */
   --oklch-rose: oklch(0.55 0.14 15);       /* #BF5669 */
   --oklch-whatsapp: oklch(0.65 0.20 142);   /* #25D366 */
+  --oklch-whatsapp-hover: oklch(0.58 0.22 142);
 
-  /* WATCH PRO Surface & Neutrals */
-  --bg-editorial: oklch(0.96 0.005 250);   /* #F4F4F6 Off-White */
+  /* Surfaces & Neutrals */
+  --bg-editorial: oklch(0.96 0.005 250);   /* #F4F4F6 Off-White Surface */
   --bg-card: #ffffff;
+  --bg-card-subtle: oklch(0.98 0.004 250);
   --bg-dark: oklch(0.14 0.025 250);       /* Solid Dark Ink #0D0F12 */
   
   --border-subtle: oklch(0.90 0.015 250);
@@ -31,19 +33,21 @@
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  /* Radii & Shadows (Watch Pro Style) */
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 28px;
-  --radius-xl: 36px;
+  /* Radii & Shadows */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
   --radius-full: 9999px;
 
-  --shadow-bento: 0 10px 30px oklch(0.14 0.025 250 / 0.04);
-  --shadow-pop: 0 20px 40px oklch(0.14 0.025 250 / 0.10);
+  --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.03);
+  --shadow-bento: 0 10px 30px oklch(0.14 0.025 250 / 0.06);
+  --shadow-pop: 0 18px 36px oklch(0.14 0.025 250 / 0.12);
   --shadow-coral: 0 10px 24px oklch(0.62 0.23 28 / 0.30);
 
-  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Reset & Base */
@@ -59,7 +63,7 @@ body {
   background-color: var(--bg-editorial);
   color: var(--color-text-dark);
   font-family: var(--font-body);
-  line-height: 1.4;
+  line-height: 1.45;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -75,27 +79,32 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 0 1.5rem;
 }
 
-/* Color & Text Helpers */
+/* Helpers */
 .text-coral { color: var(--oklch-coral); }
 .text-blue { color: var(--oklch-blue); }
 .text-cyan { color: var(--oklch-cyan); }
-.text-rose { color: var(--oklch-rose); }
 
 .bg-coral { background-color: var(--oklch-coral); }
 .bg-blue { background-color: var(--oklch-blue); }
 
 .btn-arrow-circle {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: var(--bg-dark);
   color: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 700;
   transition: var(--transition-normal);
+  flex-shrink: 0;
+}
+
+.btn-arrow-circle:hover {
+  background: var(--oklch-coral);
+  transform: rotate(45deg);
 }
 
 .btn-arrow-circle-white {
@@ -103,15 +112,21 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--color-text-dark);
 }
 
-/* Watch Pro Header Navbar */
+.btn-arrow-circle-white:hover {
+  background: var(--oklch-coral);
+  color: #ffffff;
+}
+
+/* Header Navbar */
 .header-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: oklch(0.96 0.005 250 / 0.90);
-  backdrop-filter: blur(16px);
+  background: oklch(0.96 0.005 250 / 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-subtle);
   transition: var(--transition-normal);
 }
@@ -124,7 +139,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .logo-img {
-  height: 42px;
+  height: 44px;
   width: auto;
   object-fit: contain;
 }
@@ -144,10 +159,28 @@ img { max-width: 100%; height: auto; display: block; }
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
   transition: var(--transition-normal);
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--oklch-coral);
+  transition: var(--transition-normal);
+  border-radius: var(--radius-full);
 }
 
 .nav-link:hover, .nav-link.active {
   color: var(--oklch-coral);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
 }
 
 .btn-whatsapp-pill {
@@ -161,20 +194,21 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  padding: 0.65rem 1.4rem;
+  padding: 0.7rem 1.5rem;
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-coral);
   transition: var(--transition-normal);
 }
 
 .btn-whatsapp-pill:hover {
-  background: oklch(0.56 0.24 28);
+  background: var(--oklch-coral-hover);
   transform: translateY(-2px);
+  box-shadow: 0 14px 28px oklch(0.62 0.23 28 / 0.40);
 }
 
 .btn-admin-icon {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: #ffffff;
   border: 1px solid var(--border-subtle);
@@ -189,9 +223,10 @@ img { max-width: 100%; height: auto; display: block; }
 .btn-admin-icon:hover {
   background: var(--bg-dark);
   color: #fff;
+  border-color: var(--bg-dark);
 }
 
-/* Watch Pro Hero Section */
+/* Hero Section */
 .hero-editorial {
   padding-top: 130px;
   padding-bottom: 60px;
@@ -207,7 +242,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-family: var(--font-display);
   font-size: 16vw;
   font-weight: 900;
-  color: oklch(0.14 0.025 250 / 0.03);
+  color: oklch(0.14 0.025 250 / 0.035);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
@@ -217,7 +252,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .hero-main-title {
   font-family: var(--font-display);
-  font-size: 5rem;
+  font-size: 5.2rem;
   font-weight: 900;
   line-height: 0.92;
   text-transform: uppercase;
@@ -235,7 +270,6 @@ img { max-width: 100%; height: auto; display: block; }
   z-index: 1;
 }
 
-/* Watch Pro Stage Card */
 .hero-stage-card {
   background: #ffffff;
   border-radius: var(--radius-lg);
@@ -268,9 +302,9 @@ img { max-width: 100%; height: auto; display: block; }
 
 .hero-prod-floating {
   position: absolute;
-  right: -10px;
+  right: 10px;
   bottom: 20px;
-  width: 55%;
+  width: 50%;
   max-height: 390px;
   object-fit: contain;
   filter: drop-shadow(0 20px 35px oklch(0.14 0.025 250 / 0.16));
@@ -282,13 +316,13 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .hero-copy-block {
-  max-width: 330px;
+  max-width: 340px;
   z-index: 2;
 }
 
 .hero-copy-block h2 {
   font-family: var(--font-heading);
-  font-size: 2.3rem;
+  font-size: 2.4rem;
   font-weight: 800;
   line-height: 1.05;
   margin-bottom: 1rem;
@@ -348,7 +382,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: #ffffff;
 }
 
-/* Editorial Bento Trio Grid ("LUXURY MEETS PRECISION") */
+/* Bento Trio Grid */
 .editorial-bento-section {
   padding: 4rem 0;
 }
@@ -387,6 +421,7 @@ img { max-width: 100%; height: auto; display: block; }
   transition: var(--transition-normal);
   position: relative;
   overflow: hidden;
+  min-height: 360px;
 }
 
 .bento-card:hover {
@@ -411,7 +446,7 @@ img { max-width: 100%; height: auto; display: block; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .bento-card-title {
@@ -421,18 +456,31 @@ img { max-width: 100%; height: auto; display: block; }
   text-transform: uppercase;
 }
 
+.bento-card-img-stage {
+  width: 100%;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.75rem 0;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
 .bento-card-img {
-  height: 180px;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
-  margin: 1rem auto;
   transition: var(--transition-bounce);
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.12));
 }
 
 .bento-card:hover .bento-card-img {
   transform: scale(1.08);
 }
 
-/* Catalog Editorial Chips & Bento Grid */
+/* Refined Products Bento Catalog Grid */
 .catalog-editorial-section {
   padding: 4rem 0;
   background: #ffffff;
@@ -502,6 +550,7 @@ img { max-width: 100%; height: auto; display: block; }
   gap: 2rem;
 }
 
+/* Refined Product Card UI/UX */
 .product-bento-card {
   background: var(--bg-editorial);
   border-radius: var(--radius-lg);
@@ -512,6 +561,7 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: space-between;
   transition: var(--transition-normal);
   position: relative;
+  box-shadow: var(--shadow-subtle);
 }
 
 .product-bento-card:hover {
@@ -531,40 +581,79 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 0.3rem 0.7rem;
+  padding: 0.35rem 0.8rem;
   border-radius: var(--radius-full);
+  z-index: 2;
+}
+
+.product-stage-view {
+  width: 100%;
+  height: 210px;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.25rem 0 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition-normal);
+}
+
+.product-bento-card:hover .product-stage-view {
+  background: var(--bg-card-subtle);
 }
 
 .product-bento-img {
-  height: 200px;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
-  margin: 1.5rem auto 1rem auto;
   transition: var(--transition-bounce);
+  filter: drop-shadow(0 10px 16px rgba(0,0,0,0.12));
 }
 
 .product-bento-card:hover .product-bento-img {
   transform: scale(1.08);
 }
 
+.product-bento-category {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--oklch-coral);
+  font-family: var(--font-heading);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.05em;
+}
+
 .product-bento-title {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  color: var(--color-text-dark);
 }
 
 .product-bento-price {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   font-weight: 900;
   color: var(--oklch-coral);
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.product-bento-installments {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
 }
 
 .product-bento-actions {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  margin-top: auto;
 }
 
 .btn-bento-buy {
@@ -577,15 +666,18 @@ img { max-width: 100%; height: auto; display: block; }
   color: #ffffff;
   font-family: var(--font-heading);
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   padding: 0.75rem;
   border-radius: var(--radius-md);
   transition: var(--transition-normal);
+  box-shadow: 0 4px 12px oklch(0.65 0.20 142 / 0.25);
 }
 
 .btn-bento-buy:hover {
-  background: oklch(0.58 0.22 142);
+  background: var(--oklch-whatsapp-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px oklch(0.65 0.20 142 / 0.35);
 }
 
 /* Gallery & Footer */
@@ -604,6 +696,7 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--bg-dark);
+  box-shadow: var(--shadow-subtle);
 }
 
 .gallery-img {
@@ -675,6 +768,7 @@ img { max-width: 100%; height: auto; display: block; }
   overflow-y: auto;
   position: relative;
   padding: 2.5rem;
+  box-shadow: var(--shadow-pop);
 }
 
 .modal-close-btn {
