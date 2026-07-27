@@ -151,10 +151,10 @@ const INITIAL_PRODUCTS = [
 ];
 
 const DEFAULT_SETTINGS = {
-  heroBadge: "OFERTAS ESPECIAIS COM 1 ANO DE GARANTIA",
-  heroTitle: "Apple Watch Series & iPhones",
-  heroSubtitle: "Smartphones lacrados, produtos originais Apple, caixas de som JBL e suporte técnico especializado com entrega expressa no mesmo dia em Cuiabá.",
-  whatsappNumber: "5565993049734",
+  heroBadge: "📍 FCELL CELULARES — 18 ANOS EM SANTA HELENA",
+  heroTitle: "Smartphones, JBL & Starlink Mini",
+  heroSubtitle: "Smartphones lacrados, produtos originais Apple, caixas de som JBL, Starlink Mini e suporte técnico especializado com 18 anos de tradição em Santa Helena.",
+  whatsappNumber: "5565999999999",
   globalGiftText: "Ganhe Copo Stanley em compras no PIX"
 };
 
