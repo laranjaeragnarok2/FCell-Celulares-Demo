@@ -1,0 +1,20 @@
+# Logs & Temp
+*.log
+.DS_Store
+node_modules/
+
+# Scraper & Auxiliary Context Files
+PROMPT.md
+PROMPT_DESIGN.md
+source.html
+metadata.json
+*.png
+!instagram/logo.png
+!instagram/logo_transparent.png
+!products/*.png
+instagram/INSTAGRAM_CONTEXT.md
+instagram/instagram_clean_data.json
+instagram/instagram_desktop.png
+instagram/instagram_mobile.png
+desktop_fullpage.png
+mobile_fullpage.png
