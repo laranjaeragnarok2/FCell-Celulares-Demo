@@ -1,6 +1,11 @@
 # 📱 FCell Celulares — Site Oficial & Painel de Gerenciamento
 
-> **Plataforma completa de E-Commerce e Dashboard Administrativo de alta conversão** para a FCell Celulares em Santa Helena de Goiás - GO (18 Anos de Tradição). Pronta para **deploy instantâneo na Vercel**.
+> **Plataforma de E-Commerce e Dashboard Administrativo de Alta Conversão** para a **FCell Celulares** em **Santa Helena de Goiás - GO**.
+> 
+> 📍 **Endereço Oficial:** Rua Teodomiro Rêgo, 207 - Bairro Centro, Santa Helena de Goiás - GO, CEP 75920-000  
+> 📞 **WhatsApp de Vendas:** [(64) 99304-9734](https://wa.me/5564993049734)  
+> ⏰ **Horário de Funcionamento:** Seg a Sex: 08:00 às 18:00 | Sáb: 08:00 às 13:00 | Dom: Fechado  
+> 📸 **Instagram:** [@fcell_celular](https://www.instagram.com/fcellcelularesoficial/)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 ![License](https://img.shields.io/badge/license-MIT-orange.svg)

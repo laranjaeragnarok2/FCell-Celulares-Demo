@@ -1,5 +1,15 @@
 # Guia de Copywriting & Catálogo de Produtos - FCell Celulares
 
+> **Dados Oficiais da Loja:**
+> - **Razão / Nome:** FCell Celulares | Assistência Técnica & Venda de Smartphones
+> - **Endereço:** Rua Teodomiro Rêgo, 207 - Bairro Centro, Santa Helena de Goiás - GO, CEP 75920-000
+> - **Telefone / WhatsApp:** (64) 99304-9734 (DDD 64 - `5564993049734`)
+> - **Horário de Funcionamento:**
+>   - Segunda a Sexta: 08:00 às 18:00
+>   - Sábado: 08:00 às 13:00
+>   - Domingo: Fechado
+> - **Instagram Oficial:** `@fcell_celular` (`https://www.instagram.com/fcellcelularesoficial/`)
+
 Este arquivo reúne a **Copywriting de Vendas (Textos persuasivos)**, gatilhos mentais, diferenciais, ofertas de brindes e estrutura de preços para os produtos do catálogo da **FCell Celulares**.
 
 ---
