@@ -164,8 +164,8 @@ const INITIAL_PRODUCTS = [
 const DEFAULT_SETTINGS = {
   heroBadge: "OFERTAS ESPECIAIS COM 1 ANO DE GARANTIA",
   heroTitle: "Apple Watch Series & iPhones",
-  heroSubtitle: "Smartphones lacrados, produtos originais Apple, caixas de som JBL e suporte técnico especializado com entrega expressa no mesmo dia em Cuiabá.",
-  whatsappNumber: "5565993049734",
+  heroSubtitle: "Smartphones lacrados, produtos originais Apple, caixas de som JBL e suporte técnico especializado com entrega em Santa Helena de Goiás e região.",
+  whatsappNumber: "5564993049734",
   globalGiftText: "Ganhe Copo Stanley em compras no PIX"
 };
 

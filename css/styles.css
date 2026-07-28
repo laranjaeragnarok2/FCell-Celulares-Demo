@@ -499,6 +499,187 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ==========================================================================
+   DUAL BANNERS SECTION ("TECNOLOGIA AVANÇADA" & "SOM DE VERDADE")
+   ========================================================================== */
+.drou-dual-banners-section {
+  padding: 4.5rem 0;
+  background: var(--bg-main);
+}
+
+.drou-dual-banners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.drou-banner-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.drou-banner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.drou-banner-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-text-dark);
+  margin: 0.3rem 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   COUNTDOWN BANNER SECTION
+   ========================================================================== */
+.drou-countdown-banner-section {
+  padding: 4.5rem 0;
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.drou-countdown-card {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.timer-boxes-flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.75rem 0 2rem 0;
+}
+
+.timer-box {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  min-width: 75px;
+  box-shadow: var(--shadow-sm);
+}
+
+.timer-box-num {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.timer-box-lbl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   TRUST FEATURES STRIP
+   ========================================================================== */
+.drou-features-strip {
+  background: #ffffff;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.drou-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.drou-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.drou-feature-icon {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   FOOTER DROU STYLE
+   ========================================================================== */
+.footer-drou {
+  background: var(--color-dark);
+  color: #ffffff;
+  padding: 4.5rem 0 2rem 0;
+}
+
+.footer-drou-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.footer-drou-col h4 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-drou-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-drou-links a {
+  color: #a0aec0;
+  font-size: 0.9rem;
+  transition: var(--transition-fast);
+}
+
+.footer-drou-links a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.footer-drou-bottom {
+  border-top: 1px solid var(--border-dark);
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #a0aec0;
+}
+
+/* ==========================================================================
    ADMIN PANEL DASHBOARD DESIGN STYLING
    ========================================================================== */
 
